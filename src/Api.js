@@ -37,17 +37,17 @@ class InstagramApi {
 
 	// Register someone in with this function, that should return a token.
 
-	static async registerUser(registerInfo) {
-		let response = await this.request('auth/register', registerInfo, 'post');
-		JoblyApi.token = response.token;
-		return response;
-	}
+	// static async registerUser(registerInfo) {
+	// 	let response = await this.request('auth/register', registerInfo, 'post');
+	// 	InstagramApi.token = response.token;
+	// 	return response;
+	// }
 
 	// Log someone in with this function, that should return a token.
 
 	static async loginUser(loginInfo) {
 		let response = await this.request('auth/token', loginInfo, 'post');
-		JoblyApi.token = response.token;
+		InstagramApi.token = response.token;
 		return response;
 	}
 }
