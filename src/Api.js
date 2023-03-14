@@ -50,6 +50,13 @@ class InstagramApi {
 		InstagramApi.token = response.token;
 		return response;
 	}
+
+	// Get user by username.
+
+	static async getUser(username) {
+		let response = await this.request(`users/${username}`);
+		return response.user;
+	}
 }
 
 export default InstagramApi;
