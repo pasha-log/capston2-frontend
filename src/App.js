@@ -26,15 +26,15 @@ function App() {
 		[ storedValue ]
 	);
 
-	// const setTokenAfterRegister = async (data, username) => {
-	// 	let response = await InstagramApi.registerUser(data);
-	// 	if (response.token) {
-	// 		setValue({ token: response.token, username: username });
-	// 		return true;
-	// 	} else {
-	// 		return response;
-	// 	}
-	// };
+	const setTokenAfterRegister = async (data, username) => {
+		let response = await InstagramApi.registerUser(data);
+		if (response.token) {
+			setValue({ token: response.token, username: username });
+			return true;
+		} else {
+			return response;
+		}
+	};
 
 	const setTokenAfterLogin = async (data, username) => {
 		let response = await InstagramApi.loginUser(data);
@@ -57,7 +57,7 @@ function App() {
 					{/* <NavBar logOutUser={logOutUser} /> */}
 					<main>
 						<InstagramRoutes
-							// setTokenAfterRegister={setTokenAfterRegister}
+							setTokenAfterRegister={setTokenAfterRegister}
 							setTokenAfterLogin={setTokenAfterLogin}
 						/>
 					</main>

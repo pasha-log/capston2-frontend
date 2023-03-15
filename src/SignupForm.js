@@ -1,24 +1,26 @@
 import { Input, Button, Form, FormGroup, Col, Container } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
-import './LoginForm.css';
+import './SignupForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Alert from './Alert.js';
 
-const LoginForm = ({ setTokenAfterLogin }) => {
+const SignupForm = ({ setTokenAfterRegister }) => {
 	const navigate = useNavigate();
 	const [ response, setResponse ] = useState(false);
 	const { control, handleSubmit, reset } = useForm({
 		defaultValues: {
+			email: '',
+			fullName: '',
 			username: '',
 			password: ''
 		}
 	});
 
 	const onSubmit = async (data) => {
-		const success = await setTokenAfterLogin(data, data.username);
+		let success = await setTokenAfterRegister(data, data.username);
 		if (success === true) {
-			navigate(`/${data.username}`);
+			navigate('/');
 		} else {
 			setResponse(success);
 			reset();
@@ -36,7 +38,21 @@ const LoginForm = ({ setTokenAfterLogin }) => {
 						sm="12"
 					>
 						<div className="FormContainer">
-							<img className="LoginLogo" alt="" />
+							<img className="SignupLogo" alt="" />
+							<div className="Email">
+								<Controller
+									name="email"
+									control={control}
+									render={({ field }) => <Input type="email" placeholder="Email" {...field} />}
+								/>
+							</div>
+							<div className="Fullname">
+								<Controller
+									name="fullName"
+									control={control}
+									render={({ field }) => <Input placeholder="Firstname" {...field} />}
+								/>
+							</div>
 							<div className="Username">
 								<Controller
 									name="username"
@@ -51,22 +67,22 @@ const LoginForm = ({ setTokenAfterLogin }) => {
 									render={({ field }) => <Input type="password" placeholder="Password" {...field} />}
 								/>
 							</div>
-							{response !== false ? <Alert type="danger" message={response} /> : null}
-							<Button className="LoginButton" type="submit" size="lg">
-								Log in
+							<Button className="SignupButton" type="submit" size="lg">
+								Sign up
 							</Button>
+							{response !== false ? <Alert type="danger" message={response[0]} /> : null}
 						</div>
 					</Col>
 				</FormGroup>
 				<div>
 					<p>
-						Don't have an account?{' '}
-						<Link className="RegisterLink" to={'/signup'}>
-							Sign up
+						Have an account?{' '}
+						<Link className="LoginLink" to={'/login'}>
+							Log in
 						</Link>
 					</p>
 				</div>
-				<div className="AuthorNoteDivLogin">
+				<div className="AuthorNoteDivSignup">
 					<span className="AuthorNoteSpan">
 						<span className="material-symbols-outlined">copyright </span>
 						2023 Instagram Clone From{' '}
@@ -80,4 +96,4 @@ const LoginForm = ({ setTokenAfterLogin }) => {
 	);
 };
 
-export default LoginForm;
+export default SignupForm;
