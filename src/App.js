@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import InstagramRoutes from './Routes';
-import InstagramApi from './api';
+import InstagramApi from './Api';
 import { useEffect, useState } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import useLocalStorage from './hooks/useLocalStorage';
