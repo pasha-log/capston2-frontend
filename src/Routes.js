@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 // import SignupForm from './SignupForm';
 import RequireAuth from './RequireAuth';
 
-const InstagramRoutes = ({ setTokenAfterLogin, setTokenAfterRegister }) => {
+const InstagramRoutes = ({ setTokenAfterLogin }) => {
 	return (
 		<Routes>
 			<Route exact path="/login" element={<LoginForm setTokenAfterLogin={setTokenAfterLogin} />} />

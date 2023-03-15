@@ -57,7 +57,7 @@ function App() {
 					{/* <NavBar logOutUser={logOutUser} /> */}
 					<main>
 						<InstagramRoutes
-							setTokenAfterRegister={setTokenAfterRegister}
+							// setTokenAfterRegister={setTokenAfterRegister}
 							setTokenAfterLogin={setTokenAfterLogin}
 						/>
 					</main>
