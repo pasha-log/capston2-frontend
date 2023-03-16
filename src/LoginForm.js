@@ -6,12 +6,13 @@ import { useState } from 'react';
 import Alert from './Alert.js';
 
 const LoginForm = ({ setTokenAfterLogin }) => {
+	document.body.style = 'background: white;';
 	const navigate = useNavigate();
 	const [ response, setResponse ] = useState(false);
 	const { control, handleSubmit, reset } = useForm({
 		defaultValues: {
-			username: '',
-			password: ''
+			username: 'pashathecoder',
+			password: 'password'
 		}
 	});
 

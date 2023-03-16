@@ -1,14 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-// import RequireAuth from './RequireAuth';
+import RequireAuth from './RequireAuth';
+import Profile from './Profile';
 
 const InstagramRoutes = ({ setTokenAfterLogin, setTokenAfterRegister }) => {
 	return (
 		<Routes>
 			<Route exact path="/login" element={<LoginForm setTokenAfterLogin={setTokenAfterLogin} />} />
 			<Route exact path="/signup" element={<SignupForm setTokenAfterRegister={setTokenAfterRegister} />} />
-			{/* <Route
+			<Route
 				exact
 				path="/:username"
 				element={
@@ -16,7 +17,7 @@ const InstagramRoutes = ({ setTokenAfterLogin, setTokenAfterRegister }) => {
 						<Profile />
 					</RequireAuth>
 				}
-			/> */}
+			/>
 		</Routes>
 	);
 };

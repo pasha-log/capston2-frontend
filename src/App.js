@@ -18,6 +18,7 @@ function App() {
 			const getUserByUsername = async (username) => {
 				InstagramApi.token = storedValue.token;
 				let user = await InstagramApi.getUser(username);
+				// console.log(user);
 				setCurrentUser(user);
 			};
 
@@ -30,6 +31,8 @@ function App() {
 		let response = await InstagramApi.registerUser(data);
 		if (response.token) {
 			setValue({ token: response.token, username: username });
+			InstagramApi.token = response.token;
+			setCurrentUser(username);
 			return true;
 		} else {
 			return response;
@@ -40,6 +43,8 @@ function App() {
 		let response = await InstagramApi.loginUser(data);
 		if (response.token) {
 			setValue({ token: response.token, username: username });
+			InstagramApi.token = response.token;
+			setCurrentUser(username);
 			return true;
 		} else {
 			return response;

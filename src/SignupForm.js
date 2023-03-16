@@ -20,7 +20,7 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 	const onSubmit = async (data) => {
 		let success = await setTokenAfterRegister(data, data.username);
 		if (success === true) {
-			navigate('/');
+			navigate(`/${data.username}`);
 		} else {
 			setResponse(success);
 			reset();
