@@ -37,7 +37,7 @@ const LoginForm = ({ setTokenAfterLogin }) => {
 						sm="12"
 					>
 						<div className="FormContainer">
-							<img className="LoginLogo" alt="" />
+							<h1 className="LoginLogo">Instapost</h1>
 							<div className="Username">
 								<Controller
 									name="username"
@@ -59,24 +59,24 @@ const LoginForm = ({ setTokenAfterLogin }) => {
 						</div>
 					</Col>
 				</FormGroup>
-				<div>
-					<p>
-						Don't have an account?{' '}
-						<Link className="RegisterLink" to={'/signup'}>
-							Sign up
-						</Link>
-					</p>
-				</div>
-				<div className="AuthorNoteDivLogin">
-					<span className="AuthorNoteSpan">
-						<span className="material-symbols-outlined">copyright </span>
-						2023 Instagram Clone From{' '}
-						<Link className="Github" to={'https://github.com/pasha-log'}>
-							Pasha Loguinov
-						</Link>
-					</span>
-				</div>
 			</Form>
+			<div>
+				<p className="Register">
+					Don't have an account?{' '}
+					<Link className="RegisterLink" to={'/signup'}>
+						Sign up
+					</Link>
+				</p>
+			</div>
+			<div className="AuthorNoteDivLogin">
+				<span className="AuthorNoteSpan">
+					<span className="material-symbols-outlined">copyright </span>
+					2023 Instagram Clone From{' '}
+					<Link className="Github" to={'https://github.com/pasha-log'}>
+						Pasha Loguinov
+					</Link>
+				</span>
+			</div>
 		</Container>
 	);
 };

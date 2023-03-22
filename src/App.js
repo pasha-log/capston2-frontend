@@ -1,23 +1,21 @@
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import InstagramRoutes from './Routes';
-import InstagramApi from './Api';
+import InstapostRoutes from './Routes';
+import InstapostApi from './Api';
 import { useEffect, useState } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import useLocalStorage from './hooks/useLocalStorage';
+import NavBar from './NavBar';
 
 function App() {
-	// Seed the real database with two users
-	// Start with login/registration (LoginForm, SignupForm, LandingPage)
-	// Build the profile page (ProfilePage, PostDetail)
 	const [ currentUser, setCurrentUser ] = useState();
 	const [ storedValue, setValue ] = useLocalStorage();
 
 	useEffect(
 		() => {
 			const getUserByUsername = async (username) => {
-				InstagramApi.token = storedValue.token;
-				let user = await InstagramApi.getUser(username);
+				InstapostApi.token = storedValue.token;
+				let user = await InstapostApi.getUser(username);
 				// console.log(user);
 				setCurrentUser(user);
 			};
@@ -28,10 +26,10 @@ function App() {
 	);
 
 	const setTokenAfterRegister = async (data, username) => {
-		let response = await InstagramApi.registerUser(data);
+		let response = await InstapostApi.registerUser(data);
 		if (response.token) {
 			setValue({ token: response.token, username: username });
-			InstagramApi.token = response.token;
+			InstapostApi.token = response.token;
 			setCurrentUser(username);
 			return true;
 		} else {
@@ -40,10 +38,10 @@ function App() {
 	};
 
 	const setTokenAfterLogin = async (data, username) => {
-		let response = await InstagramApi.loginUser(data);
+		let response = await InstapostApi.loginUser(data);
 		if (response.token) {
 			setValue({ token: response.token, username: username });
-			InstagramApi.token = response.token;
+			InstapostApi.token = response.token;
 			setCurrentUser(username);
 			return true;
 		} else {
@@ -59,9 +57,9 @@ function App() {
 		<div className="App">
 			<CurrentUserContext.Provider value={{ storedValue, currentUser }}>
 				<BrowserRouter>
-					{/* <NavBar logOutUser={logOutUser} /> */}
+					<NavBar />
 					<main>
-						<InstagramRoutes
+						<InstapostRoutes
 							setTokenAfterRegister={setTokenAfterRegister}
 							setTokenAfterLogin={setTokenAfterLogin}
 						/>

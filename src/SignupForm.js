@@ -38,7 +38,7 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 						sm="12"
 					>
 						<div className="FormContainer">
-							<img className="SignupLogo" alt="" />
+							<h1 className="SignupLogo">Instapost</h1>
 							<div className="Email">
 								<Controller
 									name="email"

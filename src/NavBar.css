@@ -1,0 +1,15 @@
+a {
+	font-size: 1.5rem;
+	color: white;
+	text-decoration: none;
+}
+
+.Nav {
+	border: solid grey;
+	border-width: .01rem;
+	background-color: black;
+}
+
+body {
+	overflow: hidden;
+}

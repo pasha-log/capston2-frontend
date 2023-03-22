@@ -4,11 +4,6 @@
 	content: url('./temp-profile-photo.jpg');
 }
 
-/* body {
-	background-color: black;
-	color: white;
-} */
-
 .EditProfile {
 	background-color: white;
 	color: black;
@@ -24,7 +19,7 @@
 	margin-top: 1rem;
 }
 
-.Username {
+.UsernameProfile {
 	margin-right: 2rem;
 }
 
@@ -69,3 +64,28 @@
 .ContentButtons {
 	margin-top: 1rem;
 }
+
+@media screen and (min-width: 570px) {
+	.ProfilePhoto {
+		width: 10rem;
+	}
+	.UsernameProfile {
+		/* margin-left: 5rem; */
+		margin-right: 25rem;
+		margin-top: 3rem;
+	}
+	.Photo {
+		margin-top: 4rem;
+	}
+	.Bio {
+		margin-top: 1rem;
+		margin-left: 40rem;
+		font-size: 1rem;
+	}
+}
+
+/* @media screen and (max-width: 670px) {
+	.EditProfile {
+		display: none;
+	}
+} */

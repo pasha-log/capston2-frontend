@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react';
-// import InstagramApi from './Api';
+// import InstapostApi from './Api';
 // import { Link } from 'react-router-dom';
 // import PostCard from './PostCard.js';
 import { Button, Row, Col } from 'reactstrap';
@@ -7,7 +7,6 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
 
-/**npm i aws-sdk multer multer-s3*/
 const Profile = () => {
 	const { storedValue, currentUser } = useContext(CurrentUserContext);
 	// const [ userData, setUserData ] = useState({});
@@ -24,14 +23,14 @@ const Profile = () => {
 						<img className="ProfilePhoto" alt="" />
 					</div>
 				</Col>
-				<Col className="Username" sm="4" xs="6">
+				<Col className="UsernameProfile" sm="4" xs="6">
 					<h2>
 						{currentUser?.username}{' '}
 						<span id="Settings" className="material-symbols-outlined">
 							settings
 						</span>
 					</h2>
-					<Button className="EditProfile">Edit Profile</Button>
+				<Button className="EditProfile">Edit Profile</Button>
 				</Col>
 			</Row>
 			<Row>
@@ -77,6 +76,10 @@ const Profile = () => {
 						person_add
 					</span>
 				</Col>
+			</Row>
+			<Row>
+				<Col>
+				<img style={{width: "10rem", height: "10rem"}} src={"https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/b773f383-23f2-4af7-a6f8-cd32bb78cdfb-unnamed.jpg"}></img></Col>
 			</Row>
 		</div>
 	);
