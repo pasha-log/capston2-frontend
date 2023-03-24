@@ -11,6 +11,7 @@ const Profile = () => {
 	document.body.style.color = 'white';
 
 	return (
+		// https://codepen.io/GeorgePark/pen/VXrwOP
 		<div>
 			<header>
 				<div className="container">
@@ -74,19 +75,19 @@ const Profile = () => {
 				<div className="container">
 					<div className="gallery">
 					{currentUser?.posts?.slice(0).reverse().map(post => {return (
-					<Link to={`/${post.postId}`}>
+					<Link to={`/posts/${post.postId}`} key={post.postId} state={{imageURL: post.postURL, caption: post.caption}}>
 						<div className="gallery-item" tabIndex="0">
 								<img className="gallery-image" src={post.postURL} alt={post.id}/>
 								<div className="gallery-item-info">
 								<ul>
-									<li className="gallery-item-likes">
+									<li className="gallery-item-likes" key={`${post.postId}-gallery-item-likes`}>
 										{/* <span id="visually-hidden">Likes:</span> */}
 										<span className="material-symbols-outlined visually-hidden">
 										favorite
 										</span>
 										 0
 									</li>
-									<li className="gallery-item-comments">
+									<li className="gallery-item-comments" key={`${post.postId}-gallery-item-comments`}>
 										{/* <span id="visually-hidden">Comments:</span> */}
 										<span className="material-symbols-outlined visually-hidden">
 										mode_comment
@@ -103,6 +104,7 @@ const Profile = () => {
 				}
 			</main>
 		</div>
+		// https://codepen.io/GeorgePark/pen/VXrwOP
 	);
 };
 

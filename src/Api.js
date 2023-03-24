@@ -82,8 +82,14 @@ class InstapostApi {
 	// Add caption and save post to database.
 
 	static async createPost(postData) {
-		// console.log(postData.username);
 		let response = await this.request(`users/create`, postData, 'post');
+		return response.data;
+	}
+
+	// Get all comments associated with a post.
+
+	static async getPostComments(postId) {
+		let response = await this.request(`users/post-comments`);
 		return response.data;
 	}
 }

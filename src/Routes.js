@@ -6,7 +6,7 @@ import Profile from './Profile';
 import FileUploadForm from './FileUploadForm';
 import ImageCropForm from './ImageCropForm';
 import CaptionForm from './CaptionForm.js';
-// import PostDetail from './PostDetail.js';
+import PostDetail from './PostDetail.js';
 
 const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav }) => {
 	return (
@@ -57,15 +57,15 @@ const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav
 					</RequireAuth>
 				}
 			/>
-			{/* <Route
+			<Route
 				exact
-				path="/:postId"
+				path="/posts/:postId"
 				element={
 					<RequireAuth>
 						<PostDetail />
 					</RequireAuth>
 				}
-			/> */}
+			/>
 		</Routes>
 	);
 };

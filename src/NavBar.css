@@ -1,5 +1,4 @@
 a {
-	font-size: 1.5rem;
 	color: white;
 	text-decoration: none;
 }
@@ -13,4 +12,10 @@ a {
 body {
 	overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+.NavBarProfile {
+	width: 2rem;
+	border-radius: 50%;
+	margin-top: .5rem;
 }
