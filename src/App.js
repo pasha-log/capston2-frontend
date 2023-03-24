@@ -10,6 +10,9 @@ import NavBar from './NavBar';
 function App() {
 	const [ currentUser, setCurrentUser ] = useState();
 	const [ storedValue, setValue ] = useLocalStorage();
+	const [ showNav, setShowNav ] = useState(true);
+	const [ newPost, setNewPost ] = useState(-1);
+	// const [ showModal, setShowModal ] = useState(false);
 
 	useEffect(
 		() => {
@@ -22,12 +25,13 @@ function App() {
 
 			storedValue ? getUserByUsername(storedValue.username) : console.log('Logged out');
 		},
-		[ storedValue ]
+		[ storedValue, newPost ]
 	);
 
 	const setTokenAfterRegister = async (data, username) => {
 		let response = await InstapostApi.registerUser(data);
 		if (response.token) {
+			setShowNav(true);
 			setValue({ token: response.token, username: username });
 			InstapostApi.token = response.token;
 			setCurrentUser(username);
@@ -40,6 +44,7 @@ function App() {
 	const setTokenAfterLogin = async (data, username) => {
 		let response = await InstapostApi.loginUser(data);
 		if (response.token) {
+			setShowNav(true);
 			setValue({ token: response.token, username: username });
 			InstapostApi.token = response.token;
 			setCurrentUser(username);
@@ -55,13 +60,14 @@ function App() {
 
 	return (
 		<div className="App">
-			<CurrentUserContext.Provider value={{ storedValue, currentUser }}>
+			<CurrentUserContext.Provider value={{ storedValue, currentUser, newPost, setNewPost }}>
 				<BrowserRouter>
-					<NavBar />
+					{showNav && <NavBar />}
 					<main>
 						<InstapostRoutes
 							setTokenAfterRegister={setTokenAfterRegister}
 							setTokenAfterLogin={setTokenAfterLogin}
+							setShowNav={setShowNav}
 						/>
 					</main>
 				</BrowserRouter>

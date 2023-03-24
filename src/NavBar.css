@@ -11,5 +11,6 @@ a {
 }
 
 body {
-	overflow: hidden;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }

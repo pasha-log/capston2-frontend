@@ -58,7 +58,7 @@ class InstapostApi {
 		return response.user;
 	}
 
-	// Upload new post.
+	// Upload new image to s3 bucket.
 
 	static async uploadPost(postData) {
 		// postData is the File
@@ -76,7 +76,15 @@ class InstapostApi {
 			}
 		});
 		console.log(response);
-		return response.post;
+		return response.data;
+	}
+
+	// Add caption and save post to database.
+
+	static async createPost(postData) {
+		// console.log(postData.username);
+		let response = await this.request(`users/create`, postData, 'post');
+		return response.data;
 	}
 }
 

@@ -5,7 +5,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Alert from './Alert.js';
 
-const LoginForm = ({ setTokenAfterLogin }) => {
+const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
+	setShowNav(false);
 	document.body.style = 'background: white;';
 	const navigate = useNavigate();
 	const [ response, setResponse ] = useState(false);
@@ -36,7 +37,7 @@ const LoginForm = ({ setTokenAfterLogin }) => {
 						}}
 						sm="12"
 					>
-						<div className="FormContainer">
+						<div className="LoginFormContainer">
 							<h1 className="LoginLogo">Instapost</h1>
 							<div className="Username">
 								<Controller
@@ -71,7 +72,7 @@ const LoginForm = ({ setTokenAfterLogin }) => {
 			<div className="AuthorNoteDivLogin">
 				<span className="AuthorNoteSpan">
 					<span className="material-symbols-outlined">copyright </span>
-					2023 Instagram Clone From{' '}
+					2023 Instapost From{' '}
 					<Link className="Github" to={'https://github.com/pasha-log'}>
 						Pasha Loguinov
 					</Link>

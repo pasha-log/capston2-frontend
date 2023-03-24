@@ -6,6 +6,7 @@ import CurrentUserContext from './CurrentUserContext';
 
 const NavBar = () => {
 	const { storedValue, currentUser } = useContext(CurrentUserContext);
+
 	return (
 		<div>
 			{storedValue &&
@@ -23,7 +24,8 @@ const NavBar = () => {
 							</Link>
 						</Col>
 						<Col>
-							<Link id="add_circle" to="/create">
+							<Link id="add_circle" to="/upload">
+								{/* <Button id="add_circle" onClick={() => setShowModal(true)}> */}
 								<span className="material-symbols-outlined">add_circle</span>
 							</Link>
 						</Col>

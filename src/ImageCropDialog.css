@@ -1,0 +1,45 @@
+.Backdrop {
+	position: fixed;
+	background-color: black;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.CropContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 80px;
+}
+
+.Controls {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 80px;
+}
+
+.ControlsUpperArea {
+	text-align: center;
+}
+
+.Slider {
+	width: 50%;
+}
+
+.ButtonArea {
+	text-align: center;
+	margin-top: -6rem;
+}
+
+button {
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: black;
+	color: white;
+	border: 1px solid rgb(0, 187, 255);
+	font-size: 2rem;
+}

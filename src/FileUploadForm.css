@@ -1,0 +1,37 @@
+.UploadFormContainer {
+	/* position: fixed; Stay in place */
+	/* z-index: 1;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0; */
+	/* background-color: rgb(0, 0, 0); Fallback color */
+	/* background-color: rgba(0, 0, 0, 0.4); Black w/ opacity */
+	border-radius: 1rem;
+	background-color: rgb(39, 39, 39);
+	height: 35rem;
+	margin-top: 4rem;
+}
+
+.NewPostLabel {
+	border-bottom: solid rgb(71, 71, 71) 0.06rem;
+	font-size: 1rem;
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+}
+
+#Gallery {
+	font-size: 6rem;
+}
+
+.Gallery {
+	margin-top: 10rem;
+}
+
+.Submit {
+	background-color: rgb(27, 156, 255);
+}
+
+.Submit:hover {
+	background-color: rgb(0, 126, 222);
+}

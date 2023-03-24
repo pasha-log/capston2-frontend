@@ -37,7 +37,7 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 						}}
 						sm="12"
 					>
-						<div className="FormContainer">
+						<div className="SignupFormContainer">
 							<h1 className="SignupLogo">Instapost</h1>
 							<div className="Email">
 								<Controller
@@ -85,7 +85,7 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 				<div className="AuthorNoteDivSignup">
 					<span className="AuthorNoteSpan">
 						<span className="material-symbols-outlined">copyright </span>
-						2023 Instagram Clone From{' '}
+						2023 Instapost From{' '}
 						<Link className="Github" to={'https://github.com/pasha-log'}>
 							Pasha Loguinov
 						</Link>

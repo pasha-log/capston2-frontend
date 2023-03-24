@@ -1,86 +1,107 @@
-// import { useState, useEffect } from 'react';
-// import InstapostApi from './Api';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import PostCard from './PostCard.js';
-import { Button, Row, Col } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
 
 const Profile = () => {
-	const { storedValue, currentUser } = useContext(CurrentUserContext);
-	// const [ userData, setUserData ] = useState({});
-	console.log(storedValue.token);
-	console.log(currentUser);
+	const { currentUser } = useContext(CurrentUserContext);
 	document.body.style = 'background: black;';
 	document.body.style.color = 'white';
 
 	return (
 		<div>
-			<Row>
-				<Col className="Photo">
-					<div>
-						<img className="ProfilePhoto" alt="" />
+			<header>
+				<div className="container">
+					<div className="profile">
+						<div className="profile-image">
+							<img
+								className='ProfilePhoto'
+								src="https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/46499ef0-8acb-4511-ba9e-a0cd13f233f0-20220812_195736.jpg"
+								alt=""
+							/>
+						</div>
+
+						<div className="profile-user-settings">
+							<h1 className="profile-user-name">{currentUser?.username}</h1>
+
+							{/* <button className="btn profile-edit-btn">Edit Profile</button> */}
+							<Button className="btn profile-edit-btn EditProfile">Edit Profile</Button>
+							{/* <button className="btn profile-settings-btn" aria-label="profile settings">
+								<i className="fas fa-cog" aria-hidden="true" />
+							</button> */}
+							<span className="material-symbols-outlined profile-settings-btn">
+		 						settings
+							</span>
+						</div>
+
+						<div className="profile-stats">
+							<ul>
+								<li key='PostNumber'>
+									<span className="profile-stat-count">{currentUser?.posts?.length}</span> posts
+								</li>
+								<li key='Followers'>
+									<span className="profile-stat-count">{currentUser?.followers?.length}</span> followers
+								</li>
+								<li key='Following'>
+									<span className="profile-stat-count">{currentUser?.following?.length}</span> following
+								</li>
+							</ul>
+						</div>
+
+						<div className="profile-bio">
+							<p>
+								<span className="profile-real-name">{currentUser?.fullName}</span> {currentUser?.bio}
+							</p>
+						</div>
 					</div>
-				</Col>
-				<Col className="UsernameProfile" sm="4" xs="6">
-					<h2>
-						{currentUser?.username}{' '}
-						<span id="Settings" className="material-symbols-outlined">
-							settings
+				</div>
+			</header>
+
+			<main>
+			{currentUser?.posts?.length === 0 ?
+					<div className='NullPosts'>
+						<span id="Camera" className="material-symbols-outlined">
+							photo_camera
 						</span>
-					</h2>
-				<Button className="EditProfile">Edit Profile</Button>
-				</Col>
-			</Row>
-			<Row>
-				<Col className="Bio">
-					<span>
-						<b>{currentUser?.fullName}</b>
-					</span>
-					<h1 className="Info">
-						{currentUser?.bio}
-						<br />
-						{currentUser?.email}
-					</h1>
-				</Col>
-			</Row>
-			<Row className="UserData">
-				<Col className="Data">
-					<span className="Number">
-						<b>{currentUser?.posts?.length}</b>
-					</span>
-					<br />Posts
-				</Col>
-				<Col className="Data">
-					<span className="Number">
-						<b>{currentUser?.followers?.length}</b>
-					</span>
-					<br />Followers
-				</Col>
-				<Col className="Data">
-					<span className="Number">
-						<b>{currentUser?.following?.length}</b>
-					</span>
-					<br />Following
-				</Col>
-			</Row>
-			<Row className="ContentButtons">
-				<Col>
-					<span id="Posts" className="material-symbols-outlined">
-						grid_on
-					</span>
-				</Col>
-				<Col>
-					<span id="Tagged" className="material-symbols-outlined">
-						person_add
-					</span>
-				</Col>
-			</Row>
-			<Row>
-				<Col>
-				<img style={{width: "10rem", height: "10rem"}} src={"https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/b773f383-23f2-4af7-a6f8-cd32bb78cdfb-unnamed.jpg"}></img></Col>
-			</Row>
+						<h3 className='Share'>Share Photos</h3>
+						<p>You have no posts yet</p>
+						<Link className='FirstShare' to="/upload">
+							<Button className='FirstShareButton'>Share your first photo</Button>
+						</Link>
+					</div> :
+				<div className="container">
+					<div className="gallery">
+					{currentUser?.posts?.slice(0).reverse().map(post => {return (
+					<Link to={`/${post.postId}`}>
+						<div className="gallery-item" tabIndex="0">
+								<img className="gallery-image" src={post.postURL} alt={post.id}/>
+								<div className="gallery-item-info">
+								<ul>
+									<li className="gallery-item-likes">
+										{/* <span id="visually-hidden">Likes:</span> */}
+										<span className="material-symbols-outlined visually-hidden">
+										favorite
+										</span>
+										 0
+									</li>
+									<li className="gallery-item-comments">
+										{/* <span id="visually-hidden">Comments:</span> */}
+										<span className="material-symbols-outlined visually-hidden">
+										mode_comment
+										</span>
+										 0
+									</li>
+								</ul>
+							</div>
+						</div>
+					</Link>
+						)})}
+					</div>
+				</div>
+				}
+			</main>
 		</div>
 	);
 };
