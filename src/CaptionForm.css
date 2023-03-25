@@ -47,27 +47,6 @@
 	box-shadow: none;
 }
 
-.Caption::-webkit-input-placeholder {
-	color: rgb(71, 71, 71);
-}
-.Caption:-moz-placeholder {
-	/* FF 4-18 */
-	color: rgb(71, 71, 71);
-	opacity: 1;
-}
-.Caption::-moz-placeholder {
-	/* FF 19+ */
-	color: rgb(71, 71, 71);
-	opacity: 1;
-}
-.Caption:-ms-input-placeholder {
-	/* IE 10+ */
-	color: rgb(71, 71, 71);
-}
-.Caption::-ms-input-placeholder {
-	/* Microsoft Edge */
-	color: rgb(71, 71, 71);
-}
 .Caption::placeholder {
 	/* modern browser */
 	color: rgb(71, 71, 71);

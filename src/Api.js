@@ -89,7 +89,16 @@ class InstapostApi {
 	// Get all comments associated with a post.
 
 	static async getPostComments(postId) {
-		let response = await this.request(`users/post-comments`);
+		let response = await this.request(`users/comments/${postId}`);
+		console.log(response);
+		return response.comments;
+	}
+
+	// Post a new comment to a post.
+
+	static async createComment(commentData) {
+		console.log(commentData);
+		let response = await this.request(`users/comment`, commentData, 'post');
 		return response.data;
 	}
 }

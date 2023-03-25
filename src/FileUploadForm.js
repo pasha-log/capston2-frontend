@@ -1,12 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Container, Form, Button, FormGroup, Col } from 'reactstrap';
-// import { Button, Form, FormGroup, Col, Container } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
-// import { useState } from 'react';
-// import Alert from './Alert.js';
 import InstapostApi from './Api';
-// import { useContext } from 'react';
-// import CurrentUserContext from './CurrentUserContext';
 import './FileUploadForm.css';
 
 const FileUploadForm = () => {

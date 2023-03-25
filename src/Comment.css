@@ -1,0 +1,75 @@
+.CommentProfilePhoto {
+	width: 2rem;
+	border-radius: 50%;
+}
+
+.PostCommentItem {
+	padding: 1px 8px 16px;
+}
+
+.UsernameInComment {
+	margin-right: .5rem;
+	/* margin-left: -2rem; */
+}
+
+.heart {
+	width: 80px;
+	height: 80px;
+	background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+	background-position: 0 0;
+	cursor: pointer;
+	transition: background-position 1s steps(28);
+	transition-duration: 0s;
+}
+
+.heart.is-active {
+	transition-duration: 1s;
+	background-position: -2800px 0;
+}
+
+.PostCommentRow {
+	display: flex;
+}
+
+.PostCommentItem,
+.PostCommentActions,
+.PostCommentRow {
+	-webkit-box-align: stretch;
+	align-items: stretch;
+	-webkit-box-direction: normal;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	margin: 0px;
+	vertical-align: baseline;
+	color: white;
+}
+
+.PostCommentActions {
+	-webkit-box-align: center;
+	align-items: center;
+	white-space: nowrap;
+	flex-wrap: nowrap;
+	padding: 0px 0px 0px 47px;
+	max-width: 200px;
+	justify-content: space-between;
+}
+
+.FlexRow {
+	display: flex;
+	-webkit-box-align: stretch;
+	align-items: stretch;
+	flex-shrink: 0;
+	flex-direction: row;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: row !important;
+	vertical-align: baseline;
+}
+
+.PostCommentRow {
+	padding: 2px -1px;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	align-items: flex-start;
+}

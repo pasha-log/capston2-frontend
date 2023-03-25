@@ -4,11 +4,8 @@ import CurrentUserContext from './CurrentUserContext';
 import './PostDetail.css';
 import { useEffect, useState } from 'react';
 import InstapostApi from './Api';
-
-// We need to write an api function that calls all of a posts comments, including their children.
-// The child comments must have parent comment Id and parent username
-// Write a comment component to duplicate with a map function
-// Write a function to create a new comment. (Will need an API function as well)
+import Comment from './Comment';
+import CommentForm from './CommentForm';
 
 const PostDetail = () => {
 	const { postId } = useParams();
@@ -23,13 +20,15 @@ const PostDetail = () => {
     useEffect(
 		() => {
 			const getPostComments = async (id) => {
-				let user = await InstapostApi.getPostComments(id);
-				setPostComments(user);
+				let response = await InstapostApi.getPostComments(id);
+				setPostComments(response);
+                console.log(response)
+                console.log(postComments)
 			};
 
 			getPostComments(postId);
 		},
-		[ newComment ]
+		[ newComment, postId ]
 	);
 
 	return (
@@ -70,7 +69,7 @@ const PostDetail = () => {
 						<div className="bottom">
 							<div className="actionBtns">
 								<div className="left">
-									<span className="heart" onclick="addlike()">
+									<span className="heart">
 										<span>
 											<svg
 												aria-label="Like"
@@ -107,7 +106,7 @@ const PostDetail = () => {
 										width="24"
 									>
 										<path
-											clip-rule="evenodd"
+											clipRule="evenodd"
 											d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 
                                         11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 
                                         7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 
@@ -115,7 +114,7 @@ const PostDetail = () => {
                                         8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 
                                         2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 
                                         44.5 12.7 44.5 24z"
-											fill-rule="evenodd"
+											fillRule="evenodd"
 										/>
 									</svg>
 								</div>
@@ -123,8 +122,8 @@ const PostDetail = () => {
 									<svg
 										aria-label="Save"
 										className="_8-yf5 "
-										color="#262626"
-										fill="#262626"
+										color="#FFFFFF"
+										fill="#FFFFFF"
 										height="24"
 										role="img"
 										viewBox="0 0 48 48"
@@ -139,26 +138,23 @@ const PostDetail = () => {
 									</svg>
 								</div>
 							</div>
-							<a href="#">
+                            <div>
 								<p className="likes">Liked by 203 others</p>
-							</a>
-							<a href="#">
+                            </div>
+                            <div>
 								<p className="message">
 									<b>{currentUser?.username}</b>
                                     {caption}
 								</p>
-							</a>
-							<a href="#">
-								<h4 className="comments">View all 32 comments</h4>
-							</a>
+                            </div>
+                            {!postComments ? null : postComments?.map((comment) => (<Comment comment={comment} />))}
 							<div className="addComments">
 								<div className="reaction">
 									<h3>
 										<i className="far fa-smile" />
 									</h3>
 								</div>
-								<input type="text" className="text" placeholder="Add a comment..." />
-								<a href="#">Post</a>
+                                <CommentForm postId={postId} newComment={newComment} setNewComment={setNewComment} />
 							</div>
 						</div>
 					</div>
