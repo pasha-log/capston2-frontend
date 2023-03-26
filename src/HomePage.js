@@ -1,61 +1,14 @@
 import './HomePage.css';
+// import PostDetail from './PostDetail';
 
+// We want the feed to be all of user's posts and their follower's posts, ordered by most recent.
+// We want the suggestions card to be a separate component, with five random fake accounts on every render (who the follower isn't following yet)
+// We need to make sure that react knows if the profile we're looking at is either the current user or a different user
 const HomePage = () => {
 	return (
-		<main>
+		<main className="HomePage">
 			<div class="container">
 				<div class="col-9">
-					<div class="statuses">
-						<div class="status">
-							<div class="image">
-								<img
-									src="https://media.geeksforgeeks.org/wp-content/uploads/20220604085434/GeeksForGeeks-300x243.png"
-									alt="img3"
-								/>
-							</div>
-						</div>
-						<div class="status">
-							<div class="image">
-								<img
-									src="https://media.geeksforgeeks.org/wp-content/uploads/20220609093221/g2-200x200.jpg"
-									alt="img4"
-								/>
-							</div>
-						</div>
-						<div class="status">
-							<div class="image">
-								<img
-									src="https://media.geeksforgeeks.org/wp-content/uploads/20220609093241/g3-200x200.png"
-									alt="img5"
-								/>
-							</div>
-						</div>
-						<div class="status">
-							<div class="image">
-								<img
-									src="https://media.geeksforgeeks.org/wp-content/uploads/20220609093229/g-200x200.png"
-									alt="img6"
-								/>
-							</div>
-						</div>
-						<div class="status">
-							<div class="image">
-								<img
-									src="https://media.geeksforgeeks.org/wp-content/uploads/20220609093221/g2-200x200.jpg"
-									alt="img7"
-								/>
-							</div>
-						</div>
-						<div class="status">
-							<div class="image">
-								<img
-									src="https://media.geeksforgeeks.org/wp-content/uploads/20220604085434/GeeksForGeeks-300x243.png"
-									alt="img8"
-								/>
-							</div>
-						</div>
-					</div>
-
 					<div class="card">
 						<div class="top">
 							<div class="userDetails">
@@ -614,39 +567,39 @@ const HomePage = () => {
 					</div>
 
 					<div class="footer">
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="https://github.com/pasha-log">
 							About
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Help
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="https://github.com/pasha-log/capstone2-backend">
 							API
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Jobs
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Privacy
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Terms
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Locations
 						</a>
 						<br />
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Top Accounts
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Hashtag
 						</a>
-						<a class="footer-section" href="#">
+						<a class="footer-section" href="">
 							Language
 						</a>
 						<br />
-						<span class="footer-section">© 2023 INSTAGRAM FROM FACEBOOK</span>
+						<span class="footer-section">© 2023 INSTAPOST FROM PASHA LOGUINOV</span>
 					</div>
 				</div>
 			</div>

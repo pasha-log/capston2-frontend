@@ -58,9 +58,14 @@ function App() {
 	// 	setValue(null);
 	// };
 
+	const follow = async (usernameFollowing, usernameBeingFollowed) => {
+		let response = await InstapostApi.follow(usernameFollowing, usernameBeingFollowed);
+		console.log(response);
+	};
+
 	return (
 		<div className="App">
-			<CurrentUserContext.Provider value={{ storedValue, currentUser, newPost, setNewPost }}>
+			<CurrentUserContext.Provider value={{ storedValue, currentUser, newPost, setNewPost, follow }}>
 				<BrowserRouter>
 					{showNav && <NavBar />}
 					<main>

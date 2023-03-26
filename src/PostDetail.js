@@ -43,7 +43,7 @@ const PostDetail = () => {
 									<div className="profile_img">
 										<div className="image">
 											<img
-												src="https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/46499ef0-8acb-4511-ba9e-a0cd13f233f0-20220812_195736.jpg"
+												src={currentUser?.profileImageURL}
 												alt="img8"
 											/>
 										</div>
