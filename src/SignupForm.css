@@ -32,6 +32,10 @@
 	margin-top: 5rem;
 }
 
+.SignupFormDiv {
+	width: 100%;
+}
+
 .LoginLink {
 	text-decoration: none;
 	color: rgb(27, 156, 255);

@@ -1,4 +1,4 @@
-import { Input, Button, Form, FormGroup, Col, Container } from 'reactstrap';
+import { Input, Button, Form, FormGroup, Col } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
 import './SignupForm.css';
 import { useNavigate, Link } from 'react-router-dom';
@@ -27,7 +27,7 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 		}
 	};
 	return (
-		<Container>
+		<div className="SignupFormDiv">
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup row>
 					<Col
@@ -92,7 +92,7 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 					</span>
 				</div>
 			</Form>
-		</Container>
+		</div>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { Input, Button, Form, FormGroup, Col, Container } from 'reactstrap';
+import { Input, Button, Form, FormGroup, Col } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
 import './LoginForm.css';
 import { useNavigate, Link } from 'react-router-dom';
@@ -27,7 +27,7 @@ const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
 		}
 	};
 	return (
-		<Container>
+		<div className="LoginFormDiv">
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup row>
 					<Col
@@ -78,7 +78,7 @@ const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
 					</Link>
 				</span>
 			</div>
-		</Container>
+		</div>
 	);
 };
 

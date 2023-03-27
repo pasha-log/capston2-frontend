@@ -29,6 +29,10 @@
 	margin-top: 5rem;
 }
 
+.LoginFormDiv {
+	width: 100%;
+}
+
 .AuthorNoteDivLogin {
 	margin-top: 15rem;
 }
