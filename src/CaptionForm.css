@@ -17,6 +17,10 @@
 	height: 35rem;
 }
 
+.CaptionFormDiv {
+	width: 100%;
+}
+
 .NewCaptionPostLabel {
 	font-size: 1rem;
 	padding-top: .5rem;
@@ -78,7 +82,7 @@
 	border-radius: 50%;
 	width: 2rem;
 	height: 2rem;
-	content: url('./temp-profile-photo.jpg');
+	/* content: url('./temp-profile-photo.jpg'); */
 	margin-top: .5rem;
 	margin-right: .5rem;
 }

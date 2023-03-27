@@ -4,15 +4,15 @@
 	box-sizing: border-box;
 }
 
-.navbar .container {
-	padding: 15px 0;
-	width: 75%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+.follow,
+.follow:hover {
+	background-color: rgb(39, 39, 39);
+	border: none;
+	color: #1d92ffcb;
+	cursor: pointer;
 }
 
-.container {
+.container .logo {
 	display: inline-block;
 	cursor: pointer;
 }
@@ -35,14 +35,14 @@
 	object-fit: cover;
 }
 
-main {
+.HomePage {
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-main .container {
+.HomePage .container {
 	position: relative;
 	margin-top: 60px;
 	width: 75%;
@@ -51,16 +51,18 @@ main .container {
 	justify-content: space-between;
 }
 
-.Col-9 {
+.col-9 {
 	width: 65%;
 	margin-top: 30px;
 }
 
 .col-3 {
+	/* float: right; */
 	width: 33%;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 90px;
+	/* top: 0rem; */
 }
 
 .col-3 h4 {
@@ -68,63 +70,50 @@ main .container {
 }
 
 .col-3 .card {
-	background-color: rgb(39, 39, 39);
 	margin-bottom: 20px;
 	position: relative;
 	width: 100%;
 	display: inline-block;
+	background-color: rgb(39, 39, 39);
 }
 
-.col-3 .card .HomePageTop {
+.col-3 .card .top {
 	padding: 10px 0px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.col-3 .card .HomePageTop a {
+/* .col-3 .card .top a {
 	color: #1d92ff;
-}
+} */
 
 .col-3 .card .bottom {
 	padding: 10px 20px;
 }
 
-.col-3 .card .HomePageTop .userDetails {
+.col-3 .card .top .userDetails {
 	width: 100%;
 	display: flex;
 	align-items: center;
 }
 
-.col-3 .card .HomePageTop .userDetails h3 {
+.col-3 .card .top .userDetails h3 {
 	font-size: 16px;
 	color: white;
 	font-weight: 500;
 	line-height: 1em;
 }
 
-.col-3 .card .HomePageTop .userDetails h3 span {
+.col-3 .card .top .userDetails h3 span {
 	font-size: 0.75em;
 }
 
-.col-3 .card .HomePageTop .userDetails h3 span {
+.col-3 .card .top .userDetails h3 span {
 	font-size: 0.75em;
 }
 
-.follow {
-	background-color: rgb(39, 39, 39);
-	border: none;
-	color: #1d92ff;
-}
-
-.follow:hover {
-	background-color: rgb(39, 39, 39);
-	border: none;
-	color: white;
-}
-
-.Col-9 .card {
-	background-color: rgb(39, 39, 39);
+.col-9 .card {
 	margin-bottom: 20px;
 	position: relative;
 	width: 100%;
@@ -132,18 +121,18 @@ main .container {
 	border: 1px solid rgba(7, 7, 7, 0.24);
 }
 
-.Col-9 .card .HomePageTop {
+.col-9 .card .top {
 	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.Col-9 .card .bottom {
+.col-9 .card .bottom {
 	padding: 10px 20px;
 }
 
-.Col-9 .card .HomePageTop .userDetails {
+.col-9 .card .top .userDetails {
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -196,18 +185,19 @@ main .container {
 	object-fit: cover;
 }
 
-.Col-9 .card .HomePageTop .userDetails h3 {
+.col-9 .card .top .userDetails h3 {
+	/* width: 100%; */
 	font-size: 16px;
-	color: #ffffff;
+	color: #4d4d4f;
 	font-weight: 500;
 	line-height: 1em;
 }
 
-.Col-9 .card .HomePageTop .userDetails h3 span {
+.col-9 .card .top .userDetails h3 span {
 	font-size: 0.75em;
 }
 
-.Col-9 .card .HomePageTop .userDetails h3 span {
+.col-9 .card .top .userDetails h3 span {
 	font-size: 0.75em;
 }
 
@@ -241,19 +231,19 @@ main .container {
 	font-weight: 500;
 	margin-top: 5px;
 	font-size: 14px;
-	color: #ffffff;
+	color: #4d4d4f;
 }
 
 .message {
 	font-weight: 400;
 	margin-top: 5px;
 	font-size: 14px;
-	color: #ffffff;
+	color: #777;
 	line-height: 1.5em;
 }
 
 .message b {
-	color: #ffffff;
+	color: #262626;
 }
 
 .message span {
@@ -264,7 +254,7 @@ main .container {
 .comments {
 	margin-top: 10px;
 	font-weight: 400;
-	color: #ffffff;
+	color: #999;
 }
 
 .addComments {
@@ -309,16 +299,16 @@ input.text::placeholder {
 	text-transform: uppercase;
 }
 
-a {
+/* .follow {
 	text-decoration: none;
-}
+} */
 
 .hidden {
 	display: none;
 }
 
 @media screen and (max-width: 1000px) {
-	.Col-9 {
+	.col-9 {
 		width: 100%;
 	}
 
@@ -336,7 +326,7 @@ a {
 		padding: 15px 10px !important;
 	}
 
-	.Col-9 {
+	.col-9 {
 		margin-top: 4px;
 		min-width: 100%;
 	}
@@ -345,7 +335,7 @@ a {
 		margin-bottom: 0px;
 	}
 
-	.Col-9 .card {
+	.col-9 .card {
 		margin-bottom: 0px;
 		width: 100%;
 		border: none;
@@ -366,7 +356,7 @@ a {
 .footer .footer-section {
 	margin-left: 0.5rem;
 	color: #999999;
-	font-size: 14px;
+	font-size: .7rem;
 	font-family: sans-serif;
 }
 

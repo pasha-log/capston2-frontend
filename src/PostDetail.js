@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import './PostDetail.css';
@@ -33,19 +33,21 @@ const PostDetail = () => {
 
 	return (
         // https://www.geeksforgeeks.org/instagram-clone-using-html-css/
-		<main>
-			<div className="PostDetailContainer">
+		// <main>
+			// <div className="PostDetailContainer">
 				<div className="col-9">
-					<div className="card">
-						<div className="top">
-							<div className="userDetails">
-								<div className="profilepic">
-									<div className="profile_img">
-										<div className="image">
-											<img
-												src={currentUser?.profileImageURL}
-												alt="img8"
-											/>
+					<div className="PostDetailCard">
+						<div className="PostDetailTop">
+							<div className="PostUserDetails">
+								<div className="ProfilePicture">
+									<div className="PostDetailImage">
+										<div className="PostDetailProfileImage">
+											{/* <Link to > */}
+												<img
+													src={currentUser?.profileImageURL}
+													alt=""
+												/>
+											{/* </Link> */}
 										</div>
 									</div>
 								</div>
@@ -54,22 +56,22 @@ const PostDetail = () => {
 								</h3>
 							</div>
 							<div>
-								<span className="dot">
+								<span className="Dot">
 									<i className="fas fa-ellipsis-h" />
 								</span>
 							</div>
 						</div>
-						<div className="imgBx">
+						<div className="ImageBox">
 							<img
 								src={imageURL}
 								alt={postId}
 								className="cover"
 							/>
 						</div>
-						<div className="bottom">
-							<div className="actionBtns">
-								<div className="left">
-									<span className="heart">
+						<div className="Bottom">
+							<div className="ActionButtons">
+								<div className="Left">
+									<span className="Heart">
 										<span>
 											<svg
 												aria-label="Like"
@@ -118,7 +120,7 @@ const PostDetail = () => {
 										/>
 									</svg>
 								</div>
-								<div className="right">
+								<div className="Right">
 									<svg
 										aria-label="Save"
 										className="_8-yf5 "
@@ -139,17 +141,17 @@ const PostDetail = () => {
 								</div>
 							</div>
                             <div>
-								<p className="likes">Liked by 203 others</p>
+								<p className="Likes">Liked by 203 others</p>
                             </div>
                             <div>
-								<p className="message">
-									<b>{currentUser?.username}</b>
+								<p className="Caption">
+									<b className='CaptionUsername'>{currentUser?.username}</b>
                                     {caption}
 								</p>
                             </div>
-                            {!postComments ? null : postComments?.map((comment) => (<Comment comment={comment} />))}
-							<div className="addComments">
-								<div className="reaction">
+                            {!postComments ? null : postComments?.map((comment) => (<Comment comment={comment} key={comment.comment_id} />))}
+							<div className="AddComments">
+								<div className="Reaction">
 									<h3>
 										<i className="far fa-smile" />
 									</h3>
@@ -159,8 +161,8 @@ const PostDetail = () => {
 						</div>
 					</div>
 				</div>
-			</div>
-		</main>
+			// </div>
+		// </main>
         // https://www.geeksforgeeks.org/instagram-clone-using-html-css/
 	);
 };

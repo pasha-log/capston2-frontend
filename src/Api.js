@@ -101,6 +101,29 @@ class InstapostApi {
 		let response = await this.request(`users/comment`, commentData, 'post');
 		return response.data;
 	}
+
+	// Follow another user.
+
+	static async follow(usernameFollowing, usernameBeingFollowed) {
+		let response = await this.request(`users/follow/${usernameFollowing}/${usernameBeingFollowed}`, 'post');
+		return response.data;
+	}
+
+	// Find all followers not followed by current user.
+
+	static async findAllUsers(name) {
+		let response;
+		name ? (response = await this.request(`users?name=${name}`)) : (response = await this.request(`users/`));
+		console.log(response);
+		return response;
+	}
+
+	// Find all posts from users that current user is following.
+
+	static async getFollowingPosts(username) {
+		let response = await this.request(`users/${username}/followerPosts/`);
+		return response.posts;
+	}
 }
 
 export default InstapostApi;

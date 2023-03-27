@@ -32,7 +32,7 @@ const CaptionForm = () => {
 	};
 
 	return (
-		<Container>
+		<div className="CaptionFormDiv">
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup row>
 					<Col
@@ -64,7 +64,7 @@ const CaptionForm = () => {
 							</div>
 							<img className="PostImage" src={imageUrl} alt="" />
 							<div>
-								<img className="CaptionProfileImage" alt="" />
+								<img className="CaptionProfileImage" src={currentUser.profileImageURL} alt="" />
 								<span className="CaptionUsername">{currentUser.username}</span>
 							</div>
 							<div className="Caption">
@@ -85,7 +85,7 @@ const CaptionForm = () => {
 					</Col>
 				</FormGroup>
 			</Form>
-		</Container>
+		</div>
 	);
 };
 

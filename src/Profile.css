@@ -72,7 +72,7 @@ body {
 	display: block;
 }
 
-.container {
+.ProfileContainer {
 	max-width: 93.5rem;
 	margin: 0 auto;
 	padding: 0 2rem;
@@ -102,7 +102,7 @@ body {
 
 /* Profile Section */
 
-.profile {
+.Profile {
 	padding: 5rem 0;
 }
 
@@ -112,7 +112,7 @@ body {
 	clear: both;
 }
 
-.profile-image {
+.ProfileImage {
 	float: left;
 	width: calc(33.333% - 1rem);
 	display: flex;
@@ -121,29 +121,29 @@ body {
 	margin-right: 3rem;
 }
 
-.profile-image img {
+.ProfileImage img {
 	border-radius: 50%;
 	width: 15rem;
 }
 
-.profile-user-settings,
-.profile-stats,
-.profile-bio {
+.ProfileUserSettings,
+.ProfileStats,
+.ProfileBio {
 	float: left;
 	width: calc(66.666% - 2rem);
 }
 
-.profile-user-settings {
+.ProfileUserSettings {
 	margin-top: 1.1rem;
 }
 
-.profile-user-name {
+.ProfileUsername {
 	display: inline-block;
 	font-size: 3.2rem;
 	font-weight: 300;
 }
 
-.profile-edit-btn {
+.ProfileEditButton {
 	font-size: 1.4rem;
 	line-height: 1.8;
 	border: 0.1rem solid #dbdbdb;
@@ -152,16 +152,16 @@ body {
 	margin-left: 2rem;
 }
 
-.profile-settings-btn {
+.ProfileSettingsButton {
 	font-size: 2rem;
 	margin-left: 1rem;
 }
 
-.profile-stats {
+.ProfileStats {
 	margin-top: 2.3rem;
 }
 
-.profile-stats li {
+.ProfileStats li {
 	display: inline-block;
 	font-size: 1.6rem;
 	line-height: 1.5;
@@ -169,20 +169,20 @@ body {
 	cursor: pointer;
 }
 
-.profile-stats li:last-of-type {
+.ProfileStats li:last-of-type {
 	margin-right: 0;
 }
 
-.profile-bio {
+.ProfileBio {
 	font-size: 1.6rem;
 	font-weight: 400;
 	line-height: 1.5;
 	margin-top: 2.3rem;
 }
 
-.profile-real-name,
-.profile-stat-count,
-.profile-edit-btn {
+.ProfileRealName,
+.ProfileStatCount,
+.ProfileEditButton {
 	font-weight: 600;
 }
 
@@ -263,7 +263,7 @@ body {
 /* Media Query */
 
 @media screen and (max-width: 40rem) {
-	.profile {
+	.Profile {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 4rem 0;
@@ -273,57 +273,57 @@ body {
 		display: none;
 	}
 
-	.profile-image,
-	.profile-user-settings,
-	.profile-bio,
-	.profile-stats {
+	.ProfileImage,
+	.ProfileUserSettings,
+	.ProfileBio,
+	.ProfileStats {
 		float: none;
 		width: auto;
 	}
 
-	.profile-image img {
+	.ProfileImage img {
 		width: 7.7rem;
 	}
 
-	.profile-user-settings {
+	.ProfileUserSettings {
 		flex-basis: calc(100% - 10.7rem);
 		display: flex;
 		flex-wrap: wrap;
 		margin-top: 1rem;
 	}
 
-	.profile-user-name {
+	.ProfileUsername {
 		font-size: 2.2rem;
 	}
 
-	.profile-edit-btn {
+	.ProfileEditButton {
 		order: 1;
 		padding: 0;
 		text-align: center;
 		margin-top: 1rem;
 	}
 
-	.profile-edit-btn {
+	.ProfileEditButton {
 		margin-left: 0;
 	}
 
-	.profile-bio {
+	.ProfileBio {
 		font-size: 1.4rem;
 		margin-top: 1.5rem;
 	}
 
-	.profile-edit-btn,
-	.profile-bio,
-	.profile-stats {
+	.ProfileEditButton,
+	.ProfileBio,
+	.ProfileStats {
 		flex-basis: 100%;
 	}
 
-	.profile-stats {
+	.ProfileStats {
 		order: 1;
 		margin-top: 1.5rem;
 	}
 
-	.profile-stats ul {
+	.ProfileStats ul {
 		display: flex;
 		text-align: center;
 		padding: 1.2rem 0;
@@ -331,13 +331,13 @@ body {
 		border-bottom: 0.1rem solid #dadada;
 	}
 
-	.profile-stats li {
+	.ProfileStats li {
 		font-size: 1.4rem;
 		flex: 1;
 		margin: 0;
 	}
 
-	.profile-stat-count {
+	.ProfileStatCount {
 		display: block;
 	}
 }
@@ -359,7 +359,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 */
 
 @supports (display: grid) {
-	.profile {
+	.Profile {
 		display: grid;
 		grid-template-columns: 1fr 2fr;
 		grid-template-rows: repeat(3, auto);
@@ -367,7 +367,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 		align-items: center;
 	}
 
-	.profile-image {
+	.ProfileImage {
 		grid-row: 1 / -1;
 	}
 
@@ -377,10 +377,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
 		grid-gap: 2rem;
 	}
 
-	.profile-image,
-	.profile-user-settings,
-	.profile-stats,
-	.profile-bio,
+	.ProfileImage,
+	.ProfileUserSettings,
+	.ProfileStats,
+	.ProfileBio,
 	.gallery-item,
 	.gallery {
 		width: auto;
@@ -388,32 +388,32 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	}
 
 	@media (max-width: 40rem) {
-		.profile {
+		.Profile {
 			grid-template-columns: auto 1fr;
 			grid-row-gap: 1.5rem;
 		}
 
-		.profile-image {
+		.ProfileImage {
 			grid-row: 1 / 2;
 		}
 
-		.profile-user-settings {
+		.ProfileUserSettings {
 			display: grid;
 			grid-template-columns: auto 1fr;
 			grid-gap: 1rem;
 		}
 
-		.profile-edit-btn,
-		.profile-stats,
-		.profile-bio {
+		.ProfileEditButton,
+		.ProfileStats,
+		.ProfileBio {
 			grid-column: 1 / -1;
 		}
 
-		.profile-user-settings,
-		.profile-edit-btn,
-		.profile-settings-btn,
-		.profile-bio,
-		.profile-stats {
+		.ProfileUserSettings,
+		.ProfileEditButton,
+		.ProfileSettingsButton,
+		.ProfileBio,
+		.ProfileStats {
 			margin: 0;
 		}
 	}

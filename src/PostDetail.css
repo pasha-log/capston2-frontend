@@ -143,7 +143,7 @@ main .PostDetailContainer {
 	margin-top: 30px;
 }
 
-.col-9 .card {
+.col-9 .PostDetailCard {
 	background-color: rgb(39, 39, 39);
 	margin-bottom: 20px;
 	position: relative;
@@ -153,29 +153,29 @@ main .PostDetailContainer {
 	border: 1px solid rgba(7, 7, 7, 0.24);
 }
 
-.col-9 .card .top {
+.col-9 .PostDetailCard .PostDetailTop {
 	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.col-9 .card .bottom {
+.col-9 .PostDetailCard .Bottom {
 	padding: 10px 20px;
 }
 
-.col-9 .card .top .userDetails {
+.col-9 .PostDetailCard .PostDetailTop .PostUserDetails {
 	width: 100%;
 	display: flex;
 	align-items: center;
 }
 
-.profilepic {
+.ProfilePicture {
 	display: inline-block;
 	cursor: pointer;
 }
 
-.profilepic .profile_img {
+.ProfilePicture .PostDetailImage {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -191,7 +191,7 @@ main .PostDetailContainer {
 	cursor: pointer;
 }
 
-.profilepic .profile_img .image {
+.ProfilePicture .PostDetailImage .PostDetailProfileImage {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -204,7 +204,7 @@ main .PostDetailContainer {
 	border: 2px solid white;
 }
 
-.profilepic .profile_img img {
+.ProfilePicture .PostDetailImage img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -219,51 +219,51 @@ main .PostDetailContainer {
 	object-fit: cover;
 }
 
-.col-9 .card .top .userDetails h3 {
+.col-9 .PostDetailCard .PostDetailTop .PostUserDetails h3 {
 	/* font-size: 16px; */
 	color: #ffffff;
 	font-weight: 500;
 	line-height: 1em;
 }
 
-.col-9 .card .top .userDetails h3 span {
+.col-9 .PostDetailCard .PostDetailTop .PostUserDetails h3 span {
 	font-size: 0.75em;
 }
 
-.dot {
+.Dot {
 	transform: scale(0.6);
 	cursor: pointer;
 }
 
-.imgBx {
+.ImageBox {
 	position: relative;
 	width: 100%;
 	min-height: 600px;
 	margin: 10px 0 15px;
 }
 
-.actionBtns {
+.ActionButtons {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.actionBtns svg {
+.ActionButtons svg {
 	cursor: pointer;
 }
 
-.actionBtns .left svg {
+.ActionButtons .Left svg {
 	margin-right: 8px;
 }
 
-.likes {
+.Likes {
 	font-weight: 500;
 	margin-top: 5px;
 	font-size: 14px;
 	color: #ffffff;
 }
 
-.message {
+.Caption {
 	font-weight: 400;
 	margin-top: 5px;
 	font-size: 14px;
@@ -271,13 +271,17 @@ main .PostDetailContainer {
 	line-height: 1.5em;
 }
 
-.message b {
+.Caption b {
 	color: #ffffff;
 }
 
-.message span {
+.Caption span {
 	cursor: pointer;
 	color: #1d92ff;
+}
+
+.CaptionUsername {
+	margin-right: .5rem;
 }
 
 .comments {
@@ -286,7 +290,7 @@ main .PostDetailContainer {
 	color: #ffffff;
 }
 
-.addComments {
+.AddComments {
 	display: flex;
 	align-items: center;
 	margin-top: 20px;
@@ -294,12 +298,12 @@ main .PostDetailContainer {
 	padding: 10px 0;
 }
 
-.addComments a {
+.AddComments a {
 	color: #1d92ffcb;
 	font-weight: 500;
 }
 
-.addComments .reaction {
+.AddComments .Reaction {
 	position: relative;
 	font-size: 1.3rem;
 	margin-right: 10px;
@@ -331,6 +335,7 @@ a {
 @media screen and (max-width: 1000px) {
 	.col-9 {
 		width: 100%;
+		background-color: black;
 	}
 }
 
@@ -346,19 +351,20 @@ a {
 	.col-9 {
 		margin-top: 4px;
 		min-width: 100%;
+		background-color: black;
 	}
 
 	.statuses {
 		margin-bottom: 0px;
 	}
 
-	.col-9 .card {
+	.col-9 .PostDetailCard {
 		margin-bottom: 0px;
 		width: 100%;
 		border: none;
 	}
 
-	.imgBx {
+	.ImageBox {
 		position: relative;
 		width: 100%;
 		min-height: 400px;

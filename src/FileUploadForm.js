@@ -26,7 +26,7 @@ const FileUploadForm = () => {
 	};
 
 	return (
-		<Container>
+		<div className="UploadFormDiv">
 			<FormGroup row>
 				<Col
 					md={{
@@ -53,7 +53,7 @@ const FileUploadForm = () => {
 					{/* ) : null} */}
 				</Col>
 			</FormGroup>
-		</Container>
+		</div>
 	);
 };
 

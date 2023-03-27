@@ -7,10 +7,15 @@ import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
 import InstapostApi from './Api';
 
+// TODO: Make the gallery into a reusable component to lessen repeat code.
+// Then, start the homepage from scratch. 
+
 const Profile = () => {
 	const { username } = useParams();
+	const { currentUser, follow } = useContext(CurrentUserContext);
 	const [ userBeingViewed, setUserBeingViewed ] = useState(null); 
-	const { currentUser } = useContext(CurrentUserContext);
+	const [ newFollow, setNewFollow ] = useState(-1);
+	
 	document.body.style = 'background: black;';
 	document.body.style.color = 'white';
 
@@ -21,15 +26,22 @@ const Profile = () => {
                 setUserBeingViewed(user);
             }
             (username !== currentUser?.username) ? getUserInfo(username) : console.log("Current user's page.");
-    }, []);
+    }, [ newFollow ]);
+
+	const onClickFollow = async (usernameFollowing, usernameBeingFollowed) => {
+		let response = await follow(usernameFollowing, usernameBeingFollowed);
+		if (response.data.status === 'success') {
+			setNewFollow(newFollow + 1);
+		}
+	}
 
 	return (
 		// https://codepen.io/GeorgePark/pen/VXrwOP
 		<div>
 			<header>
-				<div className="container">
-					<div className="profile">
-						<div className="profile-image">
+				<div className="ProfileContainer">
+					<div className="Profile">
+						<div className="ProfileImage">
 							{
 								!userBeingViewed ?
 								<img
@@ -46,67 +58,67 @@ const Profile = () => {
 							}
 						</div>
 
-						<div className="profile-user-settings">
+						<div className="ProfileUserSettings">
 							{
 								!userBeingViewed ? 
-								<h1 className="profile-user-name">{currentUser?.username}</h1>
+								<h1 className="ProfileUsername">{currentUser?.username}</h1>
 								:
-								<h1 className="profile-user-name">{userBeingViewed?.username}</h1>
+								<h1 className="ProfileUsername">{userBeingViewed?.username}</h1>
 							}
 
 							{/* <button className="btn profile-edit-btn">Edit Profile</button> */}
 							{
-								!userBeingViewed ? 
-								<Button className="btn profile-edit-btn EditProfile">Edit Profile</Button>
+								username === currentUser?.username ? 
+								<Button className="btn ProfileEditButton EditProfile">Edit Profile</Button>
 								:
-								<Button className="btn profile-edit-btn EditProfile">Follow</Button>
+								<Button onClick={() => onClickFollow(currentUser?.username, username)} className="btn ProfileEditButton EditProfile">Follow</Button>
 							}
 							{/* <button className="btn profile-settings-btn" aria-label="profile settings">
 								<i className="fas fa-cog" aria-hidden="true" />
 							</button> */}
-							<span className="material-symbols-outlined profile-settings-btn">
+							<span className="material-symbols-outlined ProfileSettingsButton">
 		 						settings
 							</span>
 						</div>
 
-						<div className="profile-stats">
+						<div className="ProfileStats">
 							{
 								!userBeingViewed ? 
 								<ul>	
 									<li key='PostNumber'>
-										<span className="profile-stat-count">{currentUser?.posts?.length}</span> posts
+										<span className="ProfileStatCount">{currentUser?.posts?.length}</span> posts
 									</li>
 									<li key='Followers'>
-										<span className="profile-stat-count">{currentUser?.followers?.length}</span> followers
+										<span className="ProfileStatCount">{currentUser?.followers?.length}</span> followers
 									</li>
 									<li key='Following'>
-										<span className="profile-stat-count">{currentUser?.following?.length}</span> following
+										<span className="ProfileStatCount">{currentUser?.following?.length}</span> following
 									</li>
 								</ul> 
 								:
 								<ul>
 									<li key='PostNumber'>
-										<span className="profile-stat-count">{userBeingViewed?.posts?.length}</span> posts
+										<span className="ProfileStatCount">{userBeingViewed?.posts?.length}</span> posts
 									</li>
 									<li key='Followers'>
-										<span className="profile-stat-count">{userBeingViewed?.followers?.length}</span> followers
+										<span className="ProfileStatCount">{userBeingViewed?.followers?.length}</span> followers
 									</li>
 									<li key='Following'>
-										<span className="profile-stat-count">{userBeingViewed?.following?.length}</span> following
+										<span className="ProfileStatCount">{userBeingViewed?.following?.length}</span> following
 									</li>
 								</ul>
 							}
 						</div>
 
-						<div className="profile-bio">
+						<div className="ProfileBio">
 							{
 								!userBeingViewed ? 
 								<p>
-									<span className="profile-real-name">{currentUser?.fullName}</span> {currentUser?.bio}
+									<span className="ProfileRealName">{currentUser?.fullName}</span> {currentUser?.bio}
 								</p>
 								:
 								<p>
-									<span className="profile-real-name">{userBeingViewed?.fullName}</span> {userBeingViewed?.bio}
+									<span className="ProfileRealName">{userBeingViewed?.fullName}</span> {userBeingViewed?.bio}
 								</p>
 							}
 						</div>
@@ -116,7 +128,8 @@ const Profile = () => {
 			
 			{!userBeingViewed ? 		
 				<main>
-					{currentUser?.posts?.length === 0 ?
+					{
+						currentUser?.posts?.length === 0 ?
 						<div className='NullPosts'>
 							<span id="Camera" className="material-symbols-outlined">
 								photo_camera
@@ -127,7 +140,7 @@ const Profile = () => {
 								<Button className='FirstShareButton'>Share your first photo</Button>
 							</Link>
 						</div> :
-						<div className="container">
+						<div className="ProfileContainer">
 							<div className="gallery">
 							{currentUser?.posts?.slice(0).reverse().map(post => {return (
 							<Link to={`/posts/${post.postId}`} key={post.postId} state={{imageURL: post.postURL, caption: post.caption}}>
@@ -162,16 +175,9 @@ const Profile = () => {
 				<main>
 					{userBeingViewed?.posts?.length === 0 ?
 						<div className='NullPosts'>
-							<span id="Camera" className="material-symbols-outlined">
-								photo_camera
-							</span>
-							<h3 className='Share'>Share Photos</h3>
-							<p>You have no posts yet</p>
-							<Link className='FirstShare' to="/upload">
-								<Button className='FirstShareButton'>Share your first photo</Button>
-							</Link>
+							<p>No posts yet</p>
 						</div> :
-						<div className="container">
+						<div className="ProfileContainer">
 							<div className="gallery">
 							{userBeingViewed?.posts?.slice(0).reverse().map(post => {return (
 							<Link to={`/posts/${post.postId}`} key={post.postId} state={{imageURL: post.postURL, caption: post.caption}}>
