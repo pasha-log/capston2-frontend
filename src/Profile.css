@@ -18,6 +18,11 @@
 	margin-right: -22rem;
 }
 
+.NoPostsYet {
+	margin: .5rem .5rem .5rem .5rem;
+	font-size: 3rem;
+}
+
 .FirstShare {
 	text-decoration: none;
 }
@@ -77,20 +82,6 @@ body {
 	margin: 0 auto;
 	padding: 0 2rem;
 }
-
-/* .btn {
-	display: inline-block;
-	font: inherit;
-	background: none;
-	border: none;
-	color: inherit;
-	padding: 0;
-	cursor: pointer;
-}
-
-.btn:focus {
-	outline: 0.5rem auto #4d90fe;
-} */
 
 .visually-hidden {
 	position: absolute !important;
@@ -248,18 +239,6 @@ body {
 	object-fit: cover;
 }
 
-/* Loader */
-
-.loader {
-	width: 5rem;
-	height: 5rem;
-	border: 0.6rem solid #999;
-	border-bottom-color: transparent;
-	border-radius: 50%;
-	margin: 0 auto;
-	animation: loader 500ms linear infinite;
-}
-
 /* Media Query */
 
 @media screen and (max-width: 40rem) {
@@ -342,15 +321,7 @@ body {
 	}
 }
 
-/* Spinner Animation */
-
-@keyframes loader {
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-/*
+/* 
 
 The following code will only run if your browser supports CSS grid.
 
