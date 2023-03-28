@@ -6,6 +6,7 @@ import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
 import InstapostApi from './Api';
 import Gallery from './Gallery';
+import ProfileStats from './ProfileStats';
 
 const Profile = () => {
 	const { username } = useParams();
@@ -58,19 +59,7 @@ const Profile = () => {
 							</span>
 						</div>
 
-						<div className="ProfileStats">							
-							<ul>	
-								<li key='PostNumber'>
-									<span className="ProfileStatCount">{userBeingViewed?.username === currentUser?.username ? currentUser?.posts?.length : userBeingViewed?.posts?.length}</span> posts
-								</li>
-								<li key='Followers'>
-									<span className="ProfileStatCount">{userBeingViewed?.username === currentUser?.username ? currentUser?.followers?.length : userBeingViewed?.followers?.length}</span> followers
-								</li>
-								<li key='Following'>
-									<span className="ProfileStatCount">{userBeingViewed?.username === currentUser?.username ? currentUser?.following?.length : userBeingViewed?.following?.length}</span> following
-								</li>
-							</ul> 						
-						</div>
+						<ProfileStats user={userBeingViewed?.username === currentUser?.username ? currentUser : userBeingViewed}/>
 
 						<div className="ProfileBio">
 							{
