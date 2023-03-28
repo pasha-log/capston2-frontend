@@ -5,7 +5,8 @@ import InstapostApi from './Api';
 import { useEffect, useState } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import useLocalStorage from './hooks/useLocalStorage';
-import NavBar from './NavBar';
+import BottomNavBar from './BottomNavBar';
+import TopNavBar from './TopNavBar';
 
 function App() {
 	const [ currentUser, setCurrentUser ] = useState();
@@ -67,7 +68,8 @@ function App() {
 		<div className="App">
 			<CurrentUserContext.Provider value={{ storedValue, currentUser, newPost, setNewPost, follow }}>
 				<BrowserRouter>
-					{showNav && <NavBar />}
+					{showNav && <BottomNavBar />}
+					{showNav && <TopNavBar />}
 					<main>
 						<InstapostRoutes
 							setTokenAfterRegister={setTokenAfterRegister}

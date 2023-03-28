@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
-import './NavBar.css';
+import './BottomNavBar.css';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
-const NavBar = () => {
+const BottomNavBar = () => {
 	const { storedValue, currentUser } = useContext(CurrentUserContext);
 
 	return (
@@ -35,7 +35,6 @@ const NavBar = () => {
 						</Col>
 						<Col>
 							<Link id="add_circle" to="/upload">
-								{/* <Button id="add_circle" onClick={() => setShowModal(true)}> */}
 								<span
 									style={{ fontSize: '2rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"
@@ -63,4 +62,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default BottomNavBar;

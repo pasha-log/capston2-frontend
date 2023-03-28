@@ -4,7 +4,7 @@ a {
 }
 
 .Nav {
-	border: solid grey;
+	border: solid rgb(39, 39, 39);
 	border-width: .01rem;
 	background-color: black;
 }
