@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
-import './UserCard.css';
+import './HomePage.css';
+import { Button } from 'reactstrap';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const UserCard = ({ user }) => {
-	return (
-		<div className="UserCardTop" key={user.username}>
-			<div className="UserCardDetails">
-				<div className="UserCardProfilePic">
-					<div className=".UserCardProfileImage">
+    const { currentUser, follow } = useContext(CurrentUserContext);
+    return (
+        <div className="HomePageTop" key={user.username}>
+			<div className="userDetails">
+				<div className="profilepic">
+					<div className="profile_img">
 						<Link to={`/${user.username}`}>
 							<div className="image">
-								<img className="UserCardImage" src={user.profileImageURL} alt="" />
+								<img src={user.profileImageURL} alt="" />
 							</div>
 						</Link>
 					</div>
@@ -17,11 +21,16 @@ const UserCard = ({ user }) => {
 				<h3>
 					{user.username}
 					<br />
-					<span>{user.fullName}</span>
+					<span>Follow them</span>
 				</h3>
 			</div>
+			<div>
+				<Button onClick={() => follow(currentUser?.username, user.username)} className="Follow">
+					follow
+				</Button>
+			</div>
 		</div>
-	);
-};
+    )
+}
 
 export default UserCard;

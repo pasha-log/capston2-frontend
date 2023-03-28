@@ -25,16 +25,16 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 	};
 
 	return (
-		<Container>
+		<div className='CommentContainer'>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup row>
-					<Col
+					{/* <Col
 						md={{
 							offset: 3,
 							size: 6
 						}}
 						sm="12"
-					>
+					> */}
 						<div className="CommentFormContainer">
 							<div className="Message">
 								<Controller
@@ -52,10 +52,10 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 							</div>
 							<Button className="PostComment">Post</Button>
 						</div>
-					</Col>
+					{/* </Col> */}
 				</FormGroup>
 			</Form>
-		</Container>
+		</div>
 	);
 };
 

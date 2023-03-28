@@ -111,13 +111,13 @@ main .container {
 	font-size: 0.75em;
 }
 
-.follow {
+.Follow {
 	background-color: rgb(39, 39, 39);
 	border: none;
 	color: #1d92ff;
 }
 
-.follow:hover {
+.Follow:hover {
 	background-color: rgb(39, 39, 39);
 	border: none;
 	color: white;

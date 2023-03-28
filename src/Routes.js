@@ -70,7 +70,7 @@ const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav
 			/>
 			<Route
 				exact
-				path="/home"
+				path="/"
 				element={
 					<RequireAuth>
 						<HomePage />

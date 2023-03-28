@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import InstapostApi from './Api';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
+import { Link } from 'react-router-dom';
 
 const PostCard = ({ post }) => {
 
@@ -28,14 +29,16 @@ const PostCard = ({ post }) => {
 						<div className="HomePageTop">
 							<div className="userDetails">
 								<div className="profilepic">
-									<div className="profile_img">
-										<div className="image">
-											<img
-												src={post?.profileImageURL}
-												alt=""
-											/>
+									<Link to={`/${post?.username}`}>
+										<div className="profile_img">
+											<div className="image">
+													<img
+														src={post?.profileImageURL}
+														alt=""
+													/>
+											</div>
 										</div>
-									</div>
+									</Link>
 								</div>
 								<h3>
 									<span>{post?.username}</span>

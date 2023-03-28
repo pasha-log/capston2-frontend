@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import './Comment.css';
+import { Link } from "react-router-dom";
 
 const Comment = ({comment}) => {
     const [user, setUser] = useState(null);
@@ -24,12 +25,11 @@ const Comment = ({comment}) => {
     return (
         <div className="PostCommentItem">
             <div className="PostCommentRow FlexRow">
-                {/* <div>
-                    <img className="CommentProfilePhoto" src={'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/46499ef0-8acb-4511-ba9e-a0cd13f233f0-20220812_195736.jpg'} alt="" />
-                </div> */}
-                <div>
-                    <img className="CommentProfilePhoto" src={user ? user?.profileImageURL : currentUser?.profileImageURL} alt="" />
-                </div>
+                <Link to={user ? `/${user?.username}` : `/${currentUser?.username}`}>
+                    <div>
+                        <img className="CommentProfilePhoto" src={user ? user?.profileImageURL : currentUser?.profileImageURL} alt="" />
+                    </div>
+                </Link>
 
                 <span className="CommentUsername"><p><strong className="UsernameInComment">{comment?.username}</strong>{comment?.message}</p></span>
                 <div className="CommentHeart">

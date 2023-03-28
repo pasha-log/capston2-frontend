@@ -106,7 +106,10 @@ const Profile = () => {
 						<div className="ProfileContainer">
 							<div className="gallery">
 							{userBeingViewed?.posts?.slice(0).reverse().map(post => {return (
-							<Link to={`/posts/${post.postId}`} key={post.postId} state={{imageURL: post.postURL, caption: post.caption}}>
+							<Link to={`/posts/${post.postId}`} key={post.postId} state={{imageURL: post.postURL, 
+																						caption: post.caption, 
+																						username: userBeingViewed?.username, 
+																						profileImageURL: userBeingViewed?.profileImageURL}}>
 								<div className="gallery-item" tabIndex="0">
 										<img className="gallery-image" src={post.postURL} alt={post.id}/>
 										<div className="gallery-item-info">

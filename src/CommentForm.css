@@ -35,3 +35,7 @@
 	vertical-align: baseline;
 	justify-content: space-between;
 }
+
+.CommentContainer {
+	width: 100%;
+}

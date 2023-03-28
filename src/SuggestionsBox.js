@@ -1,12 +1,10 @@
 import './HomePage.css';
-import { useContext, useState, useEffect } from 'react';
-import CurrentUserContext from './CurrentUserContext';
+import { useState, useEffect } from 'react';
 import InstapostApi from './Api';
-import { Button } from 'reactstrap';
+import UserCard from './UserCard';
 
 const SuggestionsBox = () => {
 	const [ notFollowedUsers, setNotFollowedUsers ] = useState();
-	const { currentUser, follow } = useContext(CurrentUserContext);
 
 	useEffect(() => {
 		const getAllUsersNotFollowed = async () => {
@@ -21,27 +19,7 @@ const SuggestionsBox = () => {
 			<h4>Suggestions For You</h4>
 			{notFollowedUsers?.map((user) => {
 				return (
-					<div className="HomePageTop" key={user.username}>
-						<div className="userDetails">
-							<div className="profilepic">
-								<div className="profile_img">
-									<div className="image">
-										<img src={user.profileImageURL} alt="" />
-									</div>
-								</div>
-							</div>
-							<h3>
-								{user.username}
-								<br />
-								<span>Follow them</span>
-							</h3>
-						</div>
-						<div>
-							<Button onClick={() => follow(currentUser?.username, user.username)} className="follow">
-								follow
-							</Button>
-						</div>
-					</div>
+					<UserCard user={user} key={user.username}/>
 				);
 			})}
 		</div>

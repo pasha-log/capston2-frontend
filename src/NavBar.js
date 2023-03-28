@@ -14,7 +14,7 @@ const NavBar = () => {
 				<div>
 					<Row className="Nav fixed-bottom">
 						<Col>
-							<Link id="home" to="/home">
+							<Link id="home" to="/">
 								<span
 									style={{ fontSize: '2rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"

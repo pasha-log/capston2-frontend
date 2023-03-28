@@ -3,6 +3,7 @@ import InstapostApi from './Api';
 import SearchBar from './SearchBar';
 import { Button } from 'reactstrap';
 import UserCard from './UserCard';
+import './ExplorePage.css';
 
 const ExplorePage = () => {
 	const [ users, setUsers ] = useState([]);
@@ -34,11 +35,13 @@ const ExplorePage = () => {
 		<section>
 			<div>
 				<SearchBar getSearchTerm={getSearchTerm} />
-				{searchTerm && <Button onClick={resetSearch}>Reset Search</Button>}
+				{searchTerm && <Button className='ResetSearch' onClick={resetSearch}>Reset Search</Button>}
 				{noUsersFound && <h2>Sorry, there are no jobs that match.</h2>}
-				{users?.map((user) => {
-					return <UserCard user={user} key={user.username} />;
-				})}
+				<div className="ExplorePageCard">
+					{users?.map((user) => {
+						return <UserCard user={user} key={user.username} />;
+					})}
+				</div>
 			</div>
 		</section>
 	);

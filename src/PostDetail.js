@@ -1,6 +1,4 @@
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { useContext } from 'react';
-import CurrentUserContext from './CurrentUserContext';
 import './PostDetail.css';
 import { useEffect, useState } from 'react';
 import InstapostApi from './Api';
@@ -9,10 +7,9 @@ import CommentForm from './CommentForm';
 
 const PostDetail = () => {
 	const { postId } = useParams();
-	const { currentUser } = useContext(CurrentUserContext);
 	const { state } = useLocation();
 
-	const { imageURL, caption } = state;
+	const { imageURL, caption, username, profileImageURL } = state;
 
     const [postComments, setPostComments] = useState();
     const [newComment, setNewComment] = useState(0);
@@ -33,26 +30,24 @@ const PostDetail = () => {
 
 	return (
         // https://www.geeksforgeeks.org/instagram-clone-using-html-css/
-		// <main>
-			// <div className="PostDetailContainer">
 				<div className="col-9">
 					<div className="PostDetailCard">
 						<div className="PostDetailTop">
 							<div className="PostUserDetails">
 								<div className="ProfilePicture">
 									<div className="PostDetailImage">
-										<div className="PostDetailProfileImage">
-											{/* <Link to > */}
-												<img
-													src={currentUser?.profileImageURL}
-													alt=""
-												/>
-											{/* </Link> */}
-										</div>
+										<Link to={`/${username}`} >
+											<div className="PostDetailProfileImage">
+													<img
+														src={profileImageURL}
+														alt=""
+													/>
+											</div>
+										</Link>
 									</div>
 								</div>
 								<h3>
-									<span>{currentUser?.username}</span>
+									<span>{username}</span>
 								</h3>
 							</div>
 							<div>
@@ -145,7 +140,7 @@ const PostDetail = () => {
                             </div>
                             <div>
 								<p className="Caption">
-									<b className='CaptionUsername'>{currentUser?.username}</b>
+									<b className='CaptionUsername'>{username}</b>
                                     {caption}
 								</p>
                             </div>
@@ -161,8 +156,6 @@ const PostDetail = () => {
 						</div>
 					</div>
 				</div>
-			// </div>
-		// </main>
         // https://www.geeksforgeeks.org/instagram-clone-using-html-css/
 	);
 };
