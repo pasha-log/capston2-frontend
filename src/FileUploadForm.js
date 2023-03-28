@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Container, Form, Button, FormGroup, Col } from 'reactstrap';
+import { Form, FormGroup, Col } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 import InstapostApi from './Api';
 import './FileUploadForm.css';
@@ -9,7 +9,7 @@ const FileUploadForm = () => {
 	// if (!showModal) {
 	// 	return null;
 	// }
-	const { register, handleSubmit } = useForm();
+	const { register } = useForm();
 
 	const navigate = useNavigate();
 
@@ -19,9 +19,9 @@ const FileUploadForm = () => {
 		return response;
 	};
 
-	const onSubmit = async (data) => {
-		console.log(data.file[0]);
-		const response = await upload(data.file[0]);
+	const handleSelectedInput = async (event) => {
+		console.log(event.target.files[0]);
+		const response = await upload(event.target.files[0]);
 		navigate('/caption', { state: { imageUrl: response.result.Location } });
 	};
 
@@ -44,10 +44,11 @@ const FileUploadForm = () => {
 							</span>
 							<p>Upload Photos Here</p>
 						</div>
-						<Form className="FileUpload" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
-							<input className="File" type="file" {...register('file', { required: true })} />
-							<br />
-							<Button className="Submit">Next</Button>
+						<Form className="FileUpload" onChange={handleSelectedInput} encType="multipart/form-data">
+							<label htmlFor="File" className="CustomFileUpload">
+								Select from computer
+							</label>
+							<input id="File" className="File" type="file" {...register('file', { required: true })} />
 						</Form>
 					</div>
 					{/* ) : null} */}

@@ -31,3 +31,16 @@
 .Submit:hover {
 	background-color: rgb(0, 126, 222);
 }
+
+input[type="file"] {
+	display: none;
+}
+
+.CustomFileUpload {
+	background-color: rgb(27, 156, 255);
+	border: none;
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+	border-radius: .5rem;
+}

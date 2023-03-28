@@ -7,7 +7,9 @@ const PostDetail = () => {
 
 	return (
 		<div className="Col-9">
-			<PostCard post={state} />
+			<div className="PostDetail">
+				<PostCard post={state} />
+			</div>
 		</div>
 	);
 };
