@@ -5,6 +5,7 @@ import InstapostApi from './Api';
 import PostCard from './PostCard';
 import { useEffect, useState } from 'react';
 import SuggestionsBox from './SuggestionsBox.js';
+import Footer from './Footer';
 
 const HomePage = () => {
 	const { currentUser } = useContext(CurrentUserContext);
@@ -32,42 +33,7 @@ const HomePage = () => {
 				</div>
 				<div class="col-3">
 					<SuggestionsBox />
-					<div class="footer">
-						<a class="footer-section" href="https://github.com/pasha-log">
-							About
-						</a>
-						<small class="footer-section" href="">
-							Help
-						</small>
-						<a class="footer-section" href="https://github.com/pasha-log/capstone2-backend">
-							API
-						</a>
-						<small class="footer-section" href="">
-							Jobs
-						</small>
-						<small class="footer-section" href="">
-							Privacy
-						</small>
-						<small class="footer-section" href="">
-							Terms
-						</small>
-						<small class="footer-section" href="">
-							Locations
-						</small>
-						<br />
-						<small class="footer-section" href="">
-							Top Accounts
-						</small>
-						<small class="footer-section" href="">
-							Hashtag
-						</small>
-						<small class="footer-section" href="">
-							Language
-						</small>
-						<br />
-						<br />
-						<span class="footer-section">© 2023 INSTAPOST FROM PASHA LOGUINOV</span>
-					</div>
+					<Footer />
 				</div>
 			</div>
 		</main>
