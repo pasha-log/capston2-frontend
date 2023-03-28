@@ -23,6 +23,7 @@ const HomePage = () => {
 	);
 
 	return (
+		// https://www.geeksforgeeks.org/instagram-clone-using-html-css/
 		<main>
 			<div class="container">
 				<div class="Col-9">
@@ -36,34 +37,34 @@ const HomePage = () => {
 						<a class="footer-section" href="https://github.com/pasha-log">
 							About
 						</a>
-						<a class="footer-section" href="">
+						<small class="footer-section" href="">
 							Help
-						</a>
+						</small>
 						<a class="footer-section" href="https://github.com/pasha-log/capstone2-backend">
 							API
 						</a>
-						<a class="footer-section" href="">
+						<small class="footer-section" href="">
 							Jobs
-						</a>
-						<a class="footer-section" href="">
+						</small>
+						<small class="footer-section" href="">
 							Privacy
-						</a>
-						<a class="footer-section" href="">
+						</small>
+						<small class="footer-section" href="">
 							Terms
-						</a>
-						<a class="footer-section" href="">
+						</small>
+						<small class="footer-section" href="">
 							Locations
-						</a>
+						</small>
 						<br />
-						<a class="footer-section" href="">
+						<small class="footer-section" href="">
 							Top Accounts
-						</a>
-						<a class="footer-section" href="">
+						</small>
+						<small class="footer-section" href="">
 							Hashtag
-						</a>
-						<a class="footer-section" href="">
+						</small>
+						<small class="footer-section" href="">
 							Language
-						</a>
+						</small>
 						<br />
 						<br />
 						<span class="footer-section">© 2023 INSTAPOST FROM PASHA LOGUINOV</span>
@@ -71,6 +72,7 @@ const HomePage = () => {
 				</div>
 			</div>
 		</main>
+		// https://www.geeksforgeeks.org/instagram-clone-using-html-css/
 	);
 };
 

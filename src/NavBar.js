@@ -8,7 +8,7 @@ const NavBar = () => {
 	const { storedValue, currentUser } = useContext(CurrentUserContext);
 
 	return (
-		<div>
+		<div className='NavBarContainer'>
 			{storedValue &&
 			currentUser && (
 				<div>

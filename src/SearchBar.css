@@ -1,0 +1,29 @@
+.SearchBarContainer {
+	width: 100%;
+	margin-top: 1rem;
+}
+
+.SearchInput,
+.Search,
+.Search:hover {
+	background-color: rgb(39, 39, 39);
+	border: rgb(88, 88, 88);
+}
+
+.SearchInput::placeholder {
+	color: rgb(88, 88, 88);
+}
+
+.Search {
+	color: #1d92ffcb;
+}
+
+.Search:hover {
+	color: white;
+}
+
+@media screen and (min-width: 770px) {
+	.SearchBarContainer {
+		width: 70rem;
+	}
+}

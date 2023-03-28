@@ -357,10 +357,6 @@ a {
 		min-height: 400px;
 		margin: 10px 0 15px;
 	}
-
-	.searchbar {
-		display: none;
-	}
 }
 
 .footer .footer-section {
@@ -370,6 +366,7 @@ a {
 	font-family: sans-serif;
 }
 
-.footer a:hover {
+.footer a:hover,
+.footer small:hover {
 	text-decoration: underline;
 }
