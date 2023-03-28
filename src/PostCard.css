@@ -50,12 +50,13 @@ main .PostDetailContainer {
 	/* background: #ddd; */
 }
 
-.col-9 {
+.Col-9 {
 	width: 65%;
 	margin-top: 30px;
 }
 
-.col-9 .PostDetailCard {
+.Col-9 .PostDetailCard {
+	border-radius: .5rem;
 	background-color: rgb(39, 39, 39);
 	margin-bottom: 20px;
 	position: relative;
@@ -65,18 +66,18 @@ main .PostDetailContainer {
 	border: 1px solid rgba(7, 7, 7, 0.24);
 }
 
-.col-9 .PostDetailCard .PostDetailTop {
+.Col-9 .PostDetailCard .PostDetailTop {
 	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.col-9 .PostDetailCard .Bottom {
+.Col-9 .PostDetailCard .Bottom {
 	padding: 10px 20px;
 }
 
-.col-9 .PostDetailCard .PostDetailTop .PostUserDetails {
+.Col-9 .PostDetailCard .PostDetailTop .PostUserDetails {
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -131,14 +132,14 @@ main .PostDetailContainer {
 	object-fit: cover;
 }
 
-.col-9 .PostDetailCard .PostDetailTop .PostUserDetails h3 {
+.Col-9 .PostDetailCard .PostDetailTop .PostUserDetails h3 {
 	/* font-size: 16px; */
 	color: #ffffff;
 	font-weight: 500;
 	line-height: 1em;
 }
 
-.col-9 .PostDetailCard .PostDetailTop .PostUserDetails h3 span {
+.Col-9 .PostDetailCard .PostDetailTop .PostUserDetails h3 span {
 	font-size: 0.75em;
 }
 
@@ -245,7 +246,7 @@ a {
 }
 
 @media screen and (max-width: 1000px) {
-	.col-9 {
+	.Col-9 {
 		width: 100%;
 		background-color: black;
 	}
@@ -260,7 +261,7 @@ a {
 		padding: 15px 10px !important;
 	}
 
-	.col-9 {
+	.Col-9 {
 		margin-top: 4px;
 		min-width: 100%;
 		background-color: black;
@@ -270,7 +271,7 @@ a {
 		margin-bottom: 0px;
 	}
 
-	.col-9 .PostDetailCard {
+	.Col-9 .PostDetailCard {
 		margin-bottom: 0px;
 		width: 100%;
 		border: none;

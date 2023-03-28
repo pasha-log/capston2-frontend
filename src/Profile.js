@@ -109,7 +109,8 @@ const Profile = () => {
 							<Link to={`/posts/${post.postId}`} key={post.postId} state={{imageURL: post.postURL, 
 																						caption: post.caption, 
 																						username: userBeingViewed?.username, 
-																						profileImageURL: userBeingViewed?.profileImageURL}}>
+																						profileImageURL: userBeingViewed?.profileImageURL,
+																						postId: post.postId}}>
 								<div className="gallery-item" tabIndex="0">
 										<img className="gallery-image" src={post.postURL} alt={post.id}/>
 										<div className="gallery-item-info">

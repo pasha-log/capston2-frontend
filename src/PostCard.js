@@ -1,4 +1,4 @@
-import './HomePage.css';
+import './PostCard.css'
 import { useEffect, useState } from 'react';
 import InstapostApi from './Api';
 import Comment from './Comment';
@@ -28,73 +28,73 @@ const PostCard = ({ post }) => {
 	);
 
     return (
-		<div className="card">
-			<div className="HomePageTop">
-				<div className="userDetails">
-					<div className="profilepic">
-						<Link to={`/${post?.username}`}>
-							<div className="profile_img">
-								<div className="image">
+		<div className="PostDetailCard">
+			<div className="PostDetailTop">
+				<div className="PostUserDetails">
+					<div className="ProfilePicture">
+						<div className="PostDetailImage">
+							<Link to={`/${post?.username}`} >
+								<div className="PostDetailProfileImage">
 										<img
 											src={post?.profileImageURL}
 											alt=""
 										/>
 								</div>
-							</div>
-						</Link>
+							</Link>
+						</div>
 					</div>
 					<h3>
 						<span>{post?.username}</span>
 					</h3>
 				</div>
 				<div>
-					<span className="dot">
+					<span className="Dot">
 						<i className="fas fa-ellipsis-h" />
 					</span>
 				</div>
 			</div>
-			<div className="imgBx">
+			<div className="ImageBox">
 				<img
-					src={post?.postURL}
+					src={post?.postURL || post?.imageURL}
 					alt={post?.postId}
 					className="cover"
 				/>
 			</div>
-			<div className="bottom">
-				<div className="actionBtns">
-					<div className="left">
-						<span className="heart">
+			<div className="Bottom">
+				<div className="ActionButtons">
+					<div className="Left">
+						<span className="Heart">
 							<span>
 								<PostHeart />
 							</span>
 						</span>
 						<PostComment />
 					</div>
-					<div className="right">
+					<div className="Right">
 						<PostSave />
 					</div>
 				</div>
                 <div>
-					<p className="likes">Liked by 203 others</p>
+					<p className="Likes">Liked by 203 others</p>
                 </div>
                 <div>
-					<p className="message">
-						<b>{post?.username}</b>
+					<p className="Caption">
+						<b className='CaptionUsername'>{post?.username}</b>
                         {post?.caption}
 					</p>
                 </div>
-                {!postComments ? null : postComments?.map((comment) => (<Comment comment={comment} />))}
-				<div className="addComments">
-					<div className="reaction">
+                {!postComments ? null : postComments?.map((comment) => (<Comment comment={comment} key={comment.comment_id} />))}
+				<div className="AddComments">
+					<div className="Reaction">
 						<h3>
 							<i className="far fa-smile" />
 						</h3>
 					</div>
-                    <CommentForm postId={post.postId} newComment={newComment} setNewComment={setNewComment} />
+                    <CommentForm postId={post?.postId} newComment={newComment} setNewComment={setNewComment} />
 				</div>
 			</div>
-		</div>
-    )
+		</div> 
+	)
 }
 
 export default PostCard;

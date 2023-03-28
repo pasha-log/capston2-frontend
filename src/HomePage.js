@@ -23,13 +23,12 @@ const HomePage = () => {
 	);
 
 	return (
-		// https://www.geeksforgeeks.org/instagram-clone-using-html-css/
 		<main>
 			<div class="container">
 				<div class="Col-9">
-				{followingPosts?.map((post) => {return (
-					<PostCard post={post} />
-				)})}
+					{followingPosts?.map((post) => {return (
+						<PostCard post={post} key={post.postId} />
+					)})}
 				</div>
 				<div class="col-3">
 					<SuggestionsBox />
@@ -72,7 +71,6 @@ const HomePage = () => {
 				</div>
 			</div>
 		</main>
-		// https://www.geeksforgeeks.org/instagram-clone-using-html-css/
 	);
 };
 
