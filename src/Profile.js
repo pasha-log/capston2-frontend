@@ -7,6 +7,7 @@ import Gallery from './Gallery';
 import ProfileStats from './ProfileStats';
 import NullPost from './NullPost';
 import ProfileSettings from './ProfileSettings';
+import ProfileBio from './ProfileBio';
 
 const Profile = () => {
 	const { username } = useParams();
@@ -45,23 +46,11 @@ const Profile = () => {
 								alt=""
 							/> 
 						</div>
-
 						<ProfileSettings user={userBeingViewed} onClickFollow={onClickFollow} />
 
 						<ProfileStats user={userBeingViewed?.username === currentUser?.username ? currentUser : userBeingViewed}/>
 
-						<div className="ProfileBio">
-							{
-								userBeingViewed?.username === currentUser?.username ? 
-								<p>
-									<span className="ProfileRealName">{currentUser?.fullName}</span> {currentUser?.bio}
-								</p>
-								:
-								<p>
-									<span className="ProfileRealName">{userBeingViewed?.fullName}</span> {userBeingViewed?.bio}
-								</p>
-							}
-						</div>
+						<ProfileBio  user={userBeingViewed?.username === currentUser?.username ? currentUser : userBeingViewed}/>
 					</div>
 				</div>
 			</header>
