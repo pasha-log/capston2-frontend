@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { Button } from 'reactstrap';
 import { useContext, useState, useEffect } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
@@ -7,6 +6,7 @@ import InstapostApi from './Api';
 import Gallery from './Gallery';
 import ProfileStats from './ProfileStats';
 import NullPost from './NullPost';
+import ProfileSettings from './ProfileSettings';
 
 const Profile = () => {
 	const { username } = useParams();
@@ -46,18 +46,7 @@ const Profile = () => {
 							/> 
 						</div>
 
-						<div className="ProfileUserSettings">
-							<h1 className="ProfileUsername">{userBeingViewed?.username === currentUser?.username ? currentUser?.username : userBeingViewed?.username}</h1>
-							{
-								userBeingViewed?.username === currentUser?.username ? 
-								<Button className="btn ProfileEditButton EditProfile">Edit Profile</Button>
-								:
-								<Button onClick={() => onClickFollow(currentUser?.username, username)} className="btn ProfileEditButton EditProfile">Follow</Button>
-							}
-							<span className="material-symbols-outlined ProfileSettingsButton">
-		 						settings
-							</span>
-						</div>
+						<ProfileSettings user={userBeingViewed} onClickFollow={onClickFollow} />
 
 						<ProfileStats user={userBeingViewed?.username === currentUser?.username ? currentUser : userBeingViewed}/>
 
