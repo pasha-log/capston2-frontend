@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { useContext, useState, useEffect } from 'react';
@@ -7,6 +6,7 @@ import './Profile.css';
 import InstapostApi from './Api';
 import Gallery from './Gallery';
 import ProfileStats from './ProfileStats';
+import NullPost from './NullPost';
 
 const Profile = () => {
 	const { username } = useParams();
@@ -81,17 +81,8 @@ const Profile = () => {
 						<div className='NullPosts'>
 							<p className='NoPostsYet'>No posts yet</p>
 						</div> :
-						(userBeingViewed?.posts?.length === 0) ?
-						<div className='NullPosts'>
-							<span id="Camera" className="material-symbols-outlined">
-								photo_camera
-							</span>
-							<h3 className='Share'>Share Photos</h3>
-							<p>You have no posts yet</p>
-							<Link className='FirstShare' to="/upload">
-								<Button className='FirstShareButton'>Share your first photo</Button>
-							</Link>
-						</div> :
+						(userBeingViewed?.posts?.length === 0) ? 
+						<NullPost /> :
 						<div className="ProfileContainer">
 							<Gallery userBeingViewed={userBeingViewed} />
 						</div>
