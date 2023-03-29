@@ -53,6 +53,11 @@
 	padding: 0px 0px 0px 47px;
 	max-width: 200px;
 	justify-content: space-between;
+	color: rgb(88, 88, 88);
+}
+
+.CommentAction {
+	margin-right: .5rem;
 }
 
 .FlexRow {

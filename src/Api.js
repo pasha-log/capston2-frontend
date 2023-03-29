@@ -122,6 +122,7 @@ class InstapostApi {
 
 	static async getFollowingPosts(username) {
 		let response = await this.request(`users/${username}/followerPosts/`);
+		console.log(response.posts[0].createdAt);
 		return response.posts;
 	}
 }

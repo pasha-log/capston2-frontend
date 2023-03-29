@@ -22,6 +22,10 @@ const Comment = ({comment}) => {
     const likeComment = () => {
         setActive(!isActive);
     }
+
+    var date = new Date(comment?.createdAt)
+	var dt = date.toDateString();
+
     return (
         <div className="PostCommentItem">
             <div className="PostCommentRow FlexRow">
@@ -37,8 +41,8 @@ const Comment = ({comment}) => {
                 </div>
             </div>
             <div className="PostCommentActions FlexRow">
-                <span>Time</span>
-                <span>Likes</span>
+                <span className="CommentAction">{dt}</span>
+                <span className="CommentAction">Likes</span>
                 <span style={{cursor: "pointer"}}>Reply</span>
             </div>
         </div>

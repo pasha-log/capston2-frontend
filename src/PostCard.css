@@ -143,9 +143,12 @@ main .PostDetailContainer {
 	font-size: 0.75em;
 }
 
-.Dot {
+.Date {
 	transform: scale(0.6);
-	cursor: pointer;
+	font-size: .8rem;
+	overflow: hidden;
+	white-space: nowrap;
+	color: rgb(88, 88, 88);
 }
 
 .ImageBox {

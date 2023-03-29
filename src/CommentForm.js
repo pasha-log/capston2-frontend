@@ -2,7 +2,7 @@ import './CommentForm.css';
 import InstapostApi from './Api';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
-import { Input, Button, Form, FormGroup, Col, Container } from 'reactstrap';
+import { Input, Button, Form, FormGroup } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
 
 const CommentForm = ({ postId, newComment, setNewComment }) => {
@@ -28,13 +28,6 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 		<div className='CommentContainer'>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup row>
-					{/* <Col
-						md={{
-							offset: 3,
-							size: 6
-						}}
-						sm="12"
-					> */}
 						<div className="CommentFormContainer">
 							<div className="Message">
 								<Controller
@@ -52,7 +45,6 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 							</div>
 							<Button className="PostComment">Post</Button>
 						</div>
-					{/* </Col> */}
 				</FormGroup>
 			</Form>
 		</div>

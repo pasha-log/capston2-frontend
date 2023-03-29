@@ -23,6 +23,7 @@ const HomePage = () => {
 		[ ]
 	);
 
+	console.log(followingPosts)
 	return (
 		<main>
 			<div class="container">

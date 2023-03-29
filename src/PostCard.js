@@ -26,6 +26,9 @@ const PostCard = ({ post }) => {
 		},
 		[ newComment, post?.postId ]
 	);
+	
+	var date = new Date(post?.createdAt)
+	var dt = date.toDateString();
 
     return (
 		<div className="PostDetailCard">
@@ -48,8 +51,8 @@ const PostCard = ({ post }) => {
 					</h3>
 				</div>
 				<div>
-					<span className="Dot">
-						<i className="fas fa-ellipsis-h" />
+					<span className="Date">
+						{dt}
 					</span>
 				</div>
 			</div>

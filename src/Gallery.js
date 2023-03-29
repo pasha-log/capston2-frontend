@@ -14,7 +14,8 @@ const Gallery = ({ userBeingViewed }) => {
 							caption: post.caption,
 							username: userBeingViewed?.username,
 							profileImageURL: userBeingViewed?.profileImageURL,
-							postId: post.postId
+							postId: post.postId,
+							createdAt: post.createdAt
 						}}
 					>
 						<div className="gallery-item" tabIndex="0">
