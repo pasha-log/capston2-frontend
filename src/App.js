@@ -14,6 +14,7 @@ function App() {
 	const [ showNav, setShowNav ] = useState(true);
 	const [ newPost, setNewPost ] = useState(-1);
 	const [ newFollow, setNewFollow ] = useState(-1);
+	const [ newLike, setNewLike ] = useState(-1);
 	// const [ showModal, setShowModal ] = useState(false);
 
 	useEffect(
@@ -21,13 +22,12 @@ function App() {
 			const getUserByUsername = async (username) => {
 				InstapostApi.token = storedValue.token;
 				let user = await InstapostApi.getUser(username);
-				// console.log(user);
 				setCurrentUser(user);
 			};
 
 			storedValue ? getUserByUsername(storedValue.username) : console.log('Logged out');
 		},
-		[ storedValue, newPost, newFollow ]
+		[ storedValue, newPost, newFollow, newLike ]
 	);
 
 	const setTokenAfterRegister = async (data, username) => {
@@ -74,10 +74,24 @@ function App() {
 		console.log(response);
 	};
 
+	const like = async (username, commentOrPostId, likeType) => {
+		let likeData = { username: username, commentOrPostId: commentOrPostId, likeType: likeType };
+		let response = await InstapostApi.like(likeData);
+		console.log(response);
+		setNewLike(newLike + 1);
+	};
+
+	const unlike = async (username, commentOrPostId, likeType) => {
+		let likeData = { username: username, commentOrPostId: commentOrPostId, likeType: likeType };
+		let response = await InstapostApi.unlike(likeData);
+		console.log(response);
+		setNewLike(newLike - 1);
+	};
+
 	return (
 		<div className="App">
 			<CurrentUserContext.Provider
-				value={{ storedValue, currentUser, newPost, setNewPost, follow, newFollow, unfollow }}
+				value={{ storedValue, currentUser, newPost, setNewPost, follow, newFollow, unfollow, like, unlike }}
 			>
 				<BrowserRouter>
 					{showNav && <BottomNavBar />}

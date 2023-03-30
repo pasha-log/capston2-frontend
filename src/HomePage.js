@@ -15,7 +15,6 @@ const HomePage = () => {
 			const getFollowingPosts = async (username) => {
 				let response = await InstapostApi.getFollowingPosts(username);
 				setFollowingPosts(response);
-	            console.log(response)
 			};
 
 			getFollowingPosts(currentUser?.username);
@@ -23,7 +22,6 @@ const HomePage = () => {
 		[ newFollow ]
 	);
 
-	console.log(followingPosts)
 	return (
 		<main>
 			<div class="container">

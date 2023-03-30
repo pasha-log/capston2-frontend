@@ -6,9 +6,9 @@ import './Comment.css';
 import { Link } from "react-router-dom";
 
 const Comment = ({comment}) => {
-    const [user, setUser] = useState(null);
+    const [ user, setUser ] = useState(null);
     const { currentUser } = useContext(CurrentUserContext);
-    const [isActive, setActive] = useState("false");
+    const [ isActive, setActive ] = useState("false");
 
     useEffect(
 		() => {

@@ -8,6 +8,7 @@ import PostHeart from './PostHeart';
 import PostComment from './PostComment';
 import PostSave from './PostSave';
 
+
 const PostCard = ({ post }) => {
 
     const [postComments, setPostComments] = useState();
@@ -18,8 +19,6 @@ const PostCard = ({ post }) => {
 			const getPostComments = async (id) => {
 				let response = await InstapostApi.getPostComments(id);
 				setPostComments(response);
-                console.log(response)
-                console.log(postComments)
 			};
 
 			getPostComments(post?.postId);
@@ -68,7 +67,7 @@ const PostCard = ({ post }) => {
 					<div className="Left">
 						<span className="Heart">
 							<span>
-								<PostHeart />
+								<PostHeart id={post?.postId} likeType={'post'} />
 							</span>
 						</span>
 						<PostComment />

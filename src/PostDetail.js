@@ -8,7 +8,7 @@ const PostDetail = () => {
 	return (
 		<div className="Col-9">
 			<div className="PostDetail">
-				<PostCard post={state} />
+				<PostCard post={state} key={state.postId} />
 			</div>
 		</div>
 	);

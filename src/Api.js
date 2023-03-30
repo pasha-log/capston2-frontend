@@ -61,9 +61,6 @@ class InstapostApi {
 	// Upload new image to s3 bucket.
 
 	static async uploadPost(postData) {
-		// postData is the File
-		console.log(postData);
-
 		const form = new FormData();
 		form.append('single', postData);
 
@@ -75,7 +72,6 @@ class InstapostApi {
 				'Content-Type': 'multipart/form-data'
 			}
 		});
-		console.log(response);
 		return response.data;
 	}
 
@@ -90,14 +86,12 @@ class InstapostApi {
 
 	static async getPostComments(postId) {
 		let response = await this.request(`users/comments/${postId}`);
-		console.log(response);
 		return response.comments;
 	}
 
 	// Post a new comment to a post.
 
 	static async createComment(commentData) {
-		console.log(commentData);
 		let response = await this.request(`users/comment`, commentData, 'post');
 		return response.data;
 	}
@@ -121,7 +115,6 @@ class InstapostApi {
 	static async findAllUsers(name) {
 		let response;
 		name ? (response = await this.request(`users?name=${name}`)) : (response = await this.request(`users/`));
-		console.log(response);
 		return response;
 	}
 
@@ -129,8 +122,21 @@ class InstapostApi {
 
 	static async getFollowingPosts(username) {
 		let response = await this.request(`users/${username}/followerPosts/`);
-		console.log(response.posts[0].createdAt);
 		return response.posts;
+	}
+
+	// Like a post or comment.
+
+	static async like(likeData) {
+		console.log(likeData);
+		let response = await this.request(`users/like`, likeData, 'post');
+		return response;
+	}
+
+	// Unlike a post or comment.
+	static async unlike(likeData) {
+		let response = await this.request(`users/unlike`, likeData, 'post');
+		return response;
 	}
 }
 
