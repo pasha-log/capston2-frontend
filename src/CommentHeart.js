@@ -4,12 +4,12 @@ import IconButton from '@mui/material/IconButton';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
-const PostHeart = ({ id, likeType }) => {
+const CommentHeart = ({ id, likeType }) => {
 	const { currentUser, like, unlike } = useContext(CurrentUserContext);
 
 	return (
 		<>
-			{(currentUser?.postLikes.find((p) => p.postId === id) ? (
+			{(currentUser?.commentLikes.find((c) => c.commentId === id) ? (
 				<IconButton onClick={() => unlike(currentUser?.username, id, likeType)}>
 					<Favorite style={{ color: 'red', fontSize: '2rem' }} />
 				</IconButton>
@@ -22,4 +22,4 @@ const PostHeart = ({ id, likeType }) => {
 	);
 };
 
-export default PostHeart;
+export default CommentHeart;

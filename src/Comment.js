@@ -4,11 +4,11 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import './Comment.css';
 import { Link } from "react-router-dom";
+import CommentHeart from "./CommentHeart";
 
 const Comment = ({comment}) => {
     const [ user, setUser ] = useState(null);
     const { currentUser } = useContext(CurrentUserContext);
-    const [ isActive, setActive ] = useState("false");
 
     useEffect(
 		() => {
@@ -18,10 +18,6 @@ const Comment = ({comment}) => {
             }
             (comment?.username === currentUser?.username) ? setUser(null) : getUserInfo(comment?.username);
     }, []);
-
-    const likeComment = () => {
-        setActive(!isActive);
-    }
 
     var date = new Date(comment?.createdAt)
 	var dt = date.toDateString();
@@ -37,7 +33,7 @@ const Comment = ({comment}) => {
 
                 <span className="CommentUsername"><p><strong className="UsernameInComment">{comment?.username}</strong>{comment?.message}</p></span>
                 <div className="CommentHeart">
-                    <div className={isActive ? "heart is-active" : "heart"} onClick={likeComment}></div>
+                    <CommentHeart id={comment?.commentId} likeType={'comment'} />
                 </div>
             </div>
             <div className="PostCommentActions FlexRow">
