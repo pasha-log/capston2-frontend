@@ -111,8 +111,8 @@ main .container {
 	font-size: 0.75em;
 }
 
-.col-3 .card .HomePageTop .userDetails h3 span {
-	font-size: 0.75em;
+.UserCardFullName {
+	color: rgb(88, 88, 88);
 }
 
 .Follow {

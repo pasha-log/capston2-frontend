@@ -4,7 +4,6 @@ import { Button } from 'reactstrap';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
-// We need an unfollow function/API request
 const UserCard = ({ user }) => {
     const { currentUser, follow, unfollow } = useContext(CurrentUserContext);
     return (
@@ -22,21 +21,21 @@ const UserCard = ({ user }) => {
 				<h3>
 					{user.username}
 					<br />
-					<span>Follow them</span>
+					<span className='UserCardFullName'>{user.fullName}</span>
 				</h3>
 			</div>
 			<div>
 				{
 				currentUser?.following.find(u => u.username === user.username) ? 
 				<Button onClick={() => unfollow(currentUser?.username, user.username)} className="Follow">
-					following
+					Following
 				</Button>
 				: 
 				user.username === currentUser?.username ?
 				null
 				:
 				<Button onClick={() => follow(currentUser?.username, user.username)} className="Follow">
-					follow
+					Follow
 				</Button>
 				}
 			</div>
