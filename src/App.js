@@ -13,6 +13,7 @@ function App() {
 	const [ storedValue, setValue ] = useLocalStorage();
 	const [ showNav, setShowNav ] = useState(true);
 	const [ newPost, setNewPost ] = useState(-1);
+	const [ newFollow, setNewFollow ] = useState(-1);
 	// const [ showModal, setShowModal ] = useState(false);
 
 	useEffect(
@@ -26,7 +27,7 @@ function App() {
 
 			storedValue ? getUserByUsername(storedValue.username) : console.log('Logged out');
 		},
-		[ storedValue, newPost ]
+		[ storedValue, newPost, newFollow ]
 	);
 
 	const setTokenAfterRegister = async (data, username) => {
@@ -60,13 +61,24 @@ function App() {
 	// };
 
 	const follow = async (usernameFollowing, usernameBeingFollowed) => {
-		let response = await InstapostApi.follow(usernameFollowing, usernameBeingFollowed);
+		let userData = { usernameFollowing: usernameFollowing, usernameBeingFollowed: usernameBeingFollowed };
+		let response = await InstapostApi.follow(userData);
+		setNewFollow(newFollow + 1);
+		console.log(response);
+	};
+
+	const unfollow = async (usernameUnfollowing, usernameBeingUnfollowed) => {
+		let userData = { usernameUnfollowing: usernameUnfollowing, usernameBeingUnfollowed: usernameBeingUnfollowed };
+		let response = await InstapostApi.unfollow(userData);
+		setNewFollow(newFollow - 1);
 		console.log(response);
 	};
 
 	return (
 		<div className="App">
-			<CurrentUserContext.Provider value={{ storedValue, currentUser, newPost, setNewPost, follow }}>
+			<CurrentUserContext.Provider
+				value={{ storedValue, currentUser, newPost, setNewPost, follow, newFollow, unfollow }}
+			>
 				<BrowserRouter>
 					{showNav && <BottomNavBar />}
 					{showNav && <TopNavBar />}

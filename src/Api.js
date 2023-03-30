@@ -104,8 +104,15 @@ class InstapostApi {
 
 	// Follow another user.
 
-	static async follow(usernameFollowing, usernameBeingFollowed) {
-		let response = await this.request(`users/follow/${usernameFollowing}/${usernameBeingFollowed}`, 'post');
+	static async follow(usersData) {
+		let response = await this.request(`users/follow`, usersData, 'post');
+		return response.data;
+	}
+
+	// Unfollow another user.
+
+	static async unfollow(usersData) {
+		let response = await this.request(`users/unfollow`, usersData, 'post');
 		return response.data;
 	}
 

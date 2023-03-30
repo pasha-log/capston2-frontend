@@ -8,7 +8,7 @@ import SuggestionsBox from './SuggestionsBox.js';
 import Footer from './Footer';
 
 const HomePage = () => {
-	const { currentUser } = useContext(CurrentUserContext);
+	const { currentUser, newFollow } = useContext(CurrentUserContext);
 	const [ followingPosts, setFollowingPosts ] = useState();
 	useEffect(
 		() => {
@@ -20,7 +20,7 @@ const HomePage = () => {
 
 			getFollowingPosts(currentUser?.username);
 		},
-		[ ]
+		[ newFollow ]
 	);
 
 	console.log(followingPosts)

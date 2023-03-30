@@ -2,9 +2,12 @@ import './HomePage.css';
 import { useState, useEffect } from 'react';
 import InstapostApi from './Api';
 import UserCard from './UserCard';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const SuggestionsBox = () => {
 	const [ notFollowedUsers, setNotFollowedUsers ] = useState();
+	const { newFollow } = useContext(CurrentUserContext);
 
 	useEffect(() => {
 		const getAllUsersNotFollowed = async () => {
@@ -12,7 +15,7 @@ const SuggestionsBox = () => {
 			setNotFollowedUsers(users?.users?.slice(0, 5));
 		};
 		getAllUsersNotFollowed();
-	}, []);
+	}, [ newFollow ]);
 
 	return (
 		<div className="card">

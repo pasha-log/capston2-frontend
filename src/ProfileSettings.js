@@ -3,16 +3,24 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
 
-const ProfileSettings = ({ user, onClickFollow }) => {
-	const { currentUser } = useContext(CurrentUserContext);
+const ProfileSettings = ({ user }) => {
+	const { currentUser, follow, unfollow } = useContext(CurrentUserContext);
 	return (
 		<div className="ProfileUserSettings">
 			<h1 className="ProfileUsername">{user?.username}</h1>
 			{user?.username === currentUser?.username ? (
 				<Button className="btn ProfileEditButton EditProfile">Edit Profile</Button>
 			) : (
+				currentUser?.following.find(u => u.username === user?.username) ?
 				<Button
-					onClick={() => onClickFollow(currentUser?.username, user?.username)}
+					onClick={() => unfollow(currentUser?.username, user?.username)}
+					className="btn ProfileEditButton EditProfile"
+				>
+					Following
+				</Button>
+				:
+				<Button
+					onClick={() => follow(currentUser?.username, user?.username)}
 					className="btn ProfileEditButton EditProfile"
 				>
 					Follow

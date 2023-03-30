@@ -11,9 +11,8 @@ import ProfileBio from './ProfileBio';
 
 const Profile = () => {
 	const { username } = useParams();
-	const { currentUser, follow } = useContext(CurrentUserContext);
+	const { currentUser, newFollow } = useContext(CurrentUserContext);
 	const [ userBeingViewed, setUserBeingViewed ] = useState(null); 
-	const [ newFollow, setNewFollow ] = useState(-1);
 	
 	document.body.style = 'background: black;';
 	document.body.style.color = 'white';
@@ -27,13 +26,6 @@ const Profile = () => {
             getUserInfo(username);
     }, [ newFollow, username ]);
 
-	const onClickFollow = async (usernameFollowing, usernameBeingFollowed) => {
-		let response = await follow(usernameFollowing, usernameBeingFollowed);
-		if (response.data.status === 'success') {
-			setNewFollow(newFollow + 1);
-		}
-	}
-
 	return (
 		<div>
 			<header>
@@ -46,7 +38,7 @@ const Profile = () => {
 								alt=""
 							/> 
 						</div>
-						<ProfileSettings user={userBeingViewed} onClickFollow={onClickFollow} />
+						<ProfileSettings user={userBeingViewed} />
 
 						<ProfileStats user={userBeingViewed?.username === currentUser?.username ? currentUser : userBeingViewed}/>
 
