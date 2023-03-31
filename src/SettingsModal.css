@@ -28,6 +28,9 @@
 .modal-content {
 	background-color: rgb(39, 39, 39);
 	align-items: center;
-	margin-top: 10rem;
-	/* display: flex; */
 }
+
+/* .modal fade show {
+	width: 100vw;
+	height: 100vh;
+} */

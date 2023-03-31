@@ -8,7 +8,7 @@ function SettingsModal() {
 
 	return (
 		<div>
-			<Modal isOpen={modal} toggle={toggle}>
+			<Modal isOpen={modal} toggle={toggle} centered={true} size={'sm'}>
 				<ModalBody className="ModalBody">
 					<div className="LogOut">
 						<Button onClick={logOutUser}>Log Out</Button>

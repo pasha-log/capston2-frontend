@@ -10,7 +10,6 @@ import PostSave from './PostSave';
 
 
 const PostCard = ({ post }) => {
-
     const [postComments, setPostComments] = useState();
     const [newComment, setNewComment] = useState(0);
 

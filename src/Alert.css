@@ -1,0 +1,9 @@
+.alert-success {
+	border-radius: 1rem;
+	background-color: rgb(180, 215, 180, 0.8);
+}
+
+.alert-danger {
+	border-radius: 1rem;
+	/* background-color: rgb(253, 171, 171, 0.8); */
+}

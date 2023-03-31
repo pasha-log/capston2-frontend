@@ -7,6 +7,7 @@ import Alert from './Alert.js';
 
 const SignupForm = ({ setTokenAfterRegister }) => {
 	const navigate = useNavigate();
+	document.body.style = 'background: white;';
 	const [ response, setResponse ] = useState(false);
 	const { control, handleSubmit, reset } = useForm({
 		defaultValues: {

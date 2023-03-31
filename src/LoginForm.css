@@ -65,3 +65,16 @@
 .Register {
 	font-size: 1rem;
 }
+
+.alert-success {
+	--bs-alert-bg: white;
+	--bs-alert-border-color: white;
+	--bs-alert-color: green;
+}
+
+.alert-danger {
+	--bs-alert-bg: white;
+	--bs-alert-border-color: white;
+	--bs-alert-color: red;
+	margin-top: 1rem;
+}
