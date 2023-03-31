@@ -9,7 +9,12 @@
 
 .UsernameInComment {
 	margin-right: .5rem;
-	/* margin-left: -2rem; */
+}
+
+@media screen and (min-width: 1300px) {
+	.UsernameInComment {
+		margin-left: -15rem;
+	}
 }
 
 .heart {

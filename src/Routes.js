@@ -9,6 +9,7 @@ import CaptionForm from './CaptionForm.js';
 import PostDetail from './PostDetail.js';
 import HomePage from './HomePage.js';
 import ExplorePage from './ExplorePage';
+import EditProfileForm from './EditProfileForm';
 
 const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav }) => {
 	return (
@@ -83,6 +84,15 @@ const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav
 				element={
 					<RequireAuth>
 						<ExplorePage />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				exact
+				path="/edit"
+				element={
+					<RequireAuth>
+						<EditProfileForm />
 					</RequireAuth>
 				}
 			/>

@@ -1,5 +1,6 @@
 import { Button } from 'reactstrap';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
 
@@ -9,7 +10,9 @@ const ProfileSettings = ({ user }) => {
 		<div className="ProfileUserSettings">
 			<h1 className="ProfileUsername">{user?.username}</h1>
 			{user?.username === currentUser?.username ? (
-				<Button className="btn ProfileEditButton EditProfile">Edit Profile</Button>
+				<Link to='/edit'>
+					<Button className="btn ProfileEditButton EditProfile">Edit Profile</Button>
+				</Link>
 			) : (
 				currentUser?.following.find(u => u.username === user?.username) ?
 				<Button

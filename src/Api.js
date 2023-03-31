@@ -138,6 +138,14 @@ class InstapostApi {
 		let response = await this.request(`users/unlike`, likeData, 'post');
 		return response;
 	}
+
+	// Edit user's profile information.
+
+	static async patchUser(username, newUserInfo) {
+		console.log(username, newUserInfo);
+		let response = await this.request(`users/${username}`, newUserInfo, 'patch');
+		return response;
+	}
 }
 
 export default InstapostApi;

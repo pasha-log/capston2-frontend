@@ -88,10 +88,32 @@ function App() {
 		setNewLike(newLike - 1);
 	};
 
+	const editProfileInfo = async (data) => {
+		console.log(data);
+		let response = await InstapostApi.patchUser(storedValue.username, data);
+		if (response.user) {
+			setValue({ token: storedValue.token, username: response.user.username });
+			return true;
+		} else {
+			return response;
+		}
+	};
+
 	return (
 		<div className="App">
 			<CurrentUserContext.Provider
-				value={{ storedValue, currentUser, newPost, setNewPost, follow, newFollow, unfollow, like, unlike }}
+				value={{
+					storedValue,
+					currentUser,
+					newPost,
+					setNewPost,
+					follow,
+					newFollow,
+					unfollow,
+					like,
+					unlike,
+					editProfileInfo
+				}}
 			>
 				<BrowserRouter>
 					{showNav && <BottomNavBar />}
