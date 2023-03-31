@@ -7,6 +7,7 @@ import CurrentUserContext from './CurrentUserContext';
 import useLocalStorage from './hooks/useLocalStorage';
 import BottomNavBar from './BottomNavBar';
 import TopNavBar from './TopNavBar';
+import SettingsModal from './SettingsModal';
 
 function App() {
 	const [ currentUser, setCurrentUser ] = useState();
@@ -15,6 +16,9 @@ function App() {
 	const [ newPost, setNewPost ] = useState(-1);
 	const [ newFollow, setNewFollow ] = useState(-1);
 	const [ newLike, setNewLike ] = useState(-1);
+	const [ modal, setModal ] = useState(false);
+
+	const toggle = () => setModal(!modal);
 	// const [ showModal, setShowModal ] = useState(false);
 
 	useEffect(
@@ -56,9 +60,10 @@ function App() {
 		}
 	};
 
-	// const logOutUser = () => {
-	// 	setValue(null);
-	// };
+	const logOutUser = () => {
+		setValue(null);
+		toggle();
+	};
 
 	const follow = async (usernameFollowing, usernameBeingFollowed) => {
 		let userData = { usernameFollowing: usernameFollowing, usernameBeingFollowed: usernameBeingFollowed };
@@ -112,9 +117,13 @@ function App() {
 					unfollow,
 					like,
 					unlike,
-					editProfileInfo
+					editProfileInfo,
+					toggle,
+					modal,
+					logOutUser
 				}}
 			>
+				<SettingsModal />
 				<BrowserRouter>
 					{showNav && <BottomNavBar />}
 					{showNav && <TopNavBar />}

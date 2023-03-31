@@ -5,7 +5,7 @@ import CurrentUserContext from './CurrentUserContext';
 import './Profile.css';
 
 const ProfileSettings = ({ user }) => {
-	const { currentUser, follow, unfollow } = useContext(CurrentUserContext);
+	const { currentUser, follow, unfollow, toggle } = useContext(CurrentUserContext);
 	return (
 		<div className="ProfileUserSettings">
 			<h1 className="ProfileUsername">{user?.username}</h1>
@@ -14,7 +14,7 @@ const ProfileSettings = ({ user }) => {
 					<Button className="btn ProfileEditButton EditProfile">Edit Profile</Button>
 				</Link>
 			) : (
-				currentUser?.following.find(u => u.username === user?.username) ?
+				currentUser?.following?.find(u => u.username === user?.username) ?
 				<Button
 					onClick={() => unfollow(currentUser?.username, user?.username)}
 					className="btn ProfileEditButton EditProfile"
@@ -29,7 +29,7 @@ const ProfileSettings = ({ user }) => {
 					Follow
 				</Button>
 			)}
-			<span className="material-symbols-outlined ProfileSettingsButton">settings</span>
+			<span onClick={toggle} style={{cursor: 'pointer'}} className="material-symbols-outlined ProfileSettingsButton">settings</span>
 		</div>
 	);
 };

@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
 const TopNavBar = () => {
-	const { storedValue, currentUser } = useContext(CurrentUserContext);
+	const { storedValue, currentUser, toggle } = useContext(CurrentUserContext);
 
 	return (
 		<div className="NavBarContainer">
@@ -35,14 +35,18 @@ const TopNavBar = () => {
 									favorite
 								</span>
 							</Link>
-							<Link id="settings" to="/settings">
-								<span
-									style={{ fontSize: '1.5rem', marginTop: '.5rem', marginBottom: '0rem' }}
-									className="material-symbols-outlined"
-								>
-									settings
-								</span>
-							</Link>
+							<span
+								style={{
+									fontSize: '1.5rem',
+									marginTop: '.5rem',
+									marginBottom: '0rem',
+									cursor: 'pointer'
+								}}
+								className="material-symbols-outlined"
+								onClick={toggle}
+							>
+								settings
+							</span>
 						</Col>
 					</Row>
 				</div>

@@ -12,6 +12,10 @@
 	font-size: 2rem;
 }
 
+.ProfileSettingsButton {
+	cursor: pointer;
+}
+
 .NullPosts {
 	color: grey;
 	margin-top: 4rem;

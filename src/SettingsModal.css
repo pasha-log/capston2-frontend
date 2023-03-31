@@ -1,0 +1,33 @@
+.LogOut,
+.YourLikes {
+	border-bottom: solid rgb(67, 67, 67) 1px;
+	width: 100%;
+}
+
+.ModalBody {
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	padding: 0rem;
+}
+
+.modal-body {
+	text-align: center;
+}
+
+.ModalBody button {
+	background-color: rgb(39, 39, 39);
+	border: none;
+}
+
+.ModalBody button:hover {
+	background-color: rgb(39, 39, 39);
+	border: none;
+}
+
+.modal-content {
+	background-color: rgb(39, 39, 39);
+	align-items: center;
+	margin-top: 10rem;
+	/* display: flex; */
+}

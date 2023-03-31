@@ -1,33 +1,25 @@
-import { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody } from 'reactstrap';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
+import './SettingsModal.css';
 
-function SettingsModal(args) {
-	const [ modal, setModal ] = useState(false);
-
-	const toggle = () => setModal(!modal);
+function SettingsModal() {
+	const { toggle, modal, logOutUser } = useContext(CurrentUserContext);
 
 	return (
 		<div>
-			<Button color="danger" onClick={toggle}>
-				Click Me
-			</Button>
-			<Modal isOpen={modal} toggle={toggle} {...args}>
-				<ModalHeader toggle={toggle}>Modal title</ModalHeader>
-				<ModalBody>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-					et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.
+			<Modal isOpen={modal} toggle={toggle}>
+				<ModalBody className="ModalBody">
+					<div className="LogOut">
+						<Button onClick={logOutUser}>Log Out</Button>
+					</div>
+					<div className="YourLikes">
+						<Button>Your Likes</Button>
+					</div>
+					<div>
+						<Button onClick={toggle}>Cancel</Button>
+					</div>
 				</ModalBody>
-				<ModalFooter>
-					<Button color="primary" onClick={toggle}>
-						Do Something
-					</Button>{' '}
-					<Button color="secondary" onClick={toggle}>
-						Cancel
-					</Button>
-				</ModalFooter>
 			</Modal>
 		</div>
 	);
