@@ -48,11 +48,17 @@ const Profile = () => {
 			</header>
 				<main>
 					{(userBeingViewed?.posts?.length === 0 && userBeingViewed?.username !== currentUser?.username) ? 	
-						<div className='NullPosts'>
-							<p className='NoPostsYet'>No posts yet</p>
+						<div className="ProfileContainer">
+							<div className="gallery-item NullPosts" tabIndex="0">
+								<p className='NoPostsYet'>No posts yet</p>
+							</div> 
 						</div> :
 						(userBeingViewed?.posts?.length === 0) ? 
-						<NullPost /> :
+						<div className="ProfileContainer">
+							<div className="gallery-item NullPosts" tabIndex="0">
+								<NullPost /> 
+							</div>
+						</div> :
 						<div className="ProfileContainer">
 							<Gallery userBeingViewed={userBeingViewed} />
 						</div>

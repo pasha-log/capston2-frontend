@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 
 const NullPost = () => {
 	return (
-		<div className="NullPosts">
+		<div>
 			<span id="Camera" className="material-symbols-outlined">
 				photo_camera
 			</span>
