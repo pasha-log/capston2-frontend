@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import './EditProfileForm.css';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 // import { useState } from 'react';
 // import Alert from './Alert';
 
@@ -25,7 +25,7 @@ const EditProfileForm = () => {
         console.log(data)
 		let success = await editProfileInfo(data);
         console.log(success);
-        navigate(`/${currentUser?.username}`);
+        navigate(`/${data.username}`);
 		// if (success === true) {
 		// 	setResponse(true);
 		// } else {
@@ -59,7 +59,9 @@ const EditProfileForm = () => {
 								<h3>
 									{currentUser?.username}
 									<br />
-									<span className="EditUserCardFullName">{currentUser?.fullName}</span>
+									<Link className="ChangeProfilePhoto" to={"/editProfileImage"} state={{ prevPath: "/edit" }}>
+										Change profile photo
+									</Link>
 								</h3>
 							</div>
 							<div className="Fullname d-inline-flex align-items-center">

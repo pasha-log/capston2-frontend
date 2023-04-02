@@ -26,9 +26,17 @@ const HomePage = () => {
 		<main>
 			<div className="container">
 				<div className="Col-9">
-					{followingPosts?.map((post) => {return (
+					{followingPosts?.length === 0 ? 
+					<div className='NoFollowerCard'>
+						<div className='NoFollowerMessage'>No followers with posts yet</div>
+					</div> : 
+						followingPosts?.map((post) => {return (
 						<PostCard post={post} key={post.postId} />
-					)})}
+					)})
+					}
+					{/* {followingPosts?.map((post) => {return (
+						<PostCard post={post} key={post.postId} />
+					)})} */}
 				</div>
 				<div className="col-3">
 					<SuggestionsBox />

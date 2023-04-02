@@ -10,6 +10,16 @@
 	height: 35rem;
 }
 
+.ChangeProfilePhoto {
+	text-decoration: none;
+	color: rgb(27, 156, 255);
+}
+
+.ChangeProfilePhoto:hover {
+	text-decoration: none;
+	color: white;
+}
+
 .Username,
 .Fullname,
 .Bio,

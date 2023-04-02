@@ -1,17 +1,19 @@
 import { useForm } from 'react-hook-form';
 import { Form, FormGroup, Col } from 'reactstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import InstapostApi from './Api';
 import './FileUploadForm.css';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const FileUploadForm = () => {
-	// const { showModal } = useContext(CurrentUserContext);
-	// if (!showModal) {
-	// 	return null;
-	// }
+	const { currentUser, editProfileInfo } = useContext(CurrentUserContext);
+
 	const { register } = useForm();
 
 	const navigate = useNavigate();
+
+	const { state } = useLocation();
 
 	const upload = async (data) => {
 		console.log(data);
@@ -22,7 +24,20 @@ const FileUploadForm = () => {
 	const handleSelectedInput = async (event) => {
 		console.log(event.target.files[0]);
 		const response = await upload(event.target.files[0]);
-		navigate('/caption', { state: { imageUrl: response.result.Location } });
+		if (state?.prevPath) { 
+			let defaultValues = {
+				profileImageURL: response.result.Location,				
+				fullName: currentUser?.fullName,
+				username: currentUser?.username,
+				bio: currentUser?.bio,
+				email: currentUser?.email
+			}
+			let success = await editProfileInfo(defaultValues);
+			console.log(success);
+			navigate(`/${currentUser?.username}`);
+		} else {
+			navigate('/caption', { state: { imageUrl: response.result.Location } }) 
+		}
 	};
 
 	return (
@@ -35,7 +50,6 @@ const FileUploadForm = () => {
 					}}
 					sm="12"
 				>
-					{/* {showModal ? ( */}
 					<div className="UploadFormContainer">
 						<h1 className="NewPostLabel">Create New Post</h1>
 						<div className="Gallery">
@@ -51,7 +65,6 @@ const FileUploadForm = () => {
 							<input id="File" className="File" type="file" {...register('file', { required: true })} />
 						</Form>
 					</div>
-					{/* ) : null} */}
 				</Col>
 			</FormGroup>
 		</div>

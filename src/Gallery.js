@@ -11,7 +11,15 @@ const Gallery = ({ userBeingViewed }) => {
 					<Link
 						to={`/posts/${post.postId}`}
 						key={post.postId}
-						state={post}
+						state={{
+							imageURL: post.postURL,
+							caption: post.caption,
+							username: userBeingViewed?.username,
+							profileImageURL: userBeingViewed?.profileImageURL,
+							postId: post.postId,
+							createdAt: post.createdAt,
+							numLikes: post.numLikes
+						}}
 					>
 						<div className="gallery-item" tabIndex="0">
 							<img className="gallery-image" src={post.postURL} alt={post.id} />
