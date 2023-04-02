@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# Instapost (An Instagram Clone)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='./public/Screenshot (145).png' alt=''>
 
-## Available Scripts
+## Description: 
 
-In the project directory, you can run:
+This application is a responsive React front end for my [Instapost API](https://github.com/pasha-log/capstone2-backend), which works together to create a social media website where users can share, like, and comment on photos. Users can search for other users and follow them, and stay up to date with posts that their friends have created. 
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project uses [Bootstrap 5](https://getbootstrap.com/) and [react-strap](https://github.com/reactstrap/reactstrap) components for much of its CSS, as well as [Material UI](https://mui.com/material-ui/getting-started/overview/). And I combined reactstrap elements with [React Hook Form](https://react-hook-form.com/get-started/) for all of my form components. Client side routing is handled by [react-router-dom v6](https://www.npmjs.com/package/react-router-dom) and HTTP requests for AJAX functionality is done using the [Axios](https://github.com/axios/axios) library. The backend API was written in Node using the Express web framework and a PostgreSQL database. Users upload photos with the help of Amazon's S3 Bucket webservice which allows for efficient image storage. 
+
+## Tools Used: 
+
+* [React.js](https://reactjs.org/)
+* [Reactstrap](https://reactstrap.github.io/?path=/docs/home-installation--page)
+* [React Hook Form](https://react-hook-form.com/get-started/)
+* [Material UI](https://mui.com/material-ui/getting-started/overview/)
+* [Amazon S3](https://aws.amazon.com/s3/)
+
+## Installation
+After cloning the repository, install all dependencies by executing `npm install` within the top level project directory. This program requires the use of an external API to function.
+
+If you wish to run this API locally on your machine, see my [repository for the Instapost API](https://github.com/pasha-log/capstone2-backend) for installation instructions and more info. This app expects the Instapost API to be listening on **port 3001** of localhost; make sure to change the port number of the localhost URL in `Api.js` if your local deployment of the API is listening on a different port. With your local API set up, start this app in developer mode with the following command:
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

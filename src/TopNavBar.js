@@ -40,7 +40,8 @@ const TopNavBar = () => {
 									fontSize: '1.5rem',
 									marginTop: '.5rem',
 									marginBottom: '0rem',
-									cursor: 'pointer'
+									cursor: 'pointer',
+									color: 'white'
 								}}
 								className="material-symbols-outlined"
 								onClick={toggle}
