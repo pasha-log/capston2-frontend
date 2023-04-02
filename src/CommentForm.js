@@ -6,13 +6,13 @@ import { Input, Button, Form, FormGroup } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
 
 const CommentForm = ({ postId, newComment, setNewComment }) => {
-	const { storedValue} = useContext(CurrentUserContext);
+	const { storedValue, innerCommentHTML } = useContext(CurrentUserContext);
 	const { control, handleSubmit, reset } = useForm({
 		defaultValues: {
 			username: storedValue?.username,
 			postId: postId,
 			parentId: null,
-			message: ''
+			message: innerCommentHTML?.postId === postId ? innerCommentHTML?.username : ''
 		}
 	});
 
@@ -34,7 +34,8 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 									name="message"
 									control={control}
 									render={({ field }) => (
-										<Input
+										<Input	
+											id={postId}																	
 											className="Message"
 											type="text"
 											placeholder="Add a comment..."

@@ -10,11 +10,11 @@ const CommentHeart = ({ id, likeType }) => {
 	return (
 		<>
 			{(currentUser?.commentLikes.find((c) => c.commentId === id) ? (
-				<IconButton onClick={() => unlike(currentUser?.username, id, likeType)}>
+				<IconButton key={id} onClick={() => unlike(currentUser?.username, id, likeType)}>
 					<Favorite style={{ color: 'red', fontSize: '2rem' }} />
 				</IconButton>
 			) : (
-				<IconButton onClick={() => like(currentUser?.username, id, likeType)}>
+				<IconButton key={id} onClick={() => like(currentUser?.username, id, likeType)}>
 					<FavoriteBorder style={{ color: 'white', fontSize: '2rem' }} />
 				</IconButton>
 			))}

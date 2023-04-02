@@ -128,7 +128,6 @@ class InstapostApi {
 	// Like a post or comment.
 
 	static async like(likeData) {
-		console.log(likeData);
 		let response = await this.request(`users/like`, likeData, 'post');
 		return response;
 	}

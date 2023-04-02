@@ -11,7 +11,7 @@ import ProfileBio from './ProfileBio';
 
 const Profile = () => {
 	const { username } = useParams();
-	const { currentUser, newFollow } = useContext(CurrentUserContext);
+	const { currentUser, newFollow, newLike } = useContext(CurrentUserContext);
 	const [ userBeingViewed, setUserBeingViewed ] = useState(null); 
 	
 	document.body.style = 'background: black;';
@@ -24,7 +24,7 @@ const Profile = () => {
                 setUserBeingViewed(user);
             }
             getUserInfo(username);
-    }, [ newFollow, username ]);
+    }, [ newFollow, username, newLike ]);
 
 	return (
 		<div>

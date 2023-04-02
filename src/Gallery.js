@@ -1,5 +1,7 @@
 import './Profile.css';
 import { Link } from 'react-router-dom';
+import Favorite from '@mui/icons-material/Favorite';
+import ModeCommentIcon from '@mui/icons-material/ModeComment';
 
 const Gallery = ({ userBeingViewed }) => {
 	return (
@@ -9,26 +11,19 @@ const Gallery = ({ userBeingViewed }) => {
 					<Link
 						to={`/posts/${post.postId}`}
 						key={post.postId}
-						state={{
-							imageURL: post.postURL,
-							caption: post.caption,
-							username: userBeingViewed?.username,
-							profileImageURL: userBeingViewed?.profileImageURL,
-							postId: post.postId,
-							createdAt: post.createdAt
-						}}
+						state={post}
 					>
 						<div className="gallery-item" tabIndex="0">
 							<img className="gallery-image" src={post.postURL} alt={post.id} />
 							<div className="gallery-item-info">
 								<ul>
 									<li className="gallery-item-likes" key={`${post.postId}-gallery-item-likes`}>
-										<span className="material-symbols-outlined visually-hidden">favorite</span>
-										0
+										<Favorite style={{ color: 'white', fontSize: '2rem' }} />
+										{post.numLikes}
 									</li>
 									<li className="gallery-item-comments" key={`${post.postId}-gallery-item-comments`}>
-										<span className="material-symbols-outlined visually-hidden">mode_comment</span>
-										0
+										<ModeCommentIcon style={{ color: 'white', fontSize: '2rem' }} />
+										{post.numComments}
 									</li>
 								</ul>
 							</div>

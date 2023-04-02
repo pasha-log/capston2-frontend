@@ -8,7 +8,7 @@ import SuggestionsBox from './SuggestionsBox.js';
 import Footer from './Footer';
 
 const HomePage = () => {
-	const { currentUser, newFollow } = useContext(CurrentUserContext);
+	const { newFollow, storedValue, newLike, newCommentReply } = useContext(CurrentUserContext);
 	const [ followingPosts, setFollowingPosts ] = useState();
 	useEffect(
 		() => {
@@ -17,20 +17,20 @@ const HomePage = () => {
 				setFollowingPosts(response);
 			};
 
-			getFollowingPosts(currentUser?.username);
+			getFollowingPosts(storedValue?.username);
 		},
-		[ newFollow ]
+		[ newFollow, newCommentReply, newLike ]
 	);
 
 	return (
 		<main>
-			<div class="container">
-				<div class="Col-9">
+			<div className="container">
+				<div className="Col-9">
 					{followingPosts?.map((post) => {return (
 						<PostCard post={post} key={post.postId} />
 					)})}
 				</div>
-				<div class="col-3">
+				<div className="col-3">
 					<SuggestionsBox />
 					<Footer />
 				</div>

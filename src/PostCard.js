@@ -7,11 +7,22 @@ import { Link } from 'react-router-dom';
 import PostHeart from './PostHeart';
 import PostComment from './PostComment';
 import PostSave from './PostSave';
-
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const PostCard = ({ post }) => {
-    const [postComments, setPostComments] = useState();
-    const [newComment, setNewComment] = useState(0);
+    const [ postComments, setPostComments ] = useState();
+    const [ newComment, setNewComment ] = useState(0);
+	const { newLike } = useContext(CurrentUserContext);
+	const dateFormatter = new Intl.DateTimeFormat(undefined, {
+		dateStyle: "medium",
+		timeStyle: "short"
+	})
+
+	const handleCommentButtonClick = () => {
+		let i = document.getElementById(post?.postId)
+	  	i.focus();
+	};
 
     useEffect(
 		() => {
@@ -22,12 +33,12 @@ const PostCard = ({ post }) => {
 
 			getPostComments(post?.postId);
 		},
-		[ newComment, post?.postId ]
+		[ newComment, post?.postId, newLike ]
 	);
 	
-	var date = new Date(post?.createdAt)
-	var dt = date.toDateString();
-
+	// console.log(postComments)
+	var dt = dateFormatter.format(Date.parse(post?.createdAt))
+		
     return (
 		<div className="PostDetailCard">
 			<div className="PostDetailTop">
@@ -69,14 +80,16 @@ const PostCard = ({ post }) => {
 								<PostHeart id={post?.postId} likeType={'post'} />
 							</span>
 						</span>
-						<PostComment />
+						<span onClick={handleCommentButtonClick}>
+							<PostComment />
+						</span>
 					</div>
 					<div className="Right">
 						<PostSave />
 					</div>
 				</div>
                 <div>
-					<p className="Likes">Liked by 203 others</p>
+					<p className="Likes">{ post?.numLikes === "1" ? 'Liked by 1 other' : `Liked by ${post?.numLikes} others`}</p>
                 </div>
                 <div>
 					<p className="Caption">
@@ -84,7 +97,7 @@ const PostCard = ({ post }) => {
                         {post?.caption}
 					</p>
                 </div>
-                {!postComments ? null : postComments?.map((comment) => (<Comment comment={comment} key={comment.comment_id} />))}
+                {!postComments ? null : postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} comment={comment} key={comment.commentId} />))}
 				<div className="AddComments">
 					<div className="Reaction">
 						<h3>
