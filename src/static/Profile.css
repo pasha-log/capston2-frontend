@@ -74,10 +74,8 @@
 }
 
 body {
-	/* font-family: "Open Sans", Arial, sans-serif; */
 	min-height: 100vh;
 	background-color: black;
-	/* color: white; */
 	padding-bottom: 3rem;
 }
 

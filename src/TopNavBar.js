@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
-import './BottomNavBar.css';
+import './static/BottomNavBar.css';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 

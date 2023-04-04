@@ -1,8 +1,6 @@
 import { Input, Button, Form, FormGroup, Col, Row } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
-import './CaptionForm.css';
-// import { useState } from 'react';
-// import Alert from './Alert.js';
+import './static/CaptionForm.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import InstapostApi from './Api';
 import { useContext } from 'react';

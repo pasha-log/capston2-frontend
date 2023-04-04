@@ -1,7 +1,7 @@
 import { Button, Modal, ModalBody } from 'reactstrap';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
-import './SettingsModal.css';
+import './static/SettingsModal.css';
 
 function SettingsModal() {
 	const { toggle, modal, logOutUser } = useContext(CurrentUserContext);

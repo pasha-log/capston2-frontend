@@ -1,4 +1,4 @@
-import './Profile.css';
+import './static/Profile.css';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 

@@ -1,4 +1,4 @@
-import './CommentForm.css';
+import './static/CommentForm.css';
 import InstapostApi from './Api';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
@@ -39,8 +39,6 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 											className="Message"
 											type="text"
 											placeholder="Add a comment..."
-											// value={message}
-											// onChange={event => setMessage(event.target.value)}
 											{...field}
 										/>
 									)}

@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Form, FormGroup, Col } from 'reactstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import InstapostApi from './Api';
-import './FileUploadForm.css';
+import './static/FileUploadForm.css';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 

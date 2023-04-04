@@ -1,4 +1,4 @@
-import './HomePage.css';
+import './static/HomePage.css';
 import { useState, useEffect } from 'react';
 import InstapostApi from './Api';
 import UserCard from './UserCard';

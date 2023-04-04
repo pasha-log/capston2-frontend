@@ -1,4 +1,4 @@
-import './SearchBar.css';
+import './static/SearchBar.css';
 import { Input, Button, Form, FormGroup, Col } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
 

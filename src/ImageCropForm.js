@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './ImageCropForm.css';
+import './static/ImageCropForm.css';
 import ImageCropDialog from './ImageCropDialog';
 import { useLocation } from 'react-router-dom';
 

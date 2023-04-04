@@ -1,6 +1,6 @@
 import { Input, Button, Form, FormGroup, Col } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
-import './SignupForm.css';
+import './static/SignupForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Alert from './Alert.js';

@@ -1,4 +1,4 @@
-import './App.css';
+import './static/App.css';
 import { BrowserRouter } from 'react-router-dom';
 import InstapostRoutes from './Routes';
 import InstapostApi from './Api';

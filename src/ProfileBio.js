@@ -1,4 +1,4 @@
-import './Profile.css';
+import './static/Profile.css';
 
 const ProfileBio = ({ user }) => {
 	return (
