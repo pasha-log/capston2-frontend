@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './static/HomePage.css';
+import './assets/HomePage.css';
 import { Button } from 'reactstrap';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';

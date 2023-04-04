@@ -2,7 +2,7 @@ import InstapostApi from "./Api"
 import { useEffect, useState } from "react";
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
-import './static/Comment.css';
+import './assets/Comment.css';
 import { Link } from "react-router-dom";
 import CommentHeart from "./CommentHeart";
 

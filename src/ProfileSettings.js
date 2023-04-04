@@ -2,7 +2,7 @@ import { Button } from 'reactstrap';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CurrentUserContext from './CurrentUserContext';
-import './static/Profile.css';
+import './assets/Profile.css';
 
 const ProfileSettings = ({ user }) => {
 	const { currentUser, follow, unfollow, toggle } = useContext(CurrentUserContext);

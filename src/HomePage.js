@@ -1,4 +1,4 @@
-import './static/HomePage.css';
+import './assets/HomePage.css';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import InstapostApi from './Api';

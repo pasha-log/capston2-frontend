@@ -1,4 +1,4 @@
-import './static/CommentForm.css';
+import './assets/CommentForm.css';
 import InstapostApi from './Api';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';

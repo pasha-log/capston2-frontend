@@ -1,4 +1,4 @@
-import './static/HomePage.css';
+import './assets/HomePage.css';
 
 const Footer = () => {
 	return (

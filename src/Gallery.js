@@ -1,4 +1,4 @@
-import './static/Profile.css';
+import './assets/Profile.css';
 import { Link } from 'react-router-dom';
 import Favorite from '@mui/icons-material/Favorite';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';

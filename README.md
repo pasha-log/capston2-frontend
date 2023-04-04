@@ -1,6 +1,6 @@
 # Instapost (An Instagram Clone)
 
-<img src='./public/Screenshot (145).png' alt=''>
+<img src='./src/assets/Screenshot (145).png' alt=''>
 
 ## Description: 
 

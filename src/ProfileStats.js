@@ -1,4 +1,4 @@
-import './static/Profile.css';
+import './assets/Profile.css';
 
 const ProfileStats = ({ user }) => {
 	return (

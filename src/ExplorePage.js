@@ -3,7 +3,7 @@ import InstapostApi from './Api';
 import SearchBar from './SearchBar';
 import { Button } from 'reactstrap';
 import UserCard from './UserCard';
-import './static/ExplorePage.css';
+import './assets/ExplorePage.css';
 
 const ExplorePage = () => {
 	const [ users, setUsers ] = useState([]);

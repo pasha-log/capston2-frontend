@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Cropper from 'react-easy-crop';
-import './static/ImageCropDialog.css';
+import './assets/ImageCropDialog.css';
 import getCroppedImg from './cropImage';
 
 // const aspectRatios = [ { value: 4 / 3, text: '4/3' }, { value: 16 / 9, text: '16/9' }, { value: 1 / 2, text: '1/2' } ];

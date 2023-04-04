@@ -1,4 +1,4 @@
-import './static/PostCard.css'
+import './assets/PostCard.css'
 import { useEffect, useState } from 'react';
 import InstapostApi from './Api';
 import Comment from './Comment';

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import CurrentUserContext from './CurrentUserContext';
-import './static/Profile.css';
+import './assets/Profile.css';
 import InstapostApi from './Api';
 import Gallery from './Gallery';
 import ProfileStats from './ProfileStats';

@@ -1,6 +1,6 @@
 import { Input, Button, Form, FormGroup, Col } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
-import './static/EditProfileForm.css';
+import './assets/EditProfileForm.css';
 import { useContext, useState } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import { useNavigate, Link } from 'react-router-dom';

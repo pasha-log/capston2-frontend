@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import PostCard from './PostCard';
-import './static/HomePage.css';
+import './assets/HomePage.css';
 
 const PostDetail = () => {
 	const { state } = useLocation();
