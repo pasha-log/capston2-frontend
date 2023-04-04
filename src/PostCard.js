@@ -10,7 +10,7 @@ import PostSave from './PostSave';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, forceUpdate }) => {
     const [ postComments, setPostComments ] = useState();
     const [ newComment, setNewComment ] = useState(0);
 	const { newLike } = useContext(CurrentUserContext);
@@ -23,6 +23,7 @@ const PostCard = ({ post }) => {
 		let i = document.getElementById(post?.postId)
 	  	i.focus();
 	};
+
 
     useEffect(
 		() => {
@@ -97,7 +98,7 @@ const PostCard = ({ post }) => {
                         {post?.caption}
 					</p>
                 </div>
-                {!postComments ? null : postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} comment={comment} key={comment.commentId} />))}
+                {!postComments ? null : postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} forceUpdate={forceUpdate} comment={comment} key={comment.commentId} />))}
 				<div className="AddComments">
 					<div className="Reaction">
 						<h3>

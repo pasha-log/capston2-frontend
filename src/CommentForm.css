@@ -39,3 +39,10 @@
 .CommentContainer {
 	width: 100%;
 }
+
+.PostComment:disabled,
+.PostComment[disabled] {
+	background-color: rgb(39, 39, 39);
+	color: rgb(21, 119, 195);
+	border-color: rgb(39, 39, 39);
+}

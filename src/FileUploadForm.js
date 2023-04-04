@@ -24,6 +24,7 @@ const FileUploadForm = () => {
 	const handleSelectedInput = async (event) => {
 		console.log(event.target.files[0]);
 		const response = await upload(event.target.files[0]);
+		console.log(response);
 		if (state?.prevPath) { 
 			let defaultValues = {
 				profileImageURL: response.result.Location,				

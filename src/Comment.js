@@ -6,10 +6,9 @@ import './Comment.css';
 import { Link } from "react-router-dom";
 import CommentHeart from "./CommentHeart";
 
-// We'll have to create a separate component that's called CommentList to render the children
-const Comment = ({comment, focus, postId}) => {
+const Comment = ({comment, focus, postId, forceUpdate }) => {
     const [ user, setUser ] = useState(null);
-    const { currentUser, setInnerCommentHTML, newCommentReply, setNewCommentReply } = useContext(CurrentUserContext);
+    const { currentUser, setInnerCommentHTML } = useContext(CurrentUserContext);
     const dateFormatter = new Intl.DateTimeFormat(undefined, {
 		dateStyle: "medium",
 		timeStyle: "short"
@@ -26,8 +25,8 @@ const Comment = ({comment, focus, postId}) => {
 
     const handleCommentReplyClick = () => {
         setInnerCommentHTML({username: `@${comment?.username}`, postId: postId, parentId: comment?.commentId})
-        setNewCommentReply(newCommentReply + 1)
-        focus()
+        forceUpdate();
+        focus();
     }
 
     var dt = dateFormatter.format(Date.parse(comment?.createdAt))

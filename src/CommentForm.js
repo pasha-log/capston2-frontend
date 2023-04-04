@@ -7,7 +7,8 @@ import { useForm, Controller } from 'react-hook-form';
 
 const CommentForm = ({ postId, newComment, setNewComment }) => {
 	const { storedValue, innerCommentHTML } = useContext(CurrentUserContext);
-	const { control, handleSubmit, reset } = useForm({
+	const { control, handleSubmit, reset, formState: {isDirty, isValid} } = useForm({
+		mode: "onChange",
 		defaultValues: {
 			username: storedValue?.username,
 			postId: postId,
@@ -18,7 +19,6 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 
 	const onSubmit = async (data) => {
 		const response = await InstapostApi.createComment(data);
-		console.log(response);
         setNewComment(newComment + 1);
         reset();
 
@@ -39,12 +39,14 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 											className="Message"
 											type="text"
 											placeholder="Add a comment..."
+											// value={message}
+											// onChange={event => setMessage(event.target.value)}
 											{...field}
 										/>
 									)}
 								/>
 							</div>
-							<Button className="PostComment">Post</Button>
+							<Button disabled={!isDirty || !isValid} className="PostComment">Post</Button>
 						</div>
 				</FormGroup>
 			</Form>

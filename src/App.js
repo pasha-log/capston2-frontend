@@ -18,7 +18,7 @@ function App() {
 	const [ newLike, setNewLike ] = useState(-1);
 	const [ modal, setModal ] = useState(false);
 	const [ innerCommentHTML, setInnerCommentHTML ] = useState();
-	const [ newCommentReply, setNewCommentReply ] = useState(-1);
+	// const [ newCommentReply, setNewCommentReply ] = useState(-1);
 
 	const toggle = () => setModal(!modal);
 	// const [ showModal, setShowModal ] = useState(false);
@@ -125,9 +125,7 @@ function App() {
 					logOutUser,
 					innerCommentHTML,
 					setInnerCommentHTML,
-					newLike,
-					newCommentReply,
-					setNewCommentReply
+					newLike
 				}}
 			>
 				<SettingsModal />

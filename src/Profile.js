@@ -50,7 +50,11 @@ const Profile = () => {
 					{(userBeingViewed?.posts?.length === 0 && userBeingViewed?.username !== currentUser?.username) ? 	
 						<div className="ProfileContainer">
 							<div className="gallery-item NullPosts" tabIndex="0">
+								<span id="Camera" className="material-symbols-outlined">
+									photo_camera
+								</span>
 								<p className='NoPostsYet'>No posts yet</p>
+								<p className='NoPostsYet Statement'>When this user shares photos they'll be appearing here.</p>
 							</div> 
 						</div> :
 						(userBeingViewed?.posts?.length === 0) ? 
