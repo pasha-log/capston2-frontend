@@ -175,3 +175,8 @@
 	--bs-alert-color: red;
 	margin-top: 1rem;
 }
+
+#edit {
+	--bs-alert-bg: black;
+	--bs-alert-border-color: black;
+}

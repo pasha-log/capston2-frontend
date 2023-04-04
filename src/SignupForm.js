@@ -23,8 +23,8 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 		if (success === true) {
 			navigate(`/${data.username}`);
 		} else {
-			setResponse(success);
 			console.log(success);
+			setResponse(success);
 			reset();
 		}
 	};
@@ -72,10 +72,10 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 							<Button className="SignupButton" type="submit" size="lg">
 								Sign up
 							</Button>
-							{response !== false ? response.length > 1 ? (
-								response.map((r) => <Alert type="danger" message={r} />)
-							) : (
-								<Alert type="danger" message={response} />
+							{response !== false && typeof response === 'object' ? (
+								response.map((r) => <Alert formType={'auth'} type="danger" message={r} />)
+							) : response !== false && typeof response === 'string' ? (
+								<Alert formType={'auth'} type="danger" message={response} />
 							) : null}
 						</div>
 					</Col>

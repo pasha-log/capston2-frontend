@@ -1,6 +1,6 @@
-const Alert = ({ type, message }) => {
+const Alert = ({ type, message, formType }) => {
 	return (
-		<div className={`alert alert-${type}`} role="alert">
+		<div id={formType} className={`alert alert-${type}`} role="alert">
 			<p className="mb-0 small">{message}</p>
 		</div>
 	);

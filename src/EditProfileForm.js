@@ -115,9 +115,10 @@ const EditProfileForm = () => {
                                         </div>
                                     </div>
                                 </div>
-							{/* {response === true ? <Alert type={'success'} message="Updated successfully." /> : null} */}
-							{response !== false && response !== true ? (
-								<Alert type="danger" message={response} />
+							{response !== false && response !== true && typeof response === 'object' ? (
+								response.map((r) => <Alert formType={'edit'} type="danger" message={r} />)
+							) : response !== false && response !== true && typeof response === 'string' ? (
+								<Alert formType={'edit'} type="danger" message={response} />
 							) : null}
 							<Button className="EditProfileButton" type="submit" size="md">
 								Submit

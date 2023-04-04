@@ -53,7 +53,7 @@ const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
 									render={({ field }) => <Input type="password" placeholder="Password" {...field} />}
 								/>
 							</div>
-							{response !== false ? <Alert type="danger" message={response} /> : null}
+							{response !== false ? <Alert formType={'auth'} type="danger" message={response} /> : null}
 							<Button className="LoginButton" type="submit" size="lg">
 								Log in
 							</Button>
