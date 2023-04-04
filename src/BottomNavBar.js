@@ -16,7 +16,7 @@ const BottomNavBar = () => {
 						<Col>
 							<Link id="home" to="/">
 								<span
-									style={{ fontSize: '2rem', marginTop: '.5rem' }}
+									style={{ fontSize: '3rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"
 								>
 									home
@@ -26,7 +26,7 @@ const BottomNavBar = () => {
 						<Col>
 							<Link id="search" to="/search">
 								<span
-									style={{ fontSize: '2rem', marginTop: '.5rem' }}
+									style={{ fontSize: '3rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"
 								>
 									search
@@ -36,7 +36,7 @@ const BottomNavBar = () => {
 						<Col>
 							<Link id="add_circle" to="/upload">
 								<span
-									style={{ fontSize: '2rem', marginTop: '.5rem' }}
+									style={{ fontSize: '3rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"
 								>
 									add_circle

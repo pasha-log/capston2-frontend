@@ -17,7 +17,7 @@ const TopNavBar = () => {
 							<Link id="home" to="/">
 								<span
 									style={{
-										fontSize: '2rem',
+										fontSize: '2.5rem',
 										marginTop: '.5rem',
 										fontFamily: "'Grand Hotel', cursive"
 									}}
@@ -29,7 +29,7 @@ const TopNavBar = () => {
 						<Col>
 							<Link id="notifications" to="/notifications">
 								<span
-									style={{ fontSize: '1.5rem', marginTop: '.5rem', marginBottom: '0rem' }}
+									style={{ fontSize: '2.5rem', marginTop: '.6rem', marginBottom: '0rem' }}
 									className="material-symbols-outlined"
 								>
 									favorite
@@ -37,8 +37,8 @@ const TopNavBar = () => {
 							</Link>
 							<span
 								style={{
-									fontSize: '1.5rem',
-									marginTop: '.5rem',
+									fontSize: '2.5rem',
+									marginTop: '.6rem',
 									marginBottom: '0rem',
 									cursor: 'pointer',
 									color: 'white'
