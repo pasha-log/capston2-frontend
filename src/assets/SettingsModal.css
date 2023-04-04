@@ -18,6 +18,7 @@
 .ModalBody button {
 	background-color: rgb(39, 39, 39);
 	border: none;
+	font-size: 2rem;
 }
 
 .ModalBody button:hover {
