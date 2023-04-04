@@ -7,7 +7,7 @@
 
 .EditFormContainer {
 	margin: 1rem 2rem 1rem 2rem;
-	height: 35rem;
+	height: 45rem;
 }
 
 .ChangeProfilePhoto {
@@ -37,10 +37,12 @@
 
 .EditProfileButton {
 	background-color: rgb(27, 156, 255);
+	font-size: 1.75rem;
 }
 
 .EditProfileButton:hover {
 	background-color: rgb(0, 126, 222);
+	font-size: 1.75rem;
 }
 
 .username,
@@ -60,6 +62,7 @@
 	color: white;
 	border: solid rgb(39, 39, 39) 1px;
 	box-shadow: none;
+	font-size: 1.75rem;
 }
 
 .InputMessage {
