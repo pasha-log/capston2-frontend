@@ -53,8 +53,8 @@ const FileUploadForm = () => {
 				>
 					<div className="UploadFormContainer">
 						<h1 className="NewPostLabel">Create New Post</h1>
-						<div className="Gallery">
-							<span id="Gallery" className="material-symbols-outlined">
+						<div className="GalleryIcon">
+							<span id="GalleryIcon" className="material-symbols-outlined">
 								gallery_thumbnail
 							</span>
 							<p>Upload Photos Here</p>

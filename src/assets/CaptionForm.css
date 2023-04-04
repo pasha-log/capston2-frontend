@@ -1,6 +1,6 @@
 .PostImage {
-	width: 25rem;
-	height: 25rem;
+	width: 30rem;
+	height: 30rem;
 }
 
 @media screen and (max-width: 995px) {
@@ -11,18 +11,18 @@
 }
 
 .CaptionFormContainer {
-	margin-top: 4rem;
+	margin-top: 5rem;
 	border-radius: 1rem;
 	background-color: rgb(39, 39, 39);
-	height: 35rem;
+	height: 40rem;
 }
 
 .CaptionFormDiv {
-	width: 100%;
+	width: 90%;
 }
 
 .NewCaptionPostLabel {
-	font-size: 1rem;
+	/* font-size: 2rem; */
 	padding-top: .5rem;
 	padding-bottom: .5rem;
 }
@@ -35,12 +35,14 @@
 	background-color: rgb(39, 39, 39);
 	color: rgb(27, 156, 255);
 	border-color: rgb(39, 39, 39);
+	font-size: 1.75rem;
 }
 
 .PostButton:hover {
 	background-color: rgb(39, 39, 39);
 	color: white;
 	border-color: rgb(39, 39, 39);
+	font-size: 1.75rem;
 }
 
 .Caption:focus,
@@ -49,6 +51,7 @@
 	color: white;
 	border: none;
 	box-shadow: none;
+	border-radius: 1rem;
 }
 
 .Caption::placeholder {
@@ -70,6 +73,7 @@
 
 .ShareControls {
 	border-bottom: solid rgb(71, 71, 71) 0.06rem;
+	font-size: 2rem;
 }
 
 .GoBack,
@@ -80,8 +84,8 @@
 
 .CaptionProfileImage {
 	border-radius: 50%;
-	width: 2rem;
-	height: 2rem;
+	width: 3rem;
+	height: 3rem;
 	/* content: url('./temp-profile-photo.jpg'); */
 	margin-top: .5rem;
 	margin-right: .5rem;
@@ -89,4 +93,5 @@
 
 .CaptionUsername {
 	margin-top: 1rem;
+	font-size: 1.5rem;
 }
