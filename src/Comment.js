@@ -34,13 +34,15 @@ const Comment = ({comment, focus, postId, forceUpdate }) => {
     return (
         <div className="PostCommentItem">
             <div className="PostCommentRow FlexRow">
-                <Link to={user ? `/${user?.username}` : `/${currentUser?.username}`}>
-                    <div>
-                        <img className="CommentProfilePhoto" src={user ? user?.profileImageURL : currentUser?.profileImageURL} alt="" />
-                    </div>
-                </Link>
+                <div className="CommentLeftBody">
+                    <Link to={user ? `/${user?.username}` : `/${currentUser?.username}`}>
+                        <div>
+                            <img className="CommentProfilePhoto" src={user ? user?.profileImageURL : currentUser?.profileImageURL} alt="" />
+                        </div>
+                    </Link>
 
-                <span className="CommentUsername"><p><strong className="UsernameInComment">{comment?.username}</strong>{comment?.message}</p></span>
+                    <span className="CommentUsername"><p><strong className="UsernameInComment">{comment?.username}</strong>{comment?.message}</p></span>
+                </div>
                 <div className="CommentHeart">
                     <CommentHeart key={comment?.commentId} id={comment?.commentId} likeType={'comment'} />
                 </div>

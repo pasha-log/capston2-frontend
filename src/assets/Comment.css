@@ -1,6 +1,11 @@
 .CommentProfilePhoto {
 	width: 2rem;
 	border-radius: 50%;
+	margin-right: .5rem;
+}
+
+.CommentUsername {
+	margin-top: .5rem;
 }
 
 .PostCommentItem {
@@ -9,12 +14,6 @@
 
 .UsernameInComment {
 	margin-right: .5rem;
-}
-
-@media screen and (min-width: 1300px) {
-	.UsernameInComment {
-		margin-left: -15rem;
-	}
 }
 
 .heart {
@@ -78,8 +77,16 @@
 }
 
 .PostCommentRow {
-	padding: 2px -1px;
-	-webkit-box-pack: justify;
+	/* padding: 2px -1px;
+	-webkit-box-pack: justify; */
 	justify-content: space-between;
+	/* justify-content: flex-start; */
+	/* justify-content: space-around; */
 	align-items: flex-start;
+}
+
+.PostCommentRow .CommentLeftBody {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }

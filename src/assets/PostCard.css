@@ -172,6 +172,11 @@ main .PostDetailContainer {
 	margin-right: 8px;
 }
 
+.PostDetails {
+	text-align: left;
+	margin-left: .5rem;
+}
+
 .Likes {
 	font-weight: 500;
 	margin-top: 5px;

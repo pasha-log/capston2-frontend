@@ -37,7 +37,6 @@ const PostCard = ({ post, forceUpdate }) => {
 		[ newComment, post?.postId, newLike ]
 	);
 	
-	// console.log(postComments)
 	var dt = dateFormatter.format(Date.parse(post?.createdAt))
 		
     return (
@@ -89,15 +88,17 @@ const PostCard = ({ post, forceUpdate }) => {
 						<PostSave />
 					</div>
 				</div>
-                <div>
-					<p className="Likes">{ post?.numLikes === "1" ? 'Liked by 1 other' : `Liked by ${post?.numLikes} others`}</p>
-                </div>
-                <div>
-					<p className="Caption">
-						<b className='CaptionUsername'>{post?.username}</b>
-                        {post?.caption}
-					</p>
-                </div>
+				<div className='PostDetails'>
+					<div>
+						<p className="Likes">{ post?.numLikes === "1" ? 'Liked by 1 other' : `Liked by ${post?.numLikes} others`}</p>
+					</div>
+					<div>
+						<p className="Caption">
+							<b className='CaptionUsername'>{post?.username}</b>
+							{post?.caption}
+						</p>
+					</div>
+				</div>
                 {!postComments ? null : postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} forceUpdate={forceUpdate} comment={comment} key={comment.commentId} />))}
 				<div className="AddComments">
 					<div className="Reaction">
