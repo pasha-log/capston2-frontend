@@ -1,15 +1,13 @@
 import { Input, Button, Form, FormGroup, Col } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
 import './EditProfileForm.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import { useNavigate, Link } from 'react-router-dom';
-// import { useState } from 'react';
-// import Alert from './Alert';
+import Alert from './Alert';
 
-// profileImageURL, fullName, username, bio, email
 const EditProfileForm = () => {
-	// const [ response, setResponse ] = useState(false);
+	const [ response, setResponse ] = useState(false);
     const navigate = useNavigate();
 	const { currentUser, editProfileInfo } = useContext(CurrentUserContext);
 	const { control, handleSubmit } = useForm({
@@ -25,13 +23,12 @@ const EditProfileForm = () => {
         console.log(data)
 		let success = await editProfileInfo(data);
         console.log(success);
-        navigate(`/${data.username}`);
-		// if (success === true) {
-		// 	setResponse(true);
-		// } else {
-		// 	setResponse(success);
-			// reset();
-		// }
+		if (success === true) {
+			setResponse(true);
+			navigate(`/${data.username}`);
+		} else {
+			setResponse(success);
+		}
 	};
 
 	return (
@@ -49,11 +46,9 @@ const EditProfileForm = () => {
 							<div className="EditUserDetails">
 								<div className="EditProfilePic">
 									<div className="EditProfileImage">
-										{/* <Link to={`/${user.username}`}> */}
 										<div className="EditImage">
 											<img src={currentUser?.profileImageURL} alt="" />
 										</div>
-										{/* </Link> */}
 									</div>
 								</div>
 								<h3>
@@ -120,10 +115,10 @@ const EditProfileForm = () => {
                                         </div>
                                     </div>
                                 </div>
-							{/* {response === true ? <Alert type={'success'} message="Updated successfully." /> : null}
+							{/* {response === true ? <Alert type={'success'} message="Updated successfully." /> : null} */}
 							{response !== false && response !== true ? (
-								<Alert type="danger" message={response[0]} />
-							) : null} */}
+								<Alert type="danger" message={response} />
+							) : null}
 							<Button className="EditProfileButton" type="submit" size="md">
 								Submit
 							</Button>
