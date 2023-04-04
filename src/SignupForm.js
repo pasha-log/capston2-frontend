@@ -7,7 +7,7 @@ import Alert from './Alert.js';
 
 const SignupForm = ({ setTokenAfterRegister }) => {
 	const navigate = useNavigate();
-	document.body.style = 'background: white;';
+	document.body.style = 'background: #eee;';
 	const [ response, setResponse ] = useState(false);
 	const { control, handleSubmit, reset } = useForm({
 		defaultValues: {
@@ -45,28 +45,58 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 								<Controller
 									name="email"
 									control={control}
-									render={({ field }) => <Input type="email" placeholder="Email" {...field} />}
+									render={({ field }) => (
+										<Input
+											className="EmailInput"
+											autoComplete="on"
+											type="email"
+											placeholder="Email"
+											{...field}
+										/>
+									)}
 								/>
 							</div>
 							<div className="Fullname">
 								<Controller
 									name="fullName"
 									control={control}
-									render={({ field }) => <Input placeholder="Firstname" {...field} />}
+									render={({ field }) => (
+										<Input
+											className="FullnameInput"
+											autoComplete="on"
+											placeholder="Firstname"
+											{...field}
+										/>
+									)}
 								/>
 							</div>
 							<div className="Username">
 								<Controller
 									name="username"
 									control={control}
-									render={({ field }) => <Input placeholder="Username" {...field} />}
+									render={({ field }) => (
+										<Input
+											className="UsernameInput"
+											autoComplete="on"
+											placeholder="Username"
+											{...field}
+										/>
+									)}
 								/>
 							</div>
 							<div className="Password">
 								<Controller
 									name="password"
 									control={control}
-									render={({ field }) => <Input type="password" placeholder="Password" {...field} />}
+									render={({ field }) => (
+										<Input
+											className="PasswordInput"
+											autoComplete="on"
+											type="password"
+											placeholder="Password"
+											{...field}
+										/>
+									)}
 								/>
 							</div>
 							<Button className="SignupButton" type="submit" size="lg">
@@ -81,7 +111,7 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 					</Col>
 				</FormGroup>
 				<div>
-					<p>
+					<p className="Login">
 						Have an account?{' '}
 						<Link className="LoginLink" to={'/login'}>
 							Log in

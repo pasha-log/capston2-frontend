@@ -8,10 +8,12 @@
 .Search:hover {
 	background-color: rgb(39, 39, 39);
 	border: rgb(88, 88, 88);
+	font-size: 1.5rem;
 }
 
 .SearchInput::placeholder {
 	color: rgb(88, 88, 88);
+	font-size: 1.5rem;
 }
 
 .Search {

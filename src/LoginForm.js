@@ -7,7 +7,7 @@ import Alert from './Alert.js';
 
 const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
 	setShowNav(false);
-	document.body.style = 'background: white;';
+	document.body.style = 'background: #eee;';
 	const navigate = useNavigate();
 	const [ response, setResponse ] = useState(false);
 	const { control, handleSubmit, reset } = useForm({
@@ -39,19 +39,36 @@ const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
 					>
 						<div className="LoginFormContainer">
 							<h1 className="LoginLogo">Instapost</h1>
-							<div className="Username">
-								<Controller
-									name="username"
-									control={control}
-									render={({ field }) => <Input placeholder="Username" {...field} />}
-								/>
-							</div>
-							<div className="Password">
-								<Controller
-									name="password"
-									control={control}
-									render={({ field }) => <Input type="password" placeholder="Password" {...field} />}
-								/>
+							<div className="LoginInputs">
+								<div className="Username">
+									<Controller
+										name="username"
+										control={control}
+										render={({ field }) => (
+											<Input
+												autoComplete="on"
+												className="UsernameInput"
+												placeholder="Username"
+												{...field}
+											/>
+										)}
+									/>
+								</div>
+								<div className="Password">
+									<Controller
+										name="password"
+										control={control}
+										render={({ field }) => (
+											<Input
+												autoComplete="on"
+												className="PasswordInput"
+												type="password"
+												placeholder="Password"
+												{...field}
+											/>
+										)}
+									/>
+								</div>
 							</div>
 							{response !== false ? <Alert formType={'auth'} type="danger" message={response} /> : null}
 							<Button className="LoginButton" type="submit" size="lg">

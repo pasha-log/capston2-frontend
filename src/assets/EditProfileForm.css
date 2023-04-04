@@ -177,6 +177,7 @@
 	--bs-alert-border-color: black;
 	--bs-alert-color: red;
 	margin-top: 1rem;
+	font-size: 1.75rem;
 }
 
 #edit {
