@@ -94,10 +94,8 @@ main .PostDetailContainer {
 	justify-content: center;
 	border-radius: 50%;
 	overflow: hidden;
-	width: 2rem;
-	height: 2rem;
-	/* width: 30px;
-	height: 30px; */
+	width: 3rem;
+	height: 3rem;
 	background: linear-gradient(to right, red, orange);
 	padding: 2px;
 	margin-right: 8px;
@@ -140,12 +138,13 @@ main .PostDetailContainer {
 }
 
 .Col-9 .PostDetailCard .PostDetailTop .PostUserDetails h3 span {
-	font-size: 0.75em;
+	/* font-size: 0.75em; */
+	font-size: 1em;
 }
 
 .Date {
 	transform: scale(0.6);
-	font-size: .8rem;
+	font-size: 1.5rem;
 	overflow: hidden;
 	white-space: nowrap;
 	color: rgb(88, 88, 88);
@@ -187,7 +186,7 @@ main .PostDetailContainer {
 .Caption {
 	font-weight: 400;
 	margin-top: 5px;
-	font-size: 14px;
+	font-size: 1.5rem;
 	color: #ffffff;
 	line-height: 1.5em;
 }

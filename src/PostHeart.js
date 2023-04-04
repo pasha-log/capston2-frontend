@@ -11,11 +11,11 @@ const PostHeart = ({ id, likeType }) => {
 		<>
 			{(currentUser?.postLikes.find((p) => p.postId === id) ? (
 				<IconButton onClick={() => unlike(currentUser?.username, id, likeType)}>
-					<Favorite style={{ color: 'red', fontSize: '2rem' }} />
+					<Favorite style={{ color: 'red', fontSize: '3rem' }} />
 				</IconButton>
 			) : (
 				<IconButton onClick={() => like(currentUser?.username, id, likeType)}>
-					<FavoriteBorder style={{ color: 'white', fontSize: '2rem' }} />
+					<FavoriteBorder style={{ color: 'white', fontSize: '3rem' }} />
 				</IconButton>
 			))}
 		</>
