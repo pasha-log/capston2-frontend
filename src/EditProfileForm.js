@@ -9,7 +9,8 @@ import Alert from './Alert';
 const EditProfileForm = () => {
 	const [ response, setResponse ] = useState(false);
     const navigate = useNavigate();
-	const { currentUser, editProfileInfo } = useContext(CurrentUserContext);
+	const { currentUser, editProfileInfo, nprogress } = useContext(CurrentUserContext);
+	nprogress.done();
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			fullName: currentUser?.fullName,
@@ -21,13 +22,16 @@ const EditProfileForm = () => {
 
 	const onSubmit = async (data) => {
         console.log(data)
+		nprogress.start();
 		let success = await editProfileInfo(data);
         console.log(success);
 		if (success === true) {
 			setResponse(true);
 			navigate(`/${data.username}`);
+			nprogress.done();
 		} else {
 			setResponse(success);
+			nprogress.done();
 		}
 	};
 

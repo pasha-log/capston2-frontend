@@ -4,8 +4,11 @@ import './assets/LoginForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Alert from './Alert.js';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
+	const { nprogress } = useContext(CurrentUserContext);
 	setShowNav(false);
 	document.body.style = 'background: #eee;';
 	const navigate = useNavigate();
@@ -18,12 +21,15 @@ const LoginForm = ({ setTokenAfterLogin, setShowNav }) => {
 	});
 
 	const onSubmit = async (data) => {
+		nprogress.start();
 		const success = await setTokenAfterLogin(data, data.username);
 		if (success === true) {
 			navigate(`/${data.username}`);
+			nprogress.done();
 		} else {
 			setResponse(success);
 			reset();
+			nprogress.done();
 		}
 	};
 	return (

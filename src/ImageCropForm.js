@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import './assets/ImageCropForm.css';
 import ImageCropDialog from './ImageCropDialog';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const ImageCropForm = () => {
+	const { nprogress, upload } = useContext(CurrentUserContext);
 	const { state } = useLocation();
 	const { id, imageUrl } = state;
 	const initData = {
@@ -11,65 +14,51 @@ const ImageCropForm = () => {
 		imageUrl: imageUrl,
 		croppedImageUrl: null
 	};
-	// const initData = [
-	// 	{
-	// 		id: id,
-	// 		imageUrl: imageUrl,
-	// 		croppedImageUrl: null
-	// 	}
-	// ];
-	const [ image, setImage ] = useState(initData);
-	const [ selectedImg, setSelectedImg ] = useState(null);
-	const onCancel = () => {
-		setSelectedImg(null);
+
+	const navigate = useNavigate();
+
+	const dataURLtoFile = (dataurl, filename) => {
+		const arr = dataurl.split(',');
+		const mime = arr[0].match(/:(.*?);/)[1];
+		const bstr = atob(arr[1]);
+		let n = bstr.length;
+		const u8arr = new Uint8Array(n);
+
+		while (n--) u8arr[n] = bstr.charCodeAt(n);
+		return new File([ u8arr ], filename, { type: mime });
 	};
+
+	const [ image, setImage ] = useState(initData);
 
 	const resetImage = (id) => {
 		setCroppedImageFor(id);
 	};
 
-	const setCroppedImageFor = (crop, zoom, aspect, croppedImageUrl) => {
-		let newImage = [ ...image ];
-		// const imageIndex = image.findIndex((x) => x.id === id);
-		// const image = image[imageIndex];
+	const setCroppedImageFor = async (crop, zoom, aspect, croppedImageUrl) => {
+		nprogress.start();
+		let newImage;
 		const newImg = { ...image, croppedImageUrl, crop, zoom, aspect };
-		// newImage[imageIndex] = newImg;
+
 		newImage = newImg;
 		setImage(newImage);
-		setSelectedImg(null);
+
+		newImage = dataURLtoFile(newImage.croppedImageUrl, image.id);
+		const response = await upload(newImage);
+		navigate('/caption', { state: { imageUrl: response.result.Location } });
+		nprogress.done();
 	};
+
 	return (
 		<div>
-			{selectedImg ? (
-				<ImageCropDialog
-					id={image.id}
-					imageUrl={image.imageUrl}
-					cropInit={image.crop}
-					zoomInit={image.zoom}
-					aspectInit={image.aspect}
-					onCancel={onCancel}
-					setCroppedImageFor={setCroppedImageFor}
-					resetImage={resetImage}
-				/>
-			) : // <ImageCropDialog
-			// 	id={selectedImg.id}
-			// 	imageUrl={selectedImg.imageUrl}
-			// 	cropInit={selectedImg.crop}
-			// 	zoomInit={selectedImg.zoom}
-			// 	aspectInit={selectedImg.aspect}
-			// 	onCancel={onCancel}
-			// 	setCroppedImageFor={setCroppedImageFor}
-			// />
-			null}
-			{/* {image.map((pic) => ( */}
-			<div className="ImageCard" key={image.id}>
-				<img
-					src={image.croppedImageUrl ? image.croppedImageUrl : image.imageUrl}
-					alt=""
-					onClick={() => setSelectedImg(image)}
-				/>
-			</div>
-			{/* ))} */}
+			<ImageCropDialog
+				id={image.id}
+				imageUrl={image.imageUrl}
+				cropInit={image.crop}
+				zoomInit={image.zoom}
+				aspectInit={image.aspect}
+				setCroppedImageFor={setCroppedImageFor}
+				resetImage={resetImage}
+			/>
 		</div>
 	);
 };

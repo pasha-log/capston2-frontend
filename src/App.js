@@ -8,8 +8,14 @@ import useLocalStorage from './hooks/useLocalStorage';
 import BottomNavBar from './BottomNavBar';
 import TopNavBar from './TopNavBar';
 import SettingsModal from './SettingsModal';
+import nprogress from 'nprogress';
 
 function App() {
+	nprogress.configure({ showSpinner: false });
+	nprogress.configure({
+		template:
+			"<div class='bar fixed-top' role='bar'><div class='peg'></div></div><div class='spinner' role='spinner'><div class='spinner-icon'></div></div>"
+	});
 	const [ currentUser, setCurrentUser ] = useState();
 	const [ storedValue, setValue ] = useLocalStorage();
 	const [ showNav, setShowNav ] = useState(true);
@@ -21,7 +27,6 @@ function App() {
 	// const [ newCommentReply, setNewCommentReply ] = useState(-1);
 
 	const toggle = () => setModal(!modal);
-	// const [ showModal, setShowModal ] = useState(false);
 
 	useEffect(
 		() => {
@@ -106,6 +111,11 @@ function App() {
 		}
 	};
 
+	const upload = async (data) => {
+		let response = await InstapostApi.uploadPost(data);
+		return response;
+	};
+
 	return (
 		<div className="App">
 			<CurrentUserContext.Provider
@@ -125,7 +135,9 @@ function App() {
 					logOutUser,
 					innerCommentHTML,
 					setInnerCommentHTML,
-					newLike
+					newLike,
+					nprogress,
+					upload
 				}}
 			>
 				<SettingsModal />

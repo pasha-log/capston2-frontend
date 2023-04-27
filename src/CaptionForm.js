@@ -8,7 +8,7 @@ import CurrentUserContext from './CurrentUserContext';
 
 const CaptionForm = () => {
 	const navigate = useNavigate();
-	const { currentUser, newPost, setNewPost } = useContext(CurrentUserContext);
+	const { currentUser, newPost, setNewPost, nprogress } = useContext(CurrentUserContext);
 	const { state } = useLocation();
 	const { imageUrl } = state;
 	const { control, handleSubmit } = useForm({
@@ -23,10 +23,11 @@ const CaptionForm = () => {
 	});
 
 	const onSubmit = async (data) => {
-		let response = await InstapostApi.createPost(data);
+		nprogress.start();
+		await InstapostApi.createPost(data);
 		setNewPost(newPost + 1);
 		navigate(`/${currentUser.username}`);
-		console.log(response);
+		nprogress.done();
 	};
 
 	return (

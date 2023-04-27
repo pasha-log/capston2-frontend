@@ -2,32 +2,20 @@ import { useState } from 'react';
 import Cropper from 'react-easy-crop';
 import './assets/ImageCropDialog.css';
 import getCroppedImg from './cropImage';
+import { Button, Col, Row, Container } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
 
-// const aspectRatios = [ { value: 4 / 3, text: '4/3' }, { value: 16 / 9, text: '16/9' }, { value: 1 / 2, text: '1/2' } ];
-
-const ImageCropDialog = ({
-	id,
-	imageUrl,
-	cropInit,
-	zoomInit,
-	aspectInit,
-	onCancel,
-	setCroppedImageFor,
-	resetImage
-}) => {
+const ImageCropDialog = ({ imageUrl, cropInit, zoomInit, setCroppedImageFor }) => {
+	const navigate = useNavigate();
 	if (zoomInit == null) {
 		zoomInit = 1;
 	}
 	if (cropInit == null) {
 		cropInit = { x: 0, y: 0 };
 	}
-	// if (aspectInit == null) {
-	// 	aspectInit = aspectRatios[0];
-	// }
+
 	const [ zoom, setZoom ] = useState(zoomInit);
 	const [ crop, setCrop ] = useState(cropInit);
-	// const [ aspect, setAspect ] = useState(aspectInit);
-	// const [ aspect, setAspect ] = useState(1 / 1);
 	const aspect = 1 / 1;
 	const [ croppedAreaPixels, setCroppedAreaPixels ] = useState(null);
 
@@ -39,12 +27,6 @@ const ImageCropDialog = ({
 		setZoom(zoom);
 	};
 
-	// const onAspectChange = (e) => {
-	// 	const value = e.target.value;
-	// 	const ratio = aspectRatios.find((ratio) => ratio.value === value);
-	// 	setAspect(ratio);
-	// };
-
 	const onCropComplete = (croppedArea, croppedAreaPixels) => {
 		setCroppedAreaPixels(croppedAreaPixels);
 	};
@@ -54,23 +36,39 @@ const ImageCropDialog = ({
 		setCroppedImageFor(crop, zoom, aspect, croppedImageUrl);
 	};
 
-	const onResetImage = () => {
-		resetImage(id);
-	};
 	return (
-		<div className="Backdrop">
-			<div className="CropContainer">
-				<Cropper
-					image={imageUrl}
-					zoom={zoom}
-					crop={crop}
-					aspect={1 / 1}
-					onCropChange={onCropChange}
-					onZoomChange={onZoomChange}
-					onCropComplete={onCropComplete}
-				/>
-			</div>
-			<div className="Controls">
+		<Container fluid>
+			<div className="CropDiv">
+				<div className="ShareControls">
+					<Row>
+						<Col>
+							<Button className="GoBack" onClick={() => navigate(-1)}>
+								<span id="GoBack" className="material-symbols-outlined">
+									arrow_back
+								</span>
+							</Button>
+						</Col>
+						<Col>
+							<h1 className="NewCaptionPostLabel">Crop</h1>
+						</Col>
+						<Col>
+							<Button onClick={onCrop} className="PostButton" type="submit" size="sm">
+								Next
+							</Button>
+						</Col>
+					</Row>
+				</div>
+				<div className="CropContainer">
+					<Cropper
+						image={imageUrl}
+						zoom={zoom}
+						crop={crop}
+						aspect={1 / 1}
+						onCropChange={onCropChange}
+						onZoomChange={onZoomChange}
+						onCropComplete={onCropComplete}
+					/>
+				</div>
 				<div className="ControlsUpperArea">
 					<input
 						type="range"
@@ -83,21 +81,9 @@ const ImageCropDialog = ({
 						}}
 						className="Slider"
 					/>
-					{/* <select onChange={onAspectChange}>
-						{aspectRatios.map((ratio) => (
-							<option key={ratio.text} value={ratio.value} selected={ratio.value === aspect.value}>
-								{ratio.text}
-							</option>
-						))}
-					</select> */}
-				</div>
-				<div className="ButtonArea">
-					<button onClick={onCancel}>Cancel</button>
-					<button onClick={onResetImage}>Reset</button>
-					<button onClick={onCrop}>Crop</button>
 				</div>
 			</div>
-		</div>
+		</Container>
 	);
 };
 

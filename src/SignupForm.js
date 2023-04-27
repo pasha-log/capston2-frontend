@@ -4,8 +4,11 @@ import './assets/SignupForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Alert from './Alert.js';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const SignupForm = ({ setTokenAfterRegister }) => {
+	const { nprogress } = useContext(CurrentUserContext);
 	const navigate = useNavigate();
 	document.body.style = 'background: #eee;';
 	const [ response, setResponse ] = useState(false);
@@ -19,13 +22,15 @@ const SignupForm = ({ setTokenAfterRegister }) => {
 	});
 
 	const onSubmit = async (data) => {
+		nprogress.start();
 		let success = await setTokenAfterRegister(data, data.username);
 		if (success === true) {
 			navigate(`/${data.username}`);
+			nprogress.done();
 		} else {
-			console.log(success);
 			setResponse(success);
 			reset();
+			nprogress.done();
 		}
 	};
 	return (

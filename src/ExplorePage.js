@@ -4,8 +4,11 @@ import SearchBar from './SearchBar';
 import { Button } from 'reactstrap';
 import UserCard from './UserCard';
 import './assets/ExplorePage.css';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const ExplorePage = () => {
+	const { nprogress } = useContext(CurrentUserContext);
 	const [ users, setUsers ] = useState([]);
 	const [ searchTerm, setSearchTerm ] = useState('');
 	const [ noUsersFound, setNoUsersFound ] = useState(false);
@@ -13,9 +16,11 @@ const ExplorePage = () => {
 	useEffect(
 		() => {
 			async function getAllUsers(name) {
+				nprogress.start();
 				let users = await InstapostApi.findAllUsers(name);
                 console.log(users)
 				users.users.length !== 0 ? setUsers(users.users) : setNoUsersFound(true);
+				nprogress.done();
 			}
 			getAllUsers(searchTerm);
 		},

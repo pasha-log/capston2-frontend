@@ -5,12 +5,15 @@ import CurrentUserContext from './CurrentUserContext';
 import './assets/Profile.css';
 
 const ProfileSettings = ({ user }) => {
-	const { currentUser, follow, unfollow, toggle } = useContext(CurrentUserContext);
+	const { currentUser, follow, unfollow, toggle, nprogress } = useContext(CurrentUserContext);
+	const onEditClick = () => {
+		nprogress.start();
+	}
 	return (
 		<div className="ProfileUserSettings">
 			<h1 className="ProfileUsername">{user?.username}</h1>
 			{user?.username === currentUser?.username ? (
-				<Link to='/edit'>
+				<Link to='/edit' onClick={onEditClick}>
 					<Button className="btn ProfileEditButton EditProfile">Edit Profile</Button>
 				</Link>
 			) : (

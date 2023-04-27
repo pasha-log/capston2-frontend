@@ -14,13 +14,15 @@ function useForceUpdate() {
 
 const HomePage = () => {
 	const forceUpdate = useForceUpdate();
-	const { newFollow, storedValue, newLike } = useContext(CurrentUserContext);
+	const { newFollow, storedValue, newLike, nprogress } = useContext(CurrentUserContext);
 	const [ followingPosts, setFollowingPosts ] = useState();
 	useEffect(
 		() => {
 			const getFollowingPosts = async (username) => {
+				nprogress.start()
 				let response = await InstapostApi.getFollowingPosts(username);
 				setFollowingPosts(response);
+				nprogress.done()
 			};
 
 			getFollowingPosts(storedValue?.username);

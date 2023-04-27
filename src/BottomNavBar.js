@@ -5,8 +5,12 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
 const BottomNavBar = () => {
-	const { storedValue, currentUser } = useContext(CurrentUserContext);
+	const { storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
 
+	const onUploadClick = () => {
+		nprogress.start();
+	}
+	
 	return (
 		<div className='NavBarContainer'>
 			{storedValue &&
@@ -34,7 +38,7 @@ const BottomNavBar = () => {
 							</Link>
 						</Col>
 						<Col>
-							<Link id="add_circle" to="/upload">
+							<Link id="add_circle" to="/upload" onClick={onUploadClick}>
 								<span
 									style={{ fontSize: '3rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"
@@ -45,7 +49,6 @@ const BottomNavBar = () => {
 						</Col>
 						<Col>
 							<Link id="person" to={`/${currentUser.username}`}>
-								{/* <span className="material-symbols-outlined">person</span> */}
 								<img
 									className="NavBarProfile"
 									src={

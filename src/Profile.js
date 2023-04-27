@@ -11,7 +11,7 @@ import ProfileBio from './ProfileBio';
 
 const Profile = () => {
 	const { username } = useParams();
-	const { currentUser, newFollow, newLike } = useContext(CurrentUserContext);
+	const { currentUser, newFollow, newLike, nprogress } = useContext(CurrentUserContext);
 	const [ userBeingViewed, setUserBeingViewed ] = useState(null); 
 	
 	document.body.style = 'background: black;';
@@ -20,8 +20,10 @@ const Profile = () => {
 	useEffect(
 		() => {
             const getUserInfo = async (username) => {
+				nprogress.start();
                 const user = await InstapostApi.getUser(username);
                 setUserBeingViewed(user);
+				nprogress.done();
             }
             getUserInfo(username);
     }, [ newFollow, username, newLike ]);

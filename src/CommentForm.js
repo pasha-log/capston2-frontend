@@ -18,7 +18,7 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 	});
 
 	const onSubmit = async (data) => {
-		const response = await InstapostApi.createComment(data);
+		await InstapostApi.createComment(data);
         setNewComment(newComment + 1);
         reset();
 

@@ -1,9 +1,14 @@
 import { useLocation } from 'react-router-dom';
 import PostCard from './PostCard';
 import './assets/HomePage.css';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const PostDetail = () => {
+	const { nprogress } = useContext(CurrentUserContext);
 	const { state } = useLocation();
+
+	nprogress.done();
 
 	return (
 		<div className="Col-9">

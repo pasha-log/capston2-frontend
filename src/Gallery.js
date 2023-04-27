@@ -2,8 +2,14 @@ import './assets/Profile.css';
 import { Link } from 'react-router-dom';
 import Favorite from '@mui/icons-material/Favorite';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
+import { useContext } from 'react';
+import CurrentUserContext from './CurrentUserContext';
 
 const Gallery = ({ userBeingViewed }) => {
+	const { nprogress } = useContext(CurrentUserContext);
+	const onPostClick = () => {
+		nprogress.start();
+	}
 	return (
 		<div className="gallery">
 			{userBeingViewed?.posts?.slice(0).reverse().map((post) => {
@@ -20,6 +26,7 @@ const Gallery = ({ userBeingViewed }) => {
 							createdAt: post.createdAt,
 							numLikes: post.numLikes
 						}}
+						onClick={onPostClick}
 					>
 						<div className="gallery-item" tabIndex="0">
 							<img className="gallery-image" src={post.postURL} alt={post.id} />

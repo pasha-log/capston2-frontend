@@ -1,12 +1,12 @@
 .UploadFormContainer {
 	border-radius: 1rem;
 	background-color: rgb(39, 39, 39);
-	height: 35rem;
+	height: 45rem;
 	margin-top: 5rem;
 }
 
 .UploadFormDiv {
-	width: 90%;
+	width: 70%;
 }
 
 .NewPostLabel {

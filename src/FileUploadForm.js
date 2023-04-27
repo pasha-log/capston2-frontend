@@ -1,13 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { Form, FormGroup, Col } from 'reactstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
-import InstapostApi from './Api';
 import './assets/FileUploadForm.css';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
 const FileUploadForm = () => {
-	const { currentUser, editProfileInfo } = useContext(CurrentUserContext);
+	const { nprogress, upload, currentUser, editProfileInfo } = useContext(CurrentUserContext);
+
+	nprogress.done();
 
 	const { register } = useForm();
 
@@ -15,30 +16,27 @@ const FileUploadForm = () => {
 
 	const { state } = useLocation();
 
-	const upload = async (data) => {
-		console.log(data);
-		let response = await InstapostApi.uploadPost(data);
-		return response;
-	};
-
 	const handleSelectedInput = async (event) => {
-		console.log(event.target.files[0]);
-		const response = await upload(event.target.files[0]);
-		console.log(response);
-		if (state?.prevPath) { 
+		nprogress.start();
+		if (state?.prevPath) {
+			const response = await upload(event.target.files[0])
 			let defaultValues = {
-				profileImageURL: response.result.Location,				
+				profileImageURL: response.result.Location,
 				fullName: currentUser?.fullName,
 				username: currentUser?.username,
 				bio: currentUser?.bio,
 				email: currentUser?.email
 			}
-			let success = await editProfileInfo(defaultValues);
-			console.log(success);
+			await editProfileInfo(defaultValues);
 			navigate(`/${currentUser?.username}`);
-		} else {
-			navigate('/caption', { state: { imageUrl: response.result.Location } }) 
+			nprogress.done();
 		}
+		const reader = new FileReader();
+		reader.readAsDataURL(event.target.files[0]);
+		reader.addEventListener('load', () => {
+			navigate('/crop', { state: { imageUrl: reader.result, id: event.target.files[0].name } });
+			nprogress.done();
+		});
 	};
 
 	return (
