@@ -30,13 +30,14 @@ const FileUploadForm = () => {
 			await editProfileInfo(defaultValues);
 			navigate(`/${currentUser?.username}`);
 			nprogress.done();
+		} else {
+			const reader = new FileReader();
+			reader.readAsDataURL(event.target.files[0]);
+			reader.addEventListener('load', () => {
+				navigate('/crop', { state: { imageUrl: reader.result, id: event.target.files[0].name } });
+				nprogress.done();
+			});
 		}
-		const reader = new FileReader();
-		reader.readAsDataURL(event.target.files[0]);
-		reader.addEventListener('load', () => {
-			navigate('/crop', { state: { imageUrl: reader.result, id: event.target.files[0].name } });
-			nprogress.done();
-		});
 	};
 
 	return (
