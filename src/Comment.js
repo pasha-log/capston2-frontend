@@ -8,7 +8,7 @@ import CommentHeart from "./CommentHeart";
 
 const Comment = ({comment, focus, postId, forceUpdate }) => {
     const [ user, setUser ] = useState(null);
-    const { currentUser, setInnerCommentHTML } = useContext(CurrentUserContext);
+    const { currentUser, setInnerCommentHTML, setNewReply, newReply } = useContext(CurrentUserContext);
     const dateFormatter = new Intl.DateTimeFormat(undefined, {
 		dateStyle: "medium",
 		timeStyle: "short"
@@ -27,6 +27,7 @@ const Comment = ({comment, focus, postId, forceUpdate }) => {
         setInnerCommentHTML({username: `@${comment?.username}`, postId: postId, parentId: comment?.commentId})
         forceUpdate();
         focus();
+        setNewReply(newReply + 1);
     }
 
     var dt = dateFormatter.format(Date.parse(comment?.createdAt))
@@ -50,7 +51,7 @@ const Comment = ({comment, focus, postId, forceUpdate }) => {
             <div className="PostCommentActions FlexRow">
                 <span className="CommentAction">{dt}</span>
                 <span className="CommentAction">{comment?.numLikes === "1" ? '1 Like' : `${comment?.numLikes} Likes`}</span>
-                <span onClick={handleCommentReplyClick} style={{cursor: "pointer"}}>Reply</span>
+                <span onClick={handleCommentReplyClick} id={comment?.username} style={{cursor: "pointer"}}>Reply</span>
             </div>
         </div>
     )

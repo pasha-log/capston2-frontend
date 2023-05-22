@@ -4,18 +4,29 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 import { Input, Button, Form, FormGroup } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
+import { useEffect } from 'react';
 
 const CommentForm = ({ postId, newComment, setNewComment }) => {
-	const { storedValue, innerCommentHTML } = useContext(CurrentUserContext);
-	const { control, handleSubmit, reset, formState: {isDirty, isValid} } = useForm({
+	const { storedValue, innerCommentHTML, newReply } = useContext(CurrentUserContext);
+	const { control, handleSubmit, reset, formState: {isDirty, isValid}, setValue } = useForm({
 		mode: "onChange",
 		defaultValues: {
 			username: storedValue?.username,
 			postId: postId,
 			parentId: null,
-			message: innerCommentHTML?.postId === postId ? innerCommentHTML?.username : ''
+			message: ''
 		}
 	});
+
+	useEffect(
+		() => {
+            const setReplyUsername = (innerCommentHTML) => {
+				if (innerCommentHTML?.postId === postId) {
+					setValue("message", innerCommentHTML?.username)
+				}
+            }
+            setReplyUsername(innerCommentHTML)
+    }, [ newReply ]);
 
 	const onSubmit = async (data) => {
 		await InstapostApi.createComment(data);

@@ -24,7 +24,7 @@ function App() {
 	const [ newLike, setNewLike ] = useState(-1);
 	const [ modal, setModal ] = useState(false);
 	const [ innerCommentHTML, setInnerCommentHTML ] = useState();
-	// const [ newCommentReply, setNewCommentReply ] = useState(-1);
+	const [ newReply, setNewReply ] = useState(-1);
 
 	const toggle = () => setModal(!modal);
 
@@ -135,6 +135,8 @@ function App() {
 					logOutUser,
 					innerCommentHTML,
 					setInnerCommentHTML,
+					newReply,
+					setNewReply,
 					newLike,
 					nprogress,
 					upload
