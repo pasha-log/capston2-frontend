@@ -40,7 +40,8 @@
 	align-items: center;
 	white-space: nowrap;
 	flex-wrap: nowrap;
-	padding: 0px 0px 0px 47px;
+	/* padding: 0px 0px 0px 35px; */
+	padding: 0rem 0rem 0rem 3.5rem;
 	max-width: 200px;
 	justify-content: space-between;
 	color: rgb(88, 88, 88);
@@ -76,4 +77,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.PostCommentReplies {
+	margin-left: 3.5rem;
 }

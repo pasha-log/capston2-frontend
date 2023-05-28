@@ -5,8 +5,9 @@ import CurrentUserContext from './CurrentUserContext';
 import './assets/Comment.css';
 import { Link } from "react-router-dom";
 import CommentHeart from "./CommentHeart";
+import CommentReply from "./CommentReply";
 
-const Comment = ({comment, focus, postId, forceUpdate }) => {
+const Comment = ({ comment, focus, postId, forceUpdate, date }) => {
     const [ user, setUser ] = useState(null);
     const { currentUser, setInnerCommentHTML, setNewReply, newReply } = useContext(CurrentUserContext);
     const dateFormatter = new Intl.DateTimeFormat(undefined, {
@@ -23,35 +24,42 @@ const Comment = ({comment, focus, postId, forceUpdate }) => {
             (comment?.username === currentUser?.username) ? setUser(null) : getUserInfo(comment?.username);
     }, []);
 
-    const handleCommentReplyClick = () => {
-        setInnerCommentHTML({username: `@${comment?.username}`, postId: postId, parentId: comment?.commentId})
+    const handleCommentReplyClick = (event) => {
+        setInnerCommentHTML({username: `@${comment?.username}`, postId: postId, parentId: event.target.id})
         forceUpdate();
         focus();
         setNewReply(newReply + 1);
     }
 
-    var dt = dateFormatter.format(Date.parse(comment?.createdAt))
-
     return (
-        <div className="PostCommentItem">
-            <div className="PostCommentRow FlexRow">
-                <div className="CommentLeftBody">
-                    <Link to={user ? `/${user?.username}` : `/${currentUser?.username}`}>
-                        <div>
-                            <img className="CommentProfilePhoto" src={user ? user?.profileImageURL : currentUser?.profileImageURL} alt="" />
-                        </div>
-                    </Link>
+        <div>
+            <div className="PostCommentItem">
+                <div className="PostCommentRow FlexRow">
+                    <div className="CommentLeftBody">
+                        <Link to={user ? `/${user?.username}` : `/${currentUser?.username}`}>
+                            <div>
+                                <img className="CommentProfilePhoto" src={user ? user?.profileImageURL : currentUser?.profileImageURL} alt="" />
+                            </div>
+                        </Link>
 
-                    <span className="CommentUsername"><p><strong className="UsernameInComment">{comment?.username}</strong>{comment?.message}</p></span>
+                        <span className="CommentUsername"><p><strong className="UsernameInComment">{comment?.username}</strong>{comment?.message}</p></span>
+                    </div>
+                    <div className="CommentHeart">
+                        <CommentHeart 
+                            key={comment?.commentId ? comment?.commentId : comment?.comment_id} 
+                            id={comment?.commentId ? comment?.commentId : comment?.comment_id} 
+                            likeType={'comment'} 
+                        />
+                    </div>
                 </div>
-                <div className="CommentHeart">
-                    <CommentHeart key={comment?.commentId} id={comment?.commentId} likeType={'comment'} />
+                <div className="PostCommentActions FlexRow">
+                    <span className="CommentAction">{date ? date : dateFormatter.format(Date.parse(comment?.createdAt))}</span>
+                    <span className="CommentAction">{comment?.numLikes === "1" ? '1 Like' : `${comment?.numLikes} Likes`}</span>
+                    <span onClick={handleCommentReplyClick} id={comment?.commentId || comment?.comment_id} style={{cursor: "pointer"}}>Reply</span>
                 </div>
             </div>
-            <div className="PostCommentActions FlexRow">
-                <span className="CommentAction">{dt}</span>
-                <span className="CommentAction">{comment?.numLikes === "1" ? '1 Like' : `${comment?.numLikes} Likes`}</span>
-                <span onClick={handleCommentReplyClick} id={comment?.username} style={{cursor: "pointer"}}>Reply</span>
+            <div className="PostCommentReplies">
+                {comment?.children?.length === 0 ? null : comment?.children?.map((comment) => (<CommentReply postId={postId} focus={focus} forceUpdate={forceUpdate} comment={comment} key={comment.comment_id} />))}
             </div>
         </div>
     )

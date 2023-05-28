@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 
 const CommentForm = ({ postId, newComment, setNewComment }) => {
 	const { storedValue, innerCommentHTML, newReply } = useContext(CurrentUserContext);
-	const { control, handleSubmit, reset, formState: {isDirty, isValid}, setValue } = useForm({
+	const { control, handleSubmit, reset, formState: {isDirty, isValid}, setValue, watch } = useForm({
 		mode: "onChange",
 		defaultValues: {
 			username: storedValue?.username,
@@ -20,12 +20,13 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 
 	useEffect(
 		() => {
-            const setReplyUsername = (innerCommentHTML) => {
+            const setReplyValues = (innerCommentHTML) => {
 				if (innerCommentHTML?.postId === postId) {
 					setValue("message", innerCommentHTML?.username)
+					setValue("parentId", innerCommentHTML?.parentId)
 				}
             }
-            setReplyUsername(innerCommentHTML)
+            setReplyValues(innerCommentHTML)
     }, [ newReply ]);
 
 	const onSubmit = async (data) => {
@@ -55,7 +56,7 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 									)}
 								/>
 							</div>
-							<Button disabled={!isDirty || !isValid} className="PostComment">Post</Button>
+							<Button disabled={!isDirty || !isValid || watch("message") === ''} className="PostComment">Post</Button>
 						</div>
 				</FormGroup>
 			</Form>
