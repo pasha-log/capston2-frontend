@@ -26,8 +26,7 @@ export default CommentReply;
 
 /**
  * @current_bugs
- * 
- * - The setCommentReplyInnerHtml should be reset on page change or deletion of @ 
+ * - Reply comment like count isn't updating
  * - Timestamps should reflect how many weeks ago it's been since posted
  * - Number of likes need to be under the heart 
  * - Font of action buttons should be bolder

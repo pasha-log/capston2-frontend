@@ -6,8 +6,10 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
 const FileUploadForm = () => {
-	const { nprogress, upload, currentUser, editProfileInfo } = useContext(CurrentUserContext);
+	const { nprogress, upload, currentUser, editProfileInfo, setInnerCommentHTML } = useContext(CurrentUserContext);
 
+	setInnerCommentHTML();
+	
 	nprogress.done();
 
 	const { register } = useForm();

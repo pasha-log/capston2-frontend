@@ -8,10 +8,12 @@ import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
 const ExplorePage = () => {
-	const { nprogress } = useContext(CurrentUserContext);
+	const { nprogress, setInnerCommentHTML } = useContext(CurrentUserContext);
 	const [ users, setUsers ] = useState([]);
 	const [ searchTerm, setSearchTerm ] = useState('');
 	const [ noUsersFound, setNoUsersFound ] = useState(false);
+
+	setInnerCommentHTML();
 
 	useEffect(
 		() => {
