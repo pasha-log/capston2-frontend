@@ -6,14 +6,11 @@ import './assets/Comment.css';
 import { Link } from "react-router-dom";
 import CommentHeart from "./CommentHeart";
 import CommentReply from "./CommentReply";
+import timeSincePosted from "./utils/timeSincePosted";
 
-const Comment = ({ comment, focus, postId, forceUpdate, date }) => {
+const Comment = ({ comment, focus, postId, date }) => {
     const [ user, setUser ] = useState(null);
     const { currentUser, setInnerCommentHTML, setNewReply, newReply } = useContext(CurrentUserContext);
-    const dateFormatter = new Intl.DateTimeFormat(undefined, {
-		dateStyle: "medium",
-		timeStyle: "short"
-	})
 
     useEffect(
 		() => {
@@ -26,7 +23,6 @@ const Comment = ({ comment, focus, postId, forceUpdate, date }) => {
 
     const handleCommentReplyClick = (event) => {
         setInnerCommentHTML({username: `@${comment?.username}`, postId: postId, parentId: event.target.id})
-        forceUpdate();
         focus();
         setNewReply(newReply + 1);
     }
@@ -53,13 +49,13 @@ const Comment = ({ comment, focus, postId, forceUpdate, date }) => {
                     </div>
                 </div>
                 <div className="PostCommentActions FlexRow">
-                    <span className="CommentAction">{date ? date : dateFormatter.format(Date.parse(comment?.createdAt))}</span>
+                    <span className="CommentAction">{date ? date : timeSincePosted(comment?.createdAt)}</span>
                     <span className="CommentAction">{comment?.numLikes === "1" ? '1 Like' : `${comment?.numLikes} Likes`}</span>
                     <span onClick={handleCommentReplyClick} id={comment?.commentId || comment?.comment_id} style={{cursor: "pointer"}}>Reply</span>
                 </div>
             </div>
             <div className="PostCommentReplies">
-                {comment?.children?.length === 0 ? null : comment?.children?.map((comment) => (<CommentReply postId={postId} focus={focus} forceUpdate={forceUpdate} comment={comment} key={comment.comment_id} />))}
+                {comment?.children?.length === 0 ? null : comment?.children?.map((comment) => (<CommentReply postId={postId} focus={focus} comment={comment} key={comment.comment_id} />))}
             </div>
         </div>
     )

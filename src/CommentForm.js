@@ -7,7 +7,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useEffect } from 'react';
 
 const CommentForm = ({ postId, newComment, setNewComment }) => {
-	const { storedValue, innerCommentHTML, newReply } = useContext(CurrentUserContext);
+	const { storedValue, innerCommentHTML, setInnerCommentHTML, newReply } = useContext(CurrentUserContext);
 	const { control, handleSubmit, reset, formState: {isDirty, isValid}, setValue, watch } = useForm({
 		mode: "onChange",
 		defaultValues: {
@@ -33,7 +33,7 @@ const CommentForm = ({ postId, newComment, setNewComment }) => {
 		await InstapostApi.createComment(data);
         setNewComment(newComment + 1);
         reset();
-
+		setInnerCommentHTML();
 	};
 
 	return (

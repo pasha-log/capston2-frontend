@@ -9,15 +9,12 @@ import PostComment from './PostComment';
 import PostSave from './PostSave';
 import { useContext } from 'react';
 import CurrentUserContext from './CurrentUserContext';
+import timeSincePosted from './utils/timeSincePosted';
 
-const PostCard = ({ post, forceUpdate }) => {
+const PostCard = ({ post }) => {
     const [ postComments, setPostComments ] = useState();
     const [ newComment, setNewComment ] = useState(0);
 	const { newLike } = useContext(CurrentUserContext);
-	const dateFormatter = new Intl.DateTimeFormat(undefined, {
-		dateStyle: "medium",
-		timeStyle: "short"
-	})
 
 	const handleCommentButtonClick = () => {
 		let i = document.getElementById(post?.postId)
@@ -37,7 +34,7 @@ const PostCard = ({ post, forceUpdate }) => {
 		[ newComment, post?.postId, newLike ]
 	);
 	
-	var dt = dateFormatter.format(Date.parse(post?.createdAt))
+	var dt = timeSincePosted(post?.createdAt);
 		
     return (
 		<div className="PostDetailCard">
@@ -99,7 +96,7 @@ const PostCard = ({ post, forceUpdate }) => {
 						</p>
 					</div>
 				</div>
-                {!postComments ? null : postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} forceUpdate={forceUpdate} comment={comment} key={comment.commentId} />))}
+                {!postComments ? null : postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} comment={comment} key={comment.commentId} />))}
 				<div className="AddComments">
 					<div className="Reaction">
 						<h3>

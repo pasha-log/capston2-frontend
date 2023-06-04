@@ -7,15 +7,10 @@ import { useEffect, useState } from 'react';
 import SuggestionsBox from './SuggestionsBox.js';
 import Footer from './Footer';
 
-function useForceUpdate() {
-	let [ newCommentReply, setNewCommentReply ] = useState(true);
-	return () => setNewCommentReply(!newCommentReply);
-}
-
 const HomePage = () => {
-	const forceUpdate = useForceUpdate();
-	const { newFollow, storedValue, newLike, nprogress } = useContext(CurrentUserContext);
+	const { newFollow, storedValue, newLike, nprogress, setInnerCommentHTML } = useContext(CurrentUserContext);
 	const [ followingPosts, setFollowingPosts ] = useState();
+	setInnerCommentHTML();
 	useEffect(
 		() => {
 			const getFollowingPosts = async (username) => {
@@ -39,7 +34,7 @@ const HomePage = () => {
 						<div className='NoFollowerMessage'>No followers with posts yet</div>
 					</div> : 
 						followingPosts?.map((post) => {return (
-						<PostCard forceUpdate={forceUpdate} post={post} key={post.postId} />
+						<PostCard post={post} key={post.postId} />
 					)})
 					}
 				</div>
