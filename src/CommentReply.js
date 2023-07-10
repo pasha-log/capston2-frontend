@@ -14,7 +14,6 @@ export default CommentReply;
 
 /**
  * @current_bugs
- * - Timestamps should reflect how many weeks ago it's been since posted
  * - Number of likes need to be under the heart 
  * - Font of action buttons should be bolder
  * - Should have option of hiding and showing replies

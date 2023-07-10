@@ -45,13 +45,13 @@ const Comment = ({ comment, focus, postId, date }) => {
                             key={comment?.commentId ? comment?.commentId : comment?.comment_id} 
                             id={comment?.commentId ? comment?.commentId : comment?.comment_id} 
                             likeType={'comment'} 
-                        />
+                            />
                     </div>
                 </div>
                 <div className="PostCommentActions FlexRow">
                     <span className="CommentAction">{date ? date : timeSincePosted(comment?.createdAt)}</span>
-                    <span className="CommentAction">{comment?.numLikes === "1" ? '1 Like' : `${comment?.numLikes} Likes`}</span>
-                    <span onClick={handleCommentReplyClick} id={comment?.commentId || comment?.comment_id} style={{cursor: "pointer"}}>Reply</span>
+                    <span>{comment?.numLikes === "1" ? '1 Like' : `${comment?.numLikes} Likes`}</span>
+                    <span className="CommentAction" onClick={handleCommentReplyClick} id={comment?.commentId || comment?.comment_id} style={{cursor: "pointer"}}>Reply</span>
                 </div>
             </div>
             <div className="PostCommentReplies">
