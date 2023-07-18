@@ -1,0 +1,395 @@
+.EditProfile {
+	background-color: white;
+	color: black;
+}
+
+.EditProfile:hover {
+	background-color: rgb(239, 238, 238);
+	color: black;
+}
+
+.ProfileSettingsButton,
+.DifferentAccountSettings {
+	cursor: pointer;
+	margin-left: 1rem;
+}
+
+.NullPosts {
+	color: grey;
+	margin-top: 4rem;
+	margin-right: -22rem;
+}
+
+.NoPostsYet {
+	margin: .5rem .5rem .5rem .5rem;
+	font-size: 3rem;
+}
+
+.Statement {
+	font-size: 1rem;
+	color: grey;
+}
+
+.FirstShare {
+	text-decoration: none;
+}
+
+.Share {
+	color: white;
+}
+
+.FirstShareButton {
+	background-color: rgb(27, 156, 255);
+	margin-bottom: 1rem;
+}
+
+.FirstShareButton:hover {
+	background-color: rgb(0, 126, 222);
+	margin-bottom: 1rem;
+}
+
+#Camera {
+	margin-top: 1rem;
+	font-size: 2rem;
+	color: rgb(42, 42, 42);
+}
+
+.NullPosts {
+	border: 1px solid rgb(42, 42, 42);
+	border-radius: .25rem;
+}
+
+/* Base Styles */
+
+:root {
+	font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	background-color: black;
+	padding-bottom: 3rem;
+}
+
+.ProfilePhoto,
+.gallery-image {
+	display: block;
+}
+
+.ProfileContainer {
+	max-width: 93.5rem;
+	margin: 0 auto;
+	padding: 0 2rem;
+}
+
+.visually-hidden {
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Profile Section */
+
+.Profile {
+	padding: 5rem 0;
+}
+
+.profile::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.ProfileImage {
+	float: left;
+	width: calc(33.333% - 1rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 3rem;
+}
+
+.ProfileImage img {
+	border-radius: 50%;
+	width: 15rem;
+}
+
+.ProfileUserSettings,
+.ProfileStats,
+.ProfileBio {
+	float: left;
+	width: calc(66.666% - 2rem);
+	margin-top: 1.1rem;
+	align-items: center;
+	display: flex;
+}
+
+.ProfileUsername {
+	display: inline-block;
+	font-size: 3.2rem;
+	font-weight: 300;
+}
+
+.ProfileEditButton {
+	font-size: 1.4rem;
+	line-height: 1.8;
+	border: 0.1rem solid #dbdbdb;
+	padding: 0 2.4rem;
+	margin-left: 1rem;
+}
+
+.ProfileStats {
+	margin-top: 2.3rem;
+}
+
+.ProfileStats ul {
+	padding-left: 0;
+}
+
+.ProfileStats li {
+	display: inline-block;
+	font-size: 1.6rem;
+	line-height: 1.5;
+	margin-right: 4rem;
+	cursor: pointer;
+}
+
+.ProfileStats li:last-of-type {
+	margin-right: 0;
+}
+
+.ProfileBio {
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.5;
+	margin-top: 2.3rem;
+}
+
+.ProfileRealName,
+.ProfileStatCount,
+.ProfileEditButton {
+	font-weight: 600;
+}
+
+/* Gallery Section */
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -1rem -1rem;
+	padding-bottom: 3rem;
+}
+
+.gallery-item {
+	position: relative;
+	flex: 1 0 22rem;
+	margin: 1rem;
+	color: #fff;
+	cursor: pointer;
+}
+
+.gallery-item:hover .gallery-item-info,
+.gallery-item:focus .gallery-item-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item-info {
+	display: none;
+}
+
+.gallery-item-info li {
+	display: inline-block;
+	font-size: 1.7rem;
+	font-weight: 600;
+}
+
+.gallery-item-likes {
+	margin-right: 1rem;
+}
+
+.gallery-item-type {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	font-size: 2.5rem;
+	text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+.fa-clone,
+.fa-comment {
+	transform: rotateY(180deg);
+}
+
+.gallery-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 40rem) {
+	.Profile {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 4rem 0;
+	}
+
+	.profile::after {
+		display: none;
+	}
+
+	.ProfileImage,
+	.ProfileUserSettings,
+	.ProfileBio,
+	.ProfileStats {
+		float: none;
+		width: auto;
+	}
+
+	.ProfileImage img {
+		width: 7.7rem;
+	}
+
+	.ProfileUserSettings {
+		flex-basis: calc(100% - 10.7rem);
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 1rem;
+	}
+
+	.ProfileSettingsButton {
+		display: none;
+	}
+
+	.ProfileUsername {
+		font-size: 2.2rem;
+	}
+
+	.ProfileEditButton {
+		order: 1;
+		padding: 0 1rem;
+		text-align: center;
+		margin-top: 1rem;
+	}
+
+	.ProfileBio {
+		font-size: 1.4rem;
+		margin-top: 1.5rem;
+	}
+
+	.ProfileEditButton,
+	.ProfileBio,
+	.ProfileStats {
+		flex-basis: 100%;
+	}
+
+	.ProfileStats {
+		order: 1;
+		margin-top: 1.5rem;
+		justify-items: stretch;
+		display: grid;
+	}
+
+	.ProfileStats ul {
+		display: flex;
+		text-align: center;
+		padding: 1.2rem 0;
+		border-top: 0.1rem solid #dadada;
+		border-bottom: 0.1rem solid #dadada;
+	}
+
+	.ProfileStats li {
+		font-size: 1.4rem;
+		flex: 1;
+		margin: 0;
+	}
+
+	.ProfileStatCount {
+		display: block;
+	}
+}
+
+/* 
+
+The following code will only run if your browser supports CSS grid.
+
+Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
+
+*/
+
+@supports (display: grid) {
+	.Profile {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: repeat(3, auto);
+		grid-column-gap: 3rem;
+		align-items: center;
+	}
+
+	.ProfileImage {
+		grid-row: 1 / -1;
+	}
+
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+		grid-gap: 2rem;
+	}
+
+	.ProfileImage,
+	.ProfileUserSettings,
+	.ProfileStats,
+	.ProfileBio,
+	.gallery-item,
+	.gallery {
+		width: auto;
+		margin: 0;
+	}
+
+	@media (max-width: 40rem) {
+		.Profile {
+			grid-template-columns: auto 1fr;
+			grid-row-gap: 1.5rem;
+		}
+
+		.ProfileImage {
+			grid-row: 1 / 2;
+		}
+
+		.ProfileUserSettings {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-gap: 1rem;
+		}
+
+		.ProfileEditButton,
+		.ProfileStats,
+		.ProfileBio {
+			grid-column: 1 / -1;
+		}
+
+		.ProfileUserSettings,
+		.ProfileEditButton,
+		.ProfileSettingsButton,
+		.ProfileBio,
+		.ProfileStats {
+			margin: 0;
+		}
+	}
+}

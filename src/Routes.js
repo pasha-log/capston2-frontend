@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
-import RequireAuth from './RequireAuth';
-import Profile from './Profile';
-import FileUploadForm from './FileUploadForm';
-import ImageCropForm from './ImageCropForm';
-import CaptionForm from './CaptionForm.js';
-import PostDetail from './PostDetail.js';
-import HomePage from './HomePage.js';
-import ExplorePage from './ExplorePage';
-import EditProfileForm from './EditProfileForm';
-import EditProfilePhotoForm from './EditProfilePhotoForm';
+import LoginForm from './features/authentication/components/LoginForm';
+import SignupForm from './features/authentication/components/SignupForm';
+import RequireAuth from './context/RequireAuth';
+import Profile from './features/profile/components/Profile';
+import FileUploadForm from './features/post/components/FileUploadForm';
+import ImageCropForm from './features/post/components/ImageCropForm';
+import CaptionForm from './features/post/components/CaptionForm.js';
+import PostDetail from './features/post/components/PostDetail.js';
+import HomePage from './pages/HomePage.js';
+import ExplorePage from './pages/ExplorePage';
+import EditProfileForm from './features/profile/components/EditProfileForm';
+import EditProfilePhotoForm from './features/profile/components/EditProfilePhotoForm';
 
 const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav }) => {
 	return (

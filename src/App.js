@@ -3,11 +3,11 @@ import { BrowserRouter } from 'react-router-dom';
 import InstapostRoutes from './Routes';
 import InstapostApi from './Api';
 import { useEffect, useState } from 'react';
-import CurrentUserContext from './CurrentUserContext';
+import CurrentUserContext from './context/CurrentUserContext';
 import useLocalStorage from './hooks/useLocalStorage';
-import BottomNavBar from './BottomNavBar';
-import TopNavBar from './TopNavBar';
-import SettingsModal from './SettingsModal';
+import BottomNavBar from './layouts/BottomNavBar';
+import TopNavBar from './layouts/TopNavBar';
+import SettingsModal from './layouts/SettingsModal';
 import nprogress from 'nprogress';
 
 function App() {
