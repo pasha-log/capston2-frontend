@@ -10,11 +10,14 @@ import PostSave from './PostSave';
 import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
 import timeSincePosted from '../../../utils/timeSincePosted';
+import { Button } from 'reactstrap';
 
 const PostCard = ({ post }) => {
     const [ postComments, setPostComments ] = useState();
     const [ newComment, setNewComment ] = useState(0);
 	const { newLike } = useContext(CurrentUserContext);
+	const [ toggleComments, setToggleComments ] = useState(false);
+	const totalAmountOfComments = postComments?.length + postComments?.reduce((accumulator, currentValue) => accumulator + currentValue?.children?.length, 0)
 
 	const handleCommentButtonClick = () => {
 		let i = document.getElementById(post?.postId)
@@ -47,6 +50,7 @@ const PostCard = ({ post }) => {
 										<img
 											src={post?.profileImageURL}
 											alt=""
+											loading='lazy'
 										/>
 								</div>
 							</Link>
@@ -96,7 +100,9 @@ const PostCard = ({ post }) => {
 						</p>
 					</div>
 				</div>
-                {!postComments ? null : postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} comment={comment} key={comment.commentId} />))}
+				{!toggleComments && postComments?.length > 0 && <Button className="ShowCommentsToggle" onClick={() => setToggleComments(true)}>{totalAmountOfComments > 1 ? `Show all ${totalAmountOfComments} comments` : "Show 1 comment"}</Button>}
+                {!postComments ? null : toggleComments && postComments?.map((comment) => (<Comment postId={post?.postId} focus={handleCommentButtonClick} comment={comment} key={comment.commentId} />))}
+				{toggleComments && postComments?.length > 0 && <Button className="ShowCommentsToggle" onClick={() => setToggleComments(false)}>Hide comments</Button>}
 				<div className="AddComments">
 					<div className="Reaction">
 						<h3>

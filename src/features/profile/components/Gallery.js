@@ -4,14 +4,20 @@ import Favorite from '@mui/icons-material/Favorite';
 import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
+import CardSkeleton from '../../../components/ui/CardSkeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
+import { useState } from 'react';
 
-const Gallery = ({ userBeingViewed }) => {
+const Gallery = ({ userBeingViewed, isLoading }) => {
 	const { nprogress } = useContext(CurrentUserContext);
 	const onPostClick = () => {
 		nprogress.start();
 	}
+	// const [isLoading, setIsLoading] = useState(true);
+
 	return (
 		<div className="gallery">
+			{/* {isLoading && <CardSkeleton cards={6} />} */}
 			{userBeingViewed?.posts?.slice(0).reverse().map((post) => {
 				return (
 					<Link
@@ -29,7 +35,7 @@ const Gallery = ({ userBeingViewed }) => {
 						onClick={onPostClick}
 					>
 						<div className="gallery-item" tabIndex="0">
-							<img className="gallery-image" src={post.postURL} alt={post.id} />
+							<img className="gallery-image" src={post.postURL} alt={post.id} loading='lazy' />
 							<div className="gallery-item-info">
 								<ul>
 									<li className="gallery-item-likes" key={`${post.postId}-gallery-item-likes`}>

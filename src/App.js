@@ -9,6 +9,7 @@ import BottomNavBar from './layouts/BottomNavBar';
 import TopNavBar from './layouts/TopNavBar';
 import SettingsModal from './layouts/SettingsModal';
 import nprogress from 'nprogress';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
 	nprogress.configure({ showSpinner: false });
@@ -118,43 +119,45 @@ function App() {
 
 	return (
 		<div className="App">
-			<CurrentUserContext.Provider
-				value={{
-					storedValue,
-					currentUser,
-					newPost,
-					setNewPost,
-					follow,
-					newFollow,
-					unfollow,
-					like,
-					unlike,
-					editProfileInfo,
-					toggle,
-					modal,
-					logOutUser,
-					innerCommentHTML,
-					setInnerCommentHTML,
-					newReply,
-					setNewReply,
-					newLike,
-					nprogress,
-					upload
-				}}
-			>
-				<SettingsModal />
-				<BrowserRouter>
-					{showNav && <BottomNavBar />}
-					{showNav && <TopNavBar />}
-					<main>
-						<InstapostRoutes
-							setTokenAfterRegister={setTokenAfterRegister}
-							setTokenAfterLogin={setTokenAfterLogin}
-							setShowNav={setShowNav}
-						/>
-					</main>
-				</BrowserRouter>
-			</CurrentUserContext.Provider>
+			<SkeletonTheme baseColor="#313131" highlightColor="#525252">
+				<CurrentUserContext.Provider
+					value={{
+						storedValue,
+						currentUser,
+						newPost,
+						setNewPost,
+						follow,
+						newFollow,
+						unfollow,
+						like,
+						unlike,
+						editProfileInfo,
+						toggle,
+						modal,
+						logOutUser,
+						innerCommentHTML,
+						setInnerCommentHTML,
+						newReply,
+						setNewReply,
+						newLike,
+						nprogress,
+						upload
+					}}
+				>
+					<SettingsModal />
+					<BrowserRouter>
+						{showNav && <BottomNavBar />}
+						{showNav && <TopNavBar />}
+						<main>
+							<InstapostRoutes
+								setTokenAfterRegister={setTokenAfterRegister}
+								setTokenAfterLogin={setTokenAfterLogin}
+								setShowNav={setShowNav}
+							/>
+						</main>
+					</BrowserRouter>
+				</CurrentUserContext.Provider>
+			</SkeletonTheme>
 		</div>
 	);
 }
