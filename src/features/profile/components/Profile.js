@@ -12,7 +12,8 @@ import ProfileBio from './ProfileBio';
 const Profile = () => {
 	const { username } = useParams();
 	const { currentUser, newFollow, newLike, nprogress, setInnerCommentHTML } = useContext(CurrentUserContext);
-	const [ userBeingViewed, setUserBeingViewed ] = useState(null); 
+	const [ userBeingViewed, setUserBeingViewed ] = useState(null);
+	// const [isLoading, setIsLoading] = useState(true);
 
 	setInnerCommentHTML();
 
@@ -26,6 +27,7 @@ const Profile = () => {
                 const user = await InstapostApi.getUser(username);
                 setUserBeingViewed(user);
 				nprogress.done();
+				// setIsLoading(false)
             }
             getUserInfo(username);
     }, [ newFollow, username, newLike ]);

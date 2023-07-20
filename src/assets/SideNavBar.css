@@ -1,0 +1,31 @@
+.SideNavContainer {
+	position: fixed;
+	left: 0;
+	height: 100vh;
+	width: 25rem;
+	display: grid;
+	justify-items: start;
+	border-right: solid rgb(39, 39, 39);
+	border-width: .01rem;
+}
+
+.SideNavContainer a {
+	display: flex;
+	align-items: center;
+}
+
+.SideNavContainer a h2 {
+	padding-top: 1rem;
+	padding-left: 1rem;
+}
+
+.SideNavRow {
+	margin-left: 2rem;
+	height: 5rem;
+}
+
+.SideNavRow:hover {
+	background-color: rgb(39, 39, 39);
+	border-radius: 1rem;
+	width: 22rem;
+}

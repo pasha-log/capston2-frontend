@@ -10,8 +10,11 @@ import TopNavBar from './layouts/TopNavBar';
 import SettingsModal from './layouts/SettingsModal';
 import nprogress from 'nprogress';
 import { SkeletonTheme } from 'react-loading-skeleton';
+import useMediaQuery from './hooks/useMediaQuery';
+import SideNavBar from './layouts/SidNavBar';
 
 function App() {
+	const isAboveSmallScreens = useMediaQuery('(min-width: 1000px)');
 	nprogress.configure({ showSpinner: false });
 	nprogress.configure({
 		template:
@@ -146,8 +149,9 @@ function App() {
 				>
 					<SettingsModal />
 					<BrowserRouter>
-						{showNav && <BottomNavBar />}
-						{showNav && <TopNavBar />}
+						{isAboveSmallScreens && showNav && <SideNavBar />}
+						{!isAboveSmallScreens && showNav && <BottomNavBar />}
+						{!isAboveSmallScreens && showNav && <TopNavBar />}
 						<main>
 							<InstapostRoutes
 								setTokenAfterRegister={setTokenAfterRegister}

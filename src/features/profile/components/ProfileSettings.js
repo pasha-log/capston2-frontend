@@ -35,7 +35,7 @@ const ProfileSettings = ({ user }) => {
 			{user?.username === currentUser?.username ? (
 				<span onClick={toggle} style={{fontSize: "3rem"}} className="material-symbols-outlined ProfileSettingsButton">settings</span>
 				) : (
-				<span style={{fontSize: "3rem"}} class="material-symbols-outlined DifferentAccountSettings">more_horiz</span>
+				<span style={{fontSize: "3rem"}} className="material-symbols-outlined DifferentAccountSettings">more_horiz</span>
 			)}
 		</div>
 	);

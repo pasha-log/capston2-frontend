@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

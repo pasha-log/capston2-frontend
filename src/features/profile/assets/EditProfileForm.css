@@ -3,6 +3,12 @@
 	border: solid rgb(39, 39, 39) 1px;
 	border-radius: .3rem;
 	width: 80%;
+	place-self: center;
+}
+
+.EditProfilePage {
+	display: grid;
+	place-content: center;
 }
 
 .EditFormContainer {
@@ -183,4 +189,11 @@
 #edit {
 	--bs-alert-bg: black;
 	--bs-alert-border-color: black;
+}
+
+@media screen and (min-width: 1000px) {
+	.EditProfileDiv {
+		width: 68%;
+		margin-left: 18.75rem;
+	}
 }
