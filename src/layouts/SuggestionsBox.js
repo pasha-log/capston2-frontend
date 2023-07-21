@@ -19,7 +19,7 @@ const SuggestionsBox = () => {
 
 	return (
 		<div className="card">
-			<h4>Suggestions For You</h4>
+			<h4 style={{marginTop: "1rem", marginLeft: "1rem"}}>Suggestions For You</h4>
 			{notFollowedUsers?.map((user) => {
 				return (
 					<UserCard user={user} key={user.username}/>

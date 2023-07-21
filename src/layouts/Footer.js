@@ -8,11 +8,13 @@ const Footer = ({ isEditProfile }) => {
 		? (EditProfileFooterStyles = {
 				marginLeft: '18.75rem',
 				marginTop: '2rem',
-				marginBottom: '2rem'
+				marginBottom: '2rem',
+				textAlign: 'center'
 			})
 		: (EditProfileFooterStyles = {
 				marginTop: '2rem',
-				marginBottom: '2rem'
+				marginBottom: '2rem',
+				textAlign: 'center'
 			});
 	return (
 		<div className="footer" style={EditProfileFooterStyles}>

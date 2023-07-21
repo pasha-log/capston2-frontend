@@ -40,7 +40,7 @@ const ExplorePage = () => {
 
 	return (
 		<section>
-			<div>
+			<div className='ExplorePageDiv'>
 				<SearchBar getSearchTerm={getSearchTerm} />
 				{searchTerm && <Button className='ResetSearch' onClick={resetSearch}>Reset Search</Button>}
 				{noUsersFound && <h2>Sorry, there are no jobs that match.</h2>}
