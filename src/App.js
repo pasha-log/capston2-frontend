@@ -35,7 +35,7 @@ function App() {
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
 		let postDataArray = event.target.id.split(' ');
-		setInnerPostHTML({ postId: postDataArray[0], postUsername: postDataArray[1] });
+		setInnerPostHTML({ postId: postDataArray[0], postUsername: postDataArray[1], postURL: postDataArray[2] });
 		setUserPostSettingsModal(!userPostSettingsModal);
 	};
 
@@ -127,6 +127,12 @@ function App() {
 		return response;
 	};
 
+	const deletePost = async (data) => {
+		console.log(data);
+		let response = await InstapostApi.deleteAPost(data);
+		return response;
+	};
+
 	return (
 		<div className="App">
 			<SkeletonTheme baseColor="#313131" highlightColor="#525252">
@@ -155,12 +161,13 @@ function App() {
 						toggleUserPostSettingsModal,
 						userPostSettingsModal,
 						innerPostHTML,
-						setUserPostSettingsModal
+						setUserPostSettingsModal,
+						deletePost
 					}}
 				>
 					<SettingsModal />
-					<UserPostSettingsModal />
 					<BrowserRouter>
+						<UserPostSettingsModal />
 						{isAboveSmallScreens && showNav && <SideNavBar />}
 						{!isAboveSmallScreens && showNav && <BottomNavBar />}
 						{!isAboveSmallScreens && showNav && <TopNavBar />}
@@ -189,7 +196,11 @@ export default App;
  * 
  * Create new desktop post detail card. 
  * 
- * 
+ * {
+  postId: '22',
+  postUsername: 'pashathecoder',
+  postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/5a504c6e-37ae-40f2-9757-0d243e430dd6-Screenshot%20%28152%29.png'
+}
  * 
  * 
  * 

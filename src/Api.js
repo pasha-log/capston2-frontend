@@ -134,6 +134,7 @@ class InstapostApi {
 	}
 
 	// Unlike a post or comment.
+
 	static async unlike(likeData) {
 		let response = await this.request(`users/unlike`, likeData, 'post');
 		return response;
@@ -143,6 +144,14 @@ class InstapostApi {
 
 	static async patchUser(username, newUserInfo) {
 		let response = await this.request(`users/${username}`, newUserInfo, 'patch');
+		return response;
+	}
+
+	// Delete a user's post.
+
+	static async deleteAPost(postInfo) {
+		console.log(postInfo);
+		let response = await this.request(`users/deletePost`, postInfo, 'delete');
 		return response;
 	}
 }

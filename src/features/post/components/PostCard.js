@@ -66,7 +66,7 @@ const PostCard = ({ post }) => {
 						</span>
 					</div>
 				</div>
-				<span id={`${post?.postId} ${post?.username}`} onClick={(event) => toggleUserPostSettingsModal(event)} style={{fontSize: "3rem"}} className="material-symbols-outlined PostSettings">more_horiz</span>
+				<span id={`${post?.postId} ${post?.username} ${post?.imageURL}`} onClick={(event) => toggleUserPostSettingsModal(event)} style={{fontSize: "3rem"}} className="material-symbols-outlined PostSettings">more_horiz</span>
 			</div>
 			<div className="ImageBox">
 				<img

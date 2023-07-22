@@ -2,11 +2,19 @@ import { Button, Modal, ModalBody } from 'reactstrap';
 import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
 import '../assets/UserPostSettingsModal.css';
+import { useNavigate } from 'react-router-dom';
 
 function UserPostSettingsModal() {
 	const { toggleUserPostSettingsModal, userPostSettingsModal, setUserPostSettingsModal, innerPostHTML, storedValue, unfollow, deletePost } = useContext(
 		CurrentUserContext
 	);
+	const navigate = useNavigate();
+
+	const handlePostDeletion = () => {
+		deletePost(innerPostHTML);
+		setUserPostSettingsModal(!userPostSettingsModal);
+		navigate(`/${innerPostHTML?.postUsername}`);
+	}
 
 	return (
 		<div>
@@ -16,7 +24,7 @@ function UserPostSettingsModal() {
 						(
 						<>
 							<div className="DeletePost">
-								<Button style={{ color: 'red' }} onClick={deletePost}>
+								<Button style={{ color: 'red' }} onClick={() => handlePostDeletion()}>
 									Delete
 								</Button>
 							</div>
