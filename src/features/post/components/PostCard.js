@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
 import timeSincePosted from '../../../utils/timeSincePosted';
 import { Button } from 'reactstrap';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 const PostCard = ({ post }) => {
     const [ postComments, setPostComments ] = useState();
@@ -59,12 +60,14 @@ const PostCard = ({ post }) => {
 					<h3>
 						<span>{post?.username}</span>
 					</h3>
+					<div className='DateDiv'>
+						<FiberManualRecordIcon style={{fontSize: ".7rem", color: "rgb(88, 88, 88)"}} />
+						<span className="Date">
+							{dt}
+						</span>
+					</div>
 				</div>
-				<div>
-					<span className="Date">
-						{dt}
-					</span>
-				</div>
+				<span style={{fontSize: "3rem"}} className="material-symbols-outlined PostSettings">more_horiz</span>
 			</div>
 			<div className="ImageBox">
 				<img

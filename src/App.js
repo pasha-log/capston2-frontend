@@ -166,3 +166,19 @@ function App() {
 }
 
 export default App;
+
+/**
+ * Next Steps:
+ *  
+ * Add modal with delete and edit button.
+ * Add deletion functionality.
+ * 
+ * Create new desktop post detail card. 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
