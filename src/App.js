@@ -7,6 +7,7 @@ import useLocalStorage from './hooks/useLocalStorage';
 import BottomNavBar from './layouts/BottomNavBar';
 import TopNavBar from './layouts/TopNavBar';
 import SettingsModal from './layouts/SettingsModal';
+import UserPostSettingsModal from './features/post/components/UserPostSettingsModal';
 import nprogress from 'nprogress';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import useMediaQuery from './hooks/useMediaQuery';
@@ -25,11 +26,18 @@ function App() {
 	const [ newPost, setNewPost ] = useState(-1);
 	const [ newFollow, setNewFollow ] = useState(-1);
 	const [ newLike, setNewLike ] = useState(-1);
-	const [ modal, setModal ] = useState(false);
+	const [ settingsModal, setSettingsModal ] = useState(false);
 	const [ innerCommentHTML, setInnerCommentHTML ] = useState();
 	const [ newReply, setNewReply ] = useState(-1);
+	const [ userPostSettingsModal, setUserPostSettingsModal ] = useState();
+	const [ innerPostHTML, setInnerPostHTML ] = useState();
 
-	const toggle = () => setModal(!modal);
+	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
+	const toggleUserPostSettingsModal = (event) => {
+		let postDataArray = event.target.id.split(' ');
+		setInnerPostHTML({ postId: postDataArray[0], postUsername: postDataArray[1] });
+		setUserPostSettingsModal(!userPostSettingsModal);
+	};
 
 	useEffect(
 		() => {
@@ -72,7 +80,7 @@ function App() {
 
 	const logOutUser = () => {
 		setValue(null);
-		toggle();
+		toggleSettingsModal();
 	};
 
 	const follow = async (usernameFollowing, usernameBeingFollowed) => {
@@ -134,8 +142,8 @@ function App() {
 						like,
 						unlike,
 						editProfileInfo,
-						toggle,
-						modal,
+						toggleSettingsModal,
+						settingsModal,
 						logOutUser,
 						innerCommentHTML,
 						setInnerCommentHTML,
@@ -143,10 +151,15 @@ function App() {
 						setNewReply,
 						newLike,
 						nprogress,
-						upload
+						upload,
+						toggleUserPostSettingsModal,
+						userPostSettingsModal,
+						innerPostHTML,
+						setUserPostSettingsModal
 					}}
 				>
 					<SettingsModal />
+					<UserPostSettingsModal />
 					<BrowserRouter>
 						{isAboveSmallScreens && showNav && <SideNavBar />}
 						{!isAboveSmallScreens && showNav && <BottomNavBar />}
@@ -171,7 +184,8 @@ export default App;
  * Next Steps:
  *  
  * Add modal with delete and edit button.
- * Add deletion functionality.
+ * Add deletion functionality - this will need to get the post id number with e.target possibly, delete the post and all comments associated with it, and delete from the S3 as well. Return user to profile page.
+ * The modal also needs to know whether the post creator username is the same as the current username.
  * 
  * Create new desktop post detail card. 
  * 

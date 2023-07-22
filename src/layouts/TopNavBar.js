@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import CurrentUserContext from '../context/CurrentUserContext';
 
 const TopNavBar = () => {
-	const { storedValue, currentUser, toggle } = useContext(CurrentUserContext);
+	const { storedValue, currentUser, toggleSettingsModal } = useContext(CurrentUserContext);
 
 	return (
 		<div className="NavBarContainer">
@@ -44,7 +44,7 @@ const TopNavBar = () => {
 									color: 'white'
 								}}
 								className="material-symbols-outlined"
-								onClick={toggle}
+								onClick={toggleSettingsModal}
 							>
 								settings
 							</span>

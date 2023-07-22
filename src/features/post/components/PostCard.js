@@ -16,7 +16,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 const PostCard = ({ post }) => {
     const [ postComments, setPostComments ] = useState();
     const [ newComment, setNewComment ] = useState(0);
-	const { newLike } = useContext(CurrentUserContext);
+	const { newLike, toggleUserPostSettingsModal } = useContext(CurrentUserContext);
 	const [ toggleComments, setToggleComments ] = useState(false);
 	const totalAmountOfComments = postComments?.length + postComments?.reduce((accumulator, currentValue) => accumulator + currentValue?.children?.length, 0)
 
@@ -24,7 +24,6 @@ const PostCard = ({ post }) => {
 		let i = document.getElementById(post?.postId)
 	  	i.focus();
 	};
-
 
     useEffect(
 		() => {
@@ -67,7 +66,7 @@ const PostCard = ({ post }) => {
 						</span>
 					</div>
 				</div>
-				<span style={{fontSize: "3rem"}} className="material-symbols-outlined PostSettings">more_horiz</span>
+				<span id={`${post?.postId} ${post?.username}`} onClick={(event) => toggleUserPostSettingsModal(event)} style={{fontSize: "3rem"}} className="material-symbols-outlined PostSettings">more_horiz</span>
 			</div>
 			<div className="ImageBox">
 				<img

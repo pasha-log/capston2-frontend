@@ -4,11 +4,11 @@ import CurrentUserContext from '../context/CurrentUserContext';
 import '../assets/SettingsModal.css';
 
 function SettingsModal() {
-	const { toggle, modal, logOutUser } = useContext(CurrentUserContext);
+	const { toggleSettingsModal, settingsModal, logOutUser } = useContext(CurrentUserContext);
 
 	return (
 		<div>
-			<Modal isOpen={modal} toggle={toggle} centered={true} size={'sm'}>
+			<Modal isOpen={settingsModal} toggle={toggleSettingsModal} centered={true} size={'sm'}>
 				<ModalBody className="ModalBody">
 					<div className="LogOut">
 						<Button onClick={logOutUser}>Log Out</Button>
@@ -17,7 +17,7 @@ function SettingsModal() {
 						<Button>Your Likes</Button>
 					</div>
 					<div>
-						<Button onClick={toggle}>Cancel</Button>
+						<Button onClick={toggleSettingsModal}>Cancel</Button>
 					</div>
 				</ModalBody>
 			</Modal>

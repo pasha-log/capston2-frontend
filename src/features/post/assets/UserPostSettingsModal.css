@@ -1,0 +1,7 @@
+.DeletePost,
+.Edit,
+.UnfollowPostUser,
+.GoToPost {
+	border-bottom: solid rgb(67, 67, 67) 1px;
+	width: 100%;
+}

@@ -5,7 +5,7 @@ import CurrentUserContext from '../../../context/CurrentUserContext';
 import '../assets/Profile.css';
 
 const ProfileSettings = ({ user }) => {
-	const { currentUser, follow, unfollow, toggle, nprogress } = useContext(CurrentUserContext);
+	const { currentUser, follow, unfollow, toggleSettingsModal, nprogress } = useContext(CurrentUserContext);
 	const onEditClick = () => {
 		nprogress.start();
 	}
@@ -33,7 +33,7 @@ const ProfileSettings = ({ user }) => {
 				</Button>
 			)}
 			{user?.username === currentUser?.username ? (
-				<span onClick={toggle} style={{fontSize: "3rem"}} className="material-symbols-outlined ProfileSettingsButton">settings</span>
+				<span onClick={toggleSettingsModal} style={{fontSize: "3rem"}} className="material-symbols-outlined ProfileSettingsButton">settings</span>
 				) : (
 				<span style={{fontSize: "3rem"}} className="material-symbols-outlined DifferentAccountSettings">more_horiz</span>
 			)}
