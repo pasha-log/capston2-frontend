@@ -5,3 +5,7 @@
 .ImageCard img {
 	width: 600px;
 }
+
+.ImageCropFormContainer {
+	text-align: center;
+}

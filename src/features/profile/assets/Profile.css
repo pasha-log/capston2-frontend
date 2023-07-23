@@ -18,16 +18,23 @@
 	color: grey;
 	margin-top: 4rem;
 	margin-right: -22rem;
+	text-align: center;
+}
+
+.NullPostDiv {
+	margin: 2rem 2rem 2rem 2rem;
+	font-size: 6rem;
 }
 
 .NoPostsYet {
 	margin: .5rem .5rem .5rem .5rem;
-	font-size: 3rem;
+	font-size: 4rem;
 }
 
 .Statement {
-	font-size: 1rem;
+	font-size: 2rem;
 	color: grey;
+	margin-bottom: 2rem;
 }
 
 .FirstShare {
@@ -36,11 +43,13 @@
 
 .Share {
 	color: white;
+	font-size: 3rem;
 }
 
 .FirstShareButton {
 	background-color: rgb(27, 156, 255);
 	margin-bottom: 1rem;
+	font-size: 3rem;
 }
 
 .FirstShareButton:hover {
@@ -50,7 +59,7 @@
 
 #Camera {
 	margin-top: 1rem;
-	font-size: 2rem;
+	font-size: 8rem;
 	color: rgb(42, 42, 42);
 }
 

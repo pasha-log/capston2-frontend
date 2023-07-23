@@ -35,7 +35,7 @@ function App() {
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
 		let postDataArray = event.target.id.split(' ');
-		setInnerPostHTML({ postId: postDataArray[0], postUsername: postDataArray[1], postURL: postDataArray[2] });
+		setInnerPostHTML({ postId: postDataArray[0], postUsername: postDataArray[1], postKey: postDataArray[2] });
 		setUserPostSettingsModal(!userPostSettingsModal);
 	};
 
@@ -201,9 +201,38 @@ export default App;
   postUsername: 'pashathecoder',
   postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/5a504c6e-37ae-40f2-9757-0d243e430dd6-Screenshot%20%28152%29.png'
 }
- * 
- * 
- * 
- * 
- * 
+ * {
+  postId: '21',
+  postUsername: 'pashathecoder',
+  postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/2d7bafca-48ac-4628-a757-3ce5ad8219ce-fly_into_space%20%283%29.jpg'
+}
+ * {
+  postId: '19',
+  postUsername: 'pashathecoder',
+  postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/4e708a55-7d23-46d1-a23d-1bbe9c5a6589-unnamed2.jpg'
+}
+ * {
+  postId: '6',
+  postUsername: 'pashathecoder',
+  postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/749338d1-ad25-49c5-a8a8-807acee161bc-Pash+art_000003+%283%29_LI.jpg'
+}
+ * {
+  postId: '5',
+  postUsername: 'pashathecoder',
+  postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/53252005-1aaa-454d-bbef-e2f947edbd58-Screenshot%20%28128%29.png'
+}
+ * {
+  postId: '4',
+  postUsername: 'pashathecoder',
+  postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/99d8cbd9-975f-450f-8b0e-fd57a9e74caf-activation2.jpg'
+}
+
+{
+  postId: '3',
+  postUsername: 'pashathecoder',
+  postURL: 'https://instagram-clone-photo.s3.us-west-1.amazonaws.com/uploads/0c294c47-5c5b-4c34-8a16-f88c9f1ef948-20190101_1624462.jpg'
+}
+
+'uploads/1d9e68f2-72f0-4d43-b2b7-d7ec7ecf2bf0-20190527_1348562.jpg'
+'uploads/1c65b07e-b0ce-44d6-b7ae-0faa9fbdf0ed-activation2.jpg'
  */

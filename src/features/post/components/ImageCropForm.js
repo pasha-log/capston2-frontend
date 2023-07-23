@@ -44,12 +44,12 @@ const ImageCropForm = () => {
 
 		newImage = dataURLtoFile(newImage.croppedImageUrl, image.id);
 		const response = await upload(newImage);
-		navigate('/caption', { state: { imageUrl: response.result.Location } });
+		navigate('/caption', { state: { imageUrl: response.result.Location, imageKey: response.result.Key } });
 		nprogress.done();
 	};
 
 	return (
-		<div>
+		<div className="ImageCropFormContainer">
 			<ImageCropDialog
 				id={image.id}
 				imageUrl={image.imageUrl}

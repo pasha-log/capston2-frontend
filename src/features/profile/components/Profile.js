@@ -54,7 +54,7 @@ const Profile = () => {
 			</header>
 				<main>
 					{(userBeingViewed?.posts?.length === 0 && userBeingViewed?.username !== currentUser?.username) ? 	
-						<div className="ProfileContainer">
+						<div className="ProfileContainer NotUserNull">
 							<div className="gallery-item NullPosts" tabIndex="0">
 								<span id="Camera" className="material-symbols-outlined">
 									photo_camera

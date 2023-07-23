@@ -6,6 +6,7 @@ import PostCard from '../features/post/components/PostCard';
 import { useEffect, useState } from 'react';
 import SuggestionsBox from '../layouts/SuggestionsBox.js';
 import Footer from '../layouts/Footer';
+import NoFollowers from '../layouts/NoFollowers';
 
 const HomePage = () => {
 	const { newFollow, storedValue, newLike, nprogress, setInnerCommentHTML } = useContext(CurrentUserContext);
@@ -31,7 +32,8 @@ const HomePage = () => {
 				<div className="Col-9">
 					{followingPosts?.length === 0 ? 
 					<div className='NoFollowerCard'>
-						<div className='NoFollowerMessage'>No followers with posts yet</div>
+						{/* <div className='NoFollowerMessage'>No followers with posts yet</div> */}
+						<NoFollowers />
 					</div> : 
 						followingPosts?.map((post) => {return (
 						<PostCard post={post} key={post.postId} />

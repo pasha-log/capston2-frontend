@@ -29,6 +29,7 @@ const Gallery = ({ userBeingViewed }) => {
 							username: userBeingViewed?.username,
 							profileImageURL: userBeingViewed?.profileImageURL,
 							postId: post.postId,
+							postKey: post.postKey,
 							createdAt: post.createdAt,
 							numLikes: post.numLikes
 						}}

@@ -10,11 +10,12 @@ const CaptionForm = () => {
 	const navigate = useNavigate();
 	const { currentUser, newPost, setNewPost, nprogress } = useContext(CurrentUserContext);
 	const { state } = useLocation();
-	const { imageUrl } = state;
+	const { imageUrl, imageKey } = state;
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			username: currentUser.username,
 			postURL: imageUrl,
+			postKey: imageKey,
 			caption: '',
 			watermark: null,
 			watermarkFont: null,
