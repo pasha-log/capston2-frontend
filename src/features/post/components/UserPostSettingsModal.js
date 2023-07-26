@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
 import '../assets/UserPostSettingsModal.css';
 import { useNavigate } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 function UserPostSettingsModal() {
 	const { toggleUserPostSettingsModal, userPostSettingsModal, setUserPostSettingsModal, innerPostHTML, storedValue, unfollow, deletePost } = useContext(
@@ -16,7 +17,7 @@ function UserPostSettingsModal() {
 		navigate(`/${innerPostHTML?.postUsername}`);
 	}
 
-	return (
+	return ReactDOM.createPortal(
 		<div>
 			<Modal isOpen={userPostSettingsModal} toggle={toggleUserPostSettingsModal} centered={true} size={'sm'}>
 				<ModalBody className="ModalBody">
@@ -52,7 +53,8 @@ function UserPostSettingsModal() {
 					</div>
 				</ModalBody>
 			</Modal>
-		</div>
+		</div>,
+		document.body
 	);
 }
 

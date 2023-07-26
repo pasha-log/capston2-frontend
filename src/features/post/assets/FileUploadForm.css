@@ -1,13 +1,18 @@
 .UploadFormContainer {
 	border-radius: 1rem;
 	background-color: rgb(39, 39, 39);
-	height: 45rem;
-	margin-top: 5rem;
+	height: 50rem;
 	text-align: center;
+	color: white;
+	/* border: solid 2px red; */
+	width: 100%;
 }
 
 .UploadFormDiv {
-	width: 70%;
+	height: 50rem;
+	width: 100%;
+	/* border: solid 2px green; */
+	border-radius: 1rem;
 }
 
 .NewPostLabel {
@@ -28,16 +33,6 @@
 .GalleryIcon p {
 	font-size: 1.75rem;
 }
-
-/* .Submit {
-	background-color: rgb(27, 156, 255);
-	font-size: 2rem;
-}
-
-.Submit:hover {
-	background-color: rgb(0, 126, 222);
-	font-size: 2rem;
-} */
 
 input[type="file"] {
 	display: none;

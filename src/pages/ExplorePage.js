@@ -20,7 +20,7 @@ const ExplorePage = () => {
 			async function getAllUsers(name) {
 				nprogress.start();
 				let users = await InstapostApi.findAllUsers(name);
-                console.log(users)
+                // console.log(users)
 				users.users.length !== 0 ? setUsers(users.users) : setNoUsersFound(true);
 				nprogress.done();
 			}

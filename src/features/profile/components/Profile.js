@@ -11,7 +11,7 @@ import ProfileBio from './ProfileBio';
 
 const Profile = () => {
 	const { username } = useParams();
-	const { currentUser, newFollow, newLike, nprogress, setInnerCommentHTML } = useContext(CurrentUserContext);
+	const { currentUser, newFollow, newLike, nprogress, setInnerCommentHTML, newPost } = useContext(CurrentUserContext);
 	const [ userBeingViewed, setUserBeingViewed ] = useState(null);
 	// const [isLoading, setIsLoading] = useState(true);
 
@@ -30,7 +30,7 @@ const Profile = () => {
 				// setIsLoading(false)
             }
             getUserInfo(username);
-    }, [ newFollow, username, newLike ]);
+    }, [ newFollow, username, newLike, newPost ]);
 
 	return (
 		<div>

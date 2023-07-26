@@ -1,10 +1,17 @@
 .CropDiv {
-	margin-top: 5rem;
 	border-radius: 1rem;
 	background-color: rgb(39, 39, 39);
-	height: 55rem;
-	width: 50rem;
+	height: 50rem;
+	width: 100%;
 	position: relative;
+	/* border: 2px solid red; */
+}
+
+.ImageCropContainer {
+	/* border: 2px solid orange; */
+	border-radius: 1rem;
+	height: 50rem;
+	width: 100%;
 }
 
 .CropContainer {
@@ -13,6 +20,37 @@
 	left: 0rem;
 	right: 0rem;
 	bottom: 0rem;
+}
+
+.NewCaptionPostLabel {
+	color: white;
+	font-size: 1.5rem;
+}
+
+.CropGoBackButtonDiv,
+.CropNextButtonDiv {
+	display: flex;
+	align-items: center;
+}
+
+.CropNextButton {
+	font-size: 1.5rem;
+	background-color: rgb(39, 39, 39);
+	color: rgb(27, 156, 255);
+	border-color: rgb(39, 39, 39);
+}
+
+.CropNextButton:hover {
+	font-size: 1.5rem;
+	background-color: rgb(39, 39, 39);
+	color: white;
+	border-color: rgb(39, 39, 39);
+}
+
+.CropHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .Controls {

@@ -12,6 +12,8 @@ import nprogress from 'nprogress';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import useMediaQuery from './hooks/useMediaQuery';
 import SideNavBar from './layouts/SidNavBar';
+import AddNewPost from './features/post/components/AddNewPost';
+import DiscardModal from './features/post/components/DiscardModal';
 
 function App() {
 	const isAboveSmallScreens = useMediaQuery('(min-width: 1000px)');
@@ -29,14 +31,26 @@ function App() {
 	const [ settingsModal, setSettingsModal ] = useState(false);
 	const [ innerCommentHTML, setInnerCommentHTML ] = useState();
 	const [ newReply, setNewReply ] = useState(-1);
-	const [ userPostSettingsModal, setUserPostSettingsModal ] = useState();
+	const [ userPostSettingsModal, setUserPostSettingsModal ] = useState(false);
 	const [ innerPostHTML, setInnerPostHTML ] = useState();
+
+	const [ uploadModal, setUploadModal ] = useState(false);
+	const [ fileUpload, setFileUpload ] = useState();
+	const [ s3Response, setS3Response ] = useState();
+	const [ fileUploadPhase, setFileUploadPhase ] = useState(true);
+	const [ imageCropPhase, setImageCropPhase ] = useState(false);
+	const [ captionPhase, setCaptionPhase ] = useState(false);
+	const [ discardModal, setDiscardModal ] = useState(false);
 
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
 		let postDataArray = event.target.id.split(' ');
 		setInnerPostHTML({ postId: postDataArray[0], postUsername: postDataArray[1], postKey: postDataArray[2] });
 		setUserPostSettingsModal(!userPostSettingsModal);
+	};
+	const toggleUploadModal = () => setUploadModal(!uploadModal);
+	const toggleDiscardModal = () => {
+		setDiscardModal(!discardModal);
 	};
 
 	useEffect(
@@ -130,6 +144,14 @@ function App() {
 	const deletePost = async (data) => {
 		console.log(data);
 		let response = await InstapostApi.deleteAPost(data);
+		setNewPost(newPost - 1);
+		return response;
+	};
+
+	const deleteS3File = async (key) => {
+		console.log(key);
+		const keyData = { key: key };
+		let response = await InstapostApi.deleteFromS3File(keyData);
 		return response;
 	};
 
@@ -162,12 +184,38 @@ function App() {
 						userPostSettingsModal,
 						innerPostHTML,
 						setUserPostSettingsModal,
-						deletePost
+						deletePost,
+						toggleUploadModal,
+						uploadModal,
+						setFileUpload,
+						fileUpload,
+						setS3Response,
+						s3Response,
+						setFileUploadPhase,
+						setImageCropPhase,
+						setCaptionPhase,
+						captionPhase,
+						toggleDiscardModal,
+						discardModal
 					}}
 				>
 					<SettingsModal />
 					<BrowserRouter>
 						<UserPostSettingsModal />
+						<AddNewPost
+							fileUploadPhase={fileUploadPhase}
+							imageCropPhase={imageCropPhase}
+							captionPhase={captionPhase}
+						/>
+						<DiscardModal
+							imageCropPhase={imageCropPhase}
+							setImageCropPhase={setImageCropPhase}
+							setFileUploadPhase={setFileUploadPhase}
+							s3Response={s3Response}
+							setCaptionPhase={setCaptionPhase}
+							captionPhase={captionPhase}
+							deleteS3File={deleteS3File}
+						/>
 						{isAboveSmallScreens && showNav && <SideNavBar />}
 						{!isAboveSmallScreens && showNav && <BottomNavBar />}
 						{!isAboveSmallScreens && showNav && <TopNavBar />}

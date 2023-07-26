@@ -11,7 +11,7 @@ const PostDetail = () => {
 	nprogress.done();
 
 	return (
-		<div className="Col-9">
+		<div className="Col-9 PostDetailCol">
 			<div className="PostDetail">
 				<PostCard post={state} key={state.postId} />
 			</div>

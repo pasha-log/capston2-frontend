@@ -9,19 +9,22 @@
 	align-items: center;
 	justify-content: center;
 	padding: 0rem;
+	border-radius: 1rem;
 }
 
 .modal-body {
 	text-align: center;
 }
 
-.ModalBody button {
+.YourLikes,
+.LogOutButton {
 	background-color: rgb(39, 39, 39);
 	border: none;
 	font-size: 2rem;
 }
 
-.ModalBody button:hover {
+.YourLikes:hover,
+.LogOutButton:hover {
 	background-color: rgb(39, 39, 39);
 	border: none;
 }

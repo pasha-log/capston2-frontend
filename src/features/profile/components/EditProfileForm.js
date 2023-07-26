@@ -10,7 +10,7 @@ import Footer from '../../../layouts/Footer';
 const EditProfileForm = () => {
 	const [ response, setResponse ] = useState(false);
     const navigate = useNavigate();
-	const { currentUser, editProfileInfo, nprogress } = useContext(CurrentUserContext);
+	const { currentUser, editProfileInfo, nprogress, toggleUploadModal } = useContext(CurrentUserContext);
 	nprogress.done();
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
@@ -61,7 +61,8 @@ const EditProfileForm = () => {
 									<h3>
 										{currentUser?.username}
 										<br />
-										<Link className="ChangeProfilePhoto" to={"/editProfileImage"} state={{ prevPath: "/edit" }}>
+										{/* <Link className="ChangeProfilePhoto" to={"/editProfileImage"} state={{ prevPath: "/edit" }}> */}
+										<Link className="ChangeProfilePhoto" onClick={() => toggleUploadModal()} state={{ prevPath: "/edit" }}>
 											Change profile photo
 										</Link>
 									</h3>

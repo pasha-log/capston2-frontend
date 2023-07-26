@@ -1,16 +1,28 @@
-import { Input, Button, Form, FormGroup, Col, Row } from 'reactstrap';
+import { Input, Button, Form } from 'reactstrap';
 import { useForm, Controller } from 'react-hook-form';
 import '../assets/CaptionForm.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import InstapostApi from '../../../Api';
 import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
 
 const CaptionForm = () => {
 	const navigate = useNavigate();
-	const { currentUser, newPost, setNewPost, nprogress } = useContext(CurrentUserContext);
-	const { state } = useLocation();
-	const { imageUrl, imageKey } = state;
+	const {
+		currentUser,
+		newPost,
+		setNewPost,
+		nprogress,
+		s3Response,
+		setCaptionPhase,
+		setFileUploadPhase,
+		toggleUploadModal,
+		toggleDiscardModal
+	} = useContext(CurrentUserContext);
+	// const { state } = useLocation();
+	// const { imageUrl, imageKey } = state;
+	const { imageUrl, imageKey } = s3Response;
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			username: currentUser.username,
@@ -28,42 +40,40 @@ const CaptionForm = () => {
 		await InstapostApi.createPost(data);
 		setNewPost(newPost + 1);
 		navigate(`/${currentUser.username}`);
+		setCaptionPhase(false);
+		setFileUploadPhase(true);
+		toggleUploadModal();
 		nprogress.done();
 	};
 
 	return (
 		<div className="CaptionFormDiv">
 			<Form onSubmit={handleSubmit(onSubmit)}>
-				<FormGroup row>
-					<Col
-						md={{
-							offset: 3,
-							size: 6
-						}}
-						sm="12"
-					>
-						<div className="CaptionFormContainer">
-							<div className="ShareControls">
-								<Row>
-									<Col>
-										<Button className="GoBack" onClick={() => navigate(-1)}>
-											<span id="GoBack" className="material-symbols-outlined">
-												arrow_back
-											</span>
-										</Button>
-									</Col>
-									<Col>
-										<h1 className="NewCaptionPostLabel">Create New Post</h1>
-									</Col>
-									<Col>
-										<Button className="PostButton" type="submit" size="sm">
-											Share
-										</Button>
-									</Col>
-								</Row>
+				<div className="CaptionFormContainer">
+					<div className="ShareControls">
+						<div className="CaptionFormHeader">
+							<div className="GoBackButtonDiv">
+								{/* <Button className="GoBack" onClick={() => navigate(-1)}> */}
+								<Button className="GoBack" onClick={() => toggleDiscardModal()}>
+									<span id="GoBack" className="material-symbols-outlined">
+										arrow_back
+									</span>
+								</Button>
 							</div>
-							<img className="PostImage" src={imageUrl} alt="" />
 							<div>
+								<h2 className="NewCaptionPostLabel">Create New Post</h2>
+							</div>
+							<div className="PostButtonDiv">
+								<Button className="PostButton" type="submit">
+									Share
+								</Button>
+							</div>
+						</div>
+					</div>
+					<div className="CaptionFormFlexContainer">
+						<img className="PostImage" src={imageUrl} alt="" />
+						<div className="CaptionWriteDiv">
+							<div className="CaptionUserDetail">
 								<img className="CaptionProfileImage" src={currentUser.profileImageURL} alt="" />
 								<span className="CaptionUsername">{currentUser.username}</span>
 							</div>
@@ -82,8 +92,8 @@ const CaptionForm = () => {
 								/>
 							</div>
 						</div>
-					</Col>
-				</FormGroup>
+					</div>
+				</div>
 			</Form>
 		</div>
 	);

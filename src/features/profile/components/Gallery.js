@@ -36,7 +36,7 @@ const Gallery = ({ userBeingViewed }) => {
 						onClick={onPostClick}
 					>
 						<div className="gallery-item" tabIndex="0">
-							<img className="gallery-image" src={post.postURL} alt={post.id} loading='lazy' />
+							<img className="gallery-image" src={post.postURL} alt={post.postId} loading='lazy' />
 							<div className="gallery-item-info">
 								<ul>
 									<li className="gallery-item-likes" key={`${post.postId}-gallery-item-likes`}>

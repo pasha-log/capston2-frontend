@@ -1,21 +1,25 @@
 import { useState } from 'react';
 import '../assets/ImageCropForm.css';
 import ImageCropDialog from './ImageCropDialog';
-import { useNavigate, useLocation } from 'react-router-dom';
+// import { useNavigate, useLocation } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
 
 const ImageCropForm = () => {
-	const { nprogress, upload } = useContext(CurrentUserContext);
-	const { state } = useLocation();
-	const { id, imageUrl } = state;
+	const { nprogress, upload, fileUpload, setS3Response, setImageCropPhase, setCaptionPhase } = useContext(
+		CurrentUserContext
+	);
+	// const { state } = useLocation();
+	// const { id, imageUrl } = state;
+	const { id, imageUrl } = fileUpload;
 	const initData = {
 		id: id,
 		imageUrl: imageUrl,
 		croppedImageUrl: null
 	};
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const dataURLtoFile = (dataurl, filename) => {
 		const arr = dataurl.split(',');
@@ -44,7 +48,10 @@ const ImageCropForm = () => {
 
 		newImage = dataURLtoFile(newImage.croppedImageUrl, image.id);
 		const response = await upload(newImage);
-		navigate('/caption', { state: { imageUrl: response.result.Location, imageKey: response.result.Key } });
+		// navigate('/caption', { state: { imageUrl: response.result.Location, imageKey: response.result.Key } });
+		setS3Response({ imageUrl: response.result.Location, imageKey: response.result.Key });
+		setImageCropPhase(false);
+		setCaptionPhase(true);
 		nprogress.done();
 	};
 

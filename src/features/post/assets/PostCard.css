@@ -38,6 +38,12 @@ main .PostDetailContainer {
 	/* background: #ddd; */
 }
 
+@media screen and (min-width: 1000px) {
+	.PostDetailCol {
+		margin-left: 300px;
+	}
+}
+
 .Col-9 {
 	width: 65%;
 	margin-top: 30px;

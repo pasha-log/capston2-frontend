@@ -150,8 +150,14 @@ class InstapostApi {
 	// Delete a user's post.
 
 	static async deleteAPost(postInfo) {
-		console.log(postInfo);
 		let response = await this.request(`users/deletePost`, postInfo, 'delete');
+		return response;
+	}
+
+	// Delete a file only from S3 bucket in caption form phase discard scenario.
+
+	static async deleteFromS3File(keyData) {
+		let response = await this.request(`users/deleteS3File`, keyData, 'delete');
 		return response;
 	}
 }

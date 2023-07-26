@@ -2,11 +2,14 @@ import { useState } from 'react';
 import Cropper from 'react-easy-crop';
 import '../assets/ImageCropDialog.css';
 import getCroppedImg from '../utils/cropImage';
-import { Button, Col, Row, Container } from 'reactstrap';
-import { useNavigate } from 'react-router-dom';
+import { Button, Container } from 'reactstrap';
+// import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import CurrentUserContext from '../../../context/CurrentUserContext';
 
 const ImageCropDialog = ({ imageUrl, cropInit, zoomInit, setCroppedImageFor }) => {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
+	const { toggleDiscardModal } = useContext(CurrentUserContext);
 	if (zoomInit == null) {
 		zoomInit = 1;
 	}
@@ -37,26 +40,27 @@ const ImageCropDialog = ({ imageUrl, cropInit, zoomInit, setCroppedImageFor }) =
 	};
 
 	return (
-		<Container fluid>
+		<Container fluid className="ImageCropContainer">
 			<div className="CropDiv">
 				<div className="ShareControls">
-					<Row>
-						<Col>
-							<Button className="GoBack" onClick={() => navigate(-1)}>
+					<div className="CropHeader">
+						<div className="CropGoBackButtonDiv">
+							{/* <Button className="GoBack" onClick={() => navigate(-1)}> */}
+							<Button className="GoBack" onClick={() => toggleDiscardModal()}>
 								<span id="GoBack" className="material-symbols-outlined">
 									arrow_back
 								</span>
 							</Button>
-						</Col>
-						<Col>
+						</div>
+						<div>
 							<h1 className="NewCaptionPostLabel">Crop</h1>
-						</Col>
-						<Col>
-							<Button onClick={onCrop} className="PostButton" type="submit" size="sm">
+						</div>
+						<div className="CropNextButtonDiv">
+							<Button onClick={onCrop} className="CropNextButton" type="submit">
 								Next
 							</Button>
-						</Col>
-					</Row>
+						</div>
+					</div>
 				</div>
 				<div className="CropContainer">
 					<Cropper

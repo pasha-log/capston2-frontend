@@ -1,14 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
 import '../assets/SideNavBar.css';
 import { useContext } from 'react';
 import CurrentUserContext from '../context/CurrentUserContext';
 
 const SideNavBar = () => {
-	const { storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
+	const { toggleUploadModal, storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
+	// const { storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
 
 	const onUploadClick = () => {
 		nprogress.start();
+	}
+
+	const navigate = useNavigate();
+	const location = useLocation();
+	const handleToggleModalEvent = () => {
+		console.log(location.pathname.substring(0, 7));
+		if(location.pathname.substring(0, 7) === '/posts/') navigate(`/${currentUser?.username}`);
+		toggleUploadModal();
 	}
 	
 	return (
@@ -63,8 +72,10 @@ const SideNavBar = () => {
                                 <h2>Notifications</h2>
 							</Link>
                         </Row>
-						<Row className='SideNavRow'>
-							<Link id="add_circle" to="/upload" onClick={onUploadClick}>
+						<Row className='SideNavRow' onClick={() => handleToggleModalEvent()}>
+						{/* <Row className='SideNavRow'> */}
+							{/* <Link id="add_circle" to="/upload" onClick={onUploadClick}> */}
+							<Link id="add_circle">
 								<span
 									style={{ fontSize: '3rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"

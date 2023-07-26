@@ -11,10 +11,12 @@ function SettingsModal() {
 			<Modal isOpen={settingsModal} toggle={toggleSettingsModal} centered={true} size={'sm'}>
 				<ModalBody className="ModalBody">
 					<div className="LogOut">
-						<Button onClick={logOutUser}>Log Out</Button>
+						<Button className="LogOutButton" onClick={logOutUser}>
+							Log Out
+						</Button>
 					</div>
 					<div className="YourLikes">
-						<Button>Your Likes</Button>
+						<Button className="YourLikesButton">Your Likes</Button>
 					</div>
 					<div>
 						<Button onClick={toggleSettingsModal}>Cancel</Button>

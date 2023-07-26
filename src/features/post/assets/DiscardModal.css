@@ -1,0 +1,41 @@
+.DiscardWarning,
+.Discard {
+	border-bottom: solid rgb(67, 67, 67) 1px;
+	width: 100%;
+}
+
+.DiscardButton,
+.DiscardButton:hover {
+	color: red;
+}
+
+.Discard button,
+.DiscardCancel button {
+	background-color: rgb(39, 39, 39);
+	border-color: rgb(39, 39, 39);
+	font-size: 1.5rem;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+}
+
+.Discard button:hover,
+.DiscardCancel button:hover {
+	background-color: rgb(39, 39, 39);
+	border-color: rgb(39, 39, 39);
+	font-size: 1.5rem;
+}
+
+.DiscardWarning {
+	text-align: center;
+}
+
+.DiscardWarning {
+	font-size: 2.5rem;
+	padding-bottom: 2rem;
+	padding-top: 2rem;
+}
+
+.DiscardWarning p {
+	font-size: 1.5rem;
+	color: grey;
+}

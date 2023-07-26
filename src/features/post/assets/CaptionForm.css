@@ -1,49 +1,46 @@
-.PostImage {
-	width: 30rem;
-	height: 30rem;
-}
-
-@media screen and (max-width: 995px) {
-	.PostImage {
-		width: 20rem;
-		height: 20rem;
-	}
-}
-
 .CaptionFormContainer {
-	margin-top: 5rem;
 	border-radius: 1rem;
 	background-color: rgb(39, 39, 39);
-	height: 45rem;
+	height: 50rem;
+	width: 100%;
 	text-align: center;
 }
 
 .CaptionFormDiv {
-	width: 70%;
+	height: 50rem;
+	width: 100%;
+	border-radius: 1rem;
+}
+
+.CaptionFormHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .NewCaptionPostLabel {
-	/* font-size: 2rem; */
-	padding-top: .5rem;
-	padding-bottom: .5rem;
+	font-size: 1.5rem;
+	margin-bottom: 0;
 }
 
-#GoBack {
-	font-size: 2rem;
+@media screen and (max-width: 1000px) {
+	.NewCaptionPostLabel {
+		font-size: 1.5rem;
+	}
 }
 
 .PostButton {
 	background-color: rgb(39, 39, 39);
 	color: rgb(27, 156, 255);
 	border-color: rgb(39, 39, 39);
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 }
 
 .PostButton:hover {
 	background-color: rgb(39, 39, 39);
 	color: white;
 	border-color: rgb(39, 39, 39);
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 }
 
 .Caption:focus,
@@ -57,7 +54,13 @@
 
 .Caption::placeholder {
 	/* modern browser */
-	color: rgb(71, 71, 71);
+	color: rgb(111, 111, 111);
+}
+
+.GoBackButtonDiv,
+.PostButtonDiv {
+	display: flex;
+	align-items: center;
 }
 
 .GoBack {
@@ -72,27 +75,70 @@
 	border-color: rgb(39, 39, 39);
 }
 
-.ShareControls {
-	border-bottom: solid rgb(71, 71, 71) 0.06rem;
+#GoBack {
 	font-size: 2rem;
 }
 
-.GoBack,
-.PostButton,
-.NewCaptionPostLabel {
-	padding-bottom: 0rem;
+.ShareControls {
+	border-bottom: solid rgb(71, 71, 71) 0.06rem;
+	font-size: 3rem;
 }
 
 .CaptionProfileImage {
 	border-radius: 50%;
 	width: 3rem;
 	height: 3rem;
-	/* content: url('./temp-profile-photo.jpg'); */
+
 	margin-top: .5rem;
 	margin-right: .5rem;
+	margin-left: .5rem;
 }
 
 .CaptionUsername {
-	margin-top: 1rem;
 	font-size: 1.5rem;
+	color: white;
+}
+
+.CaptionUserDetail {
+	display: flex;
+	align-items: center;
+}
+
+.CaptionFormFlexContainer {
+	display: flex;
+	height: 46.7rem;
+}
+
+@media screen and (min-width: 1000px) {
+	.CaptionFormFlexContainer {
+		flex-direction: row;
+	}
+
+	.PostImage {
+		width: 60%;
+		height: 100%;
+		border-bottom-left-radius: 1rem;
+	}
+
+	.CaptionWriteDiv {
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.CaptionFormFlexContainer {
+		flex-direction: column;
+	}
+	.PostImage {
+		width: 30rem;
+		height: 30rem;
+
+		margin-left: auto;
+		margin-right: auto;
+		width: fit-content;
+	}
+
+	.CaptionWriteDiv {
+		width: 100%;
+	}
 }
