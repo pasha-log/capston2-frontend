@@ -1,11 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { Form, FormGroup, Col } from 'reactstrap';
+import { Form } from 'reactstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../assets/FileUploadForm.css';
 import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
-// import { Modal, ModalBody } from 'reactstrap';
-// import ReactDOM from 'react-dom';
 
 const FileUploadForm = () => {
 	// const {toggleUploadModal, uploadModal, toggleCropModal, nprogress, upload, currentUser, editProfileInfo, setInnerCommentHTML } = useContext(CurrentUserContext);
@@ -50,36 +48,21 @@ const FileUploadForm = () => {
 
 	return (
 		<div className="UploadFormDiv">
-			{/* <Modal isOpen={uploadModal} toggle={toggleUploadModal} centered={true} size={'md'}>
-				<ModalBody className="ModalBody "> */}
-
-			{/* <FormGroup row>
-				<Col
-					md={{
-						offset: 3,
-						size: 6
-					}}
-					sm="12"
-					> */}
-					<div className="UploadFormContainer">
-						<h1 className="NewPostLabel">Create New Post</h1>
-						<div className="GalleryIcon">
-							<span id="GalleryIcon" className="material-symbols-outlined">
-								gallery_thumbnail
-							</span>
-							<p>Upload Photos Here</p>
-						</div>
-						<Form className="FileUpload" onChange={handleSelectedInput} encType="multipart/form-data">
-							<label htmlFor="File" className="CustomFileUpload">
-								Select from computer
-							</label>
-							<input id="File" className="File" type="file" {...register('file', { required: true })} />
-						</Form>
-					</div>
-				{/* </Col>
-			</FormGroup> */}
-					{/* </ModalBody>
-			</Modal> */}
+			<div className="UploadFormContainer">
+				<h1 className="NewPostLabel">Create New Post</h1>
+				<div className="GalleryIcon">
+					<span id="GalleryIcon" className="material-symbols-outlined">
+						gallery_thumbnail
+					</span>
+					<p>Upload Photos Here</p>
+				</div>
+				<Form className="FileUpload" onChange={handleSelectedInput} encType="multipart/form-data">
+					<label htmlFor="File" className="CustomFileUpload">
+						Select from computer
+					</label>
+					<input id="File" className="File" type="file" {...register('file', { required: true })} />
+				</Form>
+			</div>
 		</div>
 	);
 };

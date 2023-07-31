@@ -13,9 +13,15 @@ function DiscardModal({
 	captionPhase,
 	deleteS3File
 }) {
-	const { toggleDiscardModal, discardModal } = useContext(CurrentUserContext);
+	const {
+		toggleDiscardModal,
+		discardModal,
+		setUploadModal,
+		outsideClickUploadForm,
+		setOutsideClickUploadForm
+	} = useContext(CurrentUserContext);
 
-	const handleDiscard = async () => {
+	const handleDiscardBackButton = async () => {
 		if (imageCropPhase === true) {
 			setImageCropPhase(false);
 			setFileUploadPhase(true);
@@ -28,33 +34,47 @@ function DiscardModal({
 		toggleDiscardModal();
 	};
 
+	const handleDiscardOutsideClick = async () => {
+		if (captionPhase === true) {
+			const { imageKey } = s3Response;
+			await deleteS3File(imageKey);
+		}
+		toggleDiscardModal();
+		setUploadModal(false);
+		setCaptionPhase(false);
+		setImageCropPhase(false);
+		setFileUploadPhase(true);
+		setOutsideClickUploadForm(false);
+	};
+
+	/** We need a function that knows when a click outside of any post creation phase except the initial fileUploadForm. 
+	 * When this event happens, it needs to trigger the discard modal to warn the user of loosing their editing work.
+	 */
+
 	return ReactDOM.createPortal(
-		// <div>
-		<Modal
-			isOpen={discardModal}
-			toggle={toggleDiscardModal}
-			centered={true}
-			size={'sm'}
-			backdrop="static"
-			keyboard={false}
-		>
+		<Modal isOpen={discardModal} toggle={toggleDiscardModal} centered={true} size={'sm'}>
 			<ModalBody className="ModalBody">
 				<div className="DiscardWarning">
 					Discard post?
 					<p>If you leave, your edits won't be saved.</p>
 				</div>
 				<div className="Discard">
-					<Button className="DiscardButton" onClick={() => handleDiscard()}>
-						Discard
-					</Button>
+					{outsideClickUploadForm ? (
+						<Button className="DiscardButton" onClick={() => handleDiscardOutsideClick()}>
+							Discard
+						</Button>
+					) : (
+						<Button className="DiscardButton" onClick={() => handleDiscardBackButton()}>
+							Discard
+						</Button>
+					)}
 				</div>
 				<div className="DiscardCancel">
 					<Button onClick={toggleDiscardModal}>Cancel</Button>
 				</div>
 			</ModalBody>
 		</Modal>,
-		// </div>,
-		document.body
+		document.getElementById('modal')
 	);
 }
 

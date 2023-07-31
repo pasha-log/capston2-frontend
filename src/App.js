@@ -41,6 +41,7 @@ function App() {
 	const [ imageCropPhase, setImageCropPhase ] = useState(false);
 	const [ captionPhase, setCaptionPhase ] = useState(false);
 	const [ discardModal, setDiscardModal ] = useState(false);
+	const [ outsideClickUploadForm, setOutsideClickUploadForm ] = useState(false);
 
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
@@ -48,7 +49,14 @@ function App() {
 		setInnerPostHTML({ postId: postDataArray[0], postUsername: postDataArray[1], postKey: postDataArray[2] });
 		setUserPostSettingsModal(!userPostSettingsModal);
 	};
-	const toggleUploadModal = () => setUploadModal(!uploadModal);
+	const toggleUploadModal = () => {
+		if (fileUploadPhase) {
+			setUploadModal(!uploadModal);
+		} else {
+			setOutsideClickUploadForm(true);
+			toggleDiscardModal();
+		}
+	};
 	const toggleDiscardModal = () => {
 		setDiscardModal(!discardModal);
 	};
@@ -196,7 +204,10 @@ function App() {
 						setCaptionPhase,
 						captionPhase,
 						toggleDiscardModal,
-						discardModal
+						discardModal,
+						outsideClickUploadForm,
+						setOutsideClickUploadForm,
+						setUploadModal
 					}}
 				>
 					<SettingsModal />

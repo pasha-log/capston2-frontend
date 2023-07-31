@@ -8,9 +8,10 @@ import CaptionForm from './CaptionForm';
 
 const AddNewPost = ({ fileUploadPhase, imageCropPhase, captionPhase }) => {
 	const { toggleUploadModal, uploadModal } = useContext(CurrentUserContext);
+
 	return ReactDOM.createPortal(
 		<Modal isOpen={uploadModal} toggle={toggleUploadModal} centered={true} size={captionPhase ? 'lg' : 'md'}>
-			<ModalBody className="ModalBody ">
+			<ModalBody className="ModalBody">
 				{fileUploadPhase && <FileUploadForm />}
 				{imageCropPhase && <ImageCropForm />}
 				{captionPhase && <CaptionForm />}
