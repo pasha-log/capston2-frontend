@@ -3,9 +3,10 @@ import LoginForm from './features/authentication/components/LoginForm';
 import SignupForm from './features/authentication/components/SignupForm';
 import RequireAuth from './context/RequireAuth';
 import Profile from './features/profile/components/Profile';
-import FileUploadForm from './features/post/components/FileUploadForm';
-import ImageCropForm from './features/post/components/ImageCropForm';
-import CaptionForm from './features/post/components/CaptionForm.js';
+// import FileUploadForm from './features/post/components/FileUploadForm';
+// import ImageCropForm from './features/post/components/ImageCropForm';
+// import CaptionForm from './features/post/components/CaptionForm.js';
+import Messaging from './features/messaging/components/Messaging';
 import PostDetail from './features/post/components/PostDetail.js';
 import HomePage from './pages/HomePage.js';
 import ExplorePage from './pages/ExplorePage';
@@ -36,14 +37,23 @@ const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav
 			/>
 			<Route
 				exact
+				path="/messages"
+				element={
+					<RequireAuth>
+						<Messaging />
+					</RequireAuth>
+				}
+			/>
+			{/* <Route
+				exact
 				path="/upload"
 				element={
 					<RequireAuth>
 						<FileUploadForm />
 					</RequireAuth>
 				}
-			/>
-			<Route
+			/> */}
+			{/* <Route
 				exact
 				path="/crop"
 				element={
@@ -60,7 +70,7 @@ const InstapostRoutes = ({ setTokenAfterLogin, setTokenAfterRegister, setShowNav
 						<CaptionForm />
 					</RequireAuth>
 				}
-			/>
+			/> */}
 			<Route
 				exact
 				path="/posts/:postId"

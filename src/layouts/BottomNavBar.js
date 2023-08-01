@@ -1,15 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
 import '../assets/BottomNavBar.css';
 import { useContext } from 'react';
 import CurrentUserContext from '../context/CurrentUserContext';
 
 const BottomNavBar = () => {
-	const { storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
+	const { toggleUploadModal, storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
 
-	const onUploadClick = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const handleToggleModalEventBottomBar = () => {
+		if(location.pathname.substring(0, 7) === '/posts/') navigate(`/${currentUser?.username}`);
+		toggleUploadModal();
 		nprogress.start();
+
 	}
+	
 	
 	return (
 		<div className='NavBarContainer'>
@@ -37,8 +43,8 @@ const BottomNavBar = () => {
 								</span>
 							</Link>
 						</Col>
-						<Col>
-							<Link id="add_circle" to="/upload" onClick={onUploadClick}>
+						<Col onClick={() => handleToggleModalEventBottomBar()}>
+							<Link id="add_circle" >
 								<span
 									style={{ fontSize: '3rem', marginTop: '.5rem' }}
 									className="material-symbols-outlined"

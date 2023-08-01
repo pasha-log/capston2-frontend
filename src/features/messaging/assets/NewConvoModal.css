@@ -1,0 +1,80 @@
+.NewChatBody {
+	/* margin: 1rem; */
+	/* border: solid 2px yellow; */
+	height: 40rem;
+}
+
+/* .ChatModal {
+	border: solid 2px green;
+} */
+
+.modal-content {
+	border-radius: 2rem;
+}
+
+.NewMessageHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 1rem;
+}
+
+.HeaderTitle {
+	font-size: 2rem;
+}
+
+.NewConvoModalClose {
+	cursor: pointer;
+}
+
+.ConvoSearch {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-bottom: solid .05rem rgb(50, 50, 50);
+	border-top: solid .05rem rgb(50, 50, 50);
+	/* height: 5rem; */
+	font-size: 1.5rem;
+	padding: 1rem;
+}
+
+.To {
+	font-weight: bold;
+}
+
+.SearchConvo {
+	color: grey;
+	margin-left: 1rem;
+}
+
+.ChatSearchResults {
+	height: 65%;
+	display: flex;
+	align-items: flex-start;
+}
+
+.NoAccountFound {
+	color: grey;
+	font-size: 1.5rem;
+	margin: 2rem;
+}
+
+/* .ChatButton {
+	display: flex;
+} */
+
+.StartChatButton {
+	width: 95%;
+	font-size: 1.5rem;
+	font-weight: bold;
+	background-color: rgb(27, 156, 255);
+	color: white;
+	border-color: rgb(27, 156, 255);
+}
+
+.StartChatButton:hover {
+	font-size: 1.5rem;
+	background-color: rgb(47, 165, 255);
+	color: white;
+	border-color: rgb(47, 165, 255);
+}

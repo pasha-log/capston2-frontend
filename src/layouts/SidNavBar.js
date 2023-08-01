@@ -3,21 +3,19 @@ import { Col, Row } from 'reactstrap';
 import '../assets/SideNavBar.css';
 import { useContext } from 'react';
 import CurrentUserContext from '../context/CurrentUserContext';
+import useMediaQuery from '../hooks/useMediaQuery';
+import InstapostIcon from '../assets/instapost-logo.svg';
 
 const SideNavBar = () => {
+	const isAboveSmallScreens = useMediaQuery('(min-width: 1300px)');
 	const { toggleUploadModal, storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
-	// const { storedValue, currentUser, nprogress } = useContext(CurrentUserContext);
-
-	const onUploadClick = () => {
-		nprogress.start();
-	}
 
 	const navigate = useNavigate();
 	const location = useLocation();
-	const handleToggleModalEvent = () => {
-		console.log(location.pathname.substring(0, 7));
+	const handleToggleModalEventSideBar = () => {
 		if(location.pathname.substring(0, 7) === '/posts/') navigate(`/${currentUser?.username}`);
 		toggleUploadModal();
+		nprogress.start();
 	}
 	
 	return (
@@ -28,7 +26,8 @@ const SideNavBar = () => {
 					<Col className="SideNavContainer">
                         <Row className='' style={{marginLeft: "2rem"}}>
 							<Link id="home" to="/">
-								<span
+								{isAboveSmallScreens ? 
+								(<span
 									style={{
 										fontSize: '3rem',
 										marginTop: '.5rem',
@@ -36,7 +35,9 @@ const SideNavBar = () => {
 									}}
 								>
 									Instapost
-								</span>
+								</span>) : 
+								(<img src={InstapostIcon}  alt=""/>)
+								}
 							</Link>
 						</Row>
 						<Row className='SideNavRow'>
@@ -47,7 +48,7 @@ const SideNavBar = () => {
 								>
 									home
 								</span>
-                                <h2>Home</h2>
+                                <h2 id="SideBarLabel">Home</h2>
 							</Link>
 						</Row>
 						<Row className='SideNavRow'>
@@ -58,10 +59,21 @@ const SideNavBar = () => {
 								>
 									search
 								</span>
-                                <h2>Search</h2>
+                                <h2 id="SideBarLabel">Search</h2>
 							</Link>
 						</Row>
 						<Row className='SideNavRow'>
+                            <Link id="messages" to="/messages">
+								<span
+									style={{ fontSize: '2.5rem', marginTop: '.6rem', marginBottom: '0rem' }}
+									className="material-symbols-outlined"
+								>
+									chat_bubble
+								</span>
+                                <h2 id="SideBarLabel">Messages</h2>
+							</Link>
+                        </Row>
+						{/* <Row className='SideNavRow'>
                             <Link id="notifications" to="/notifications">
 								<span
 									style={{ fontSize: '2.5rem', marginTop: '.6rem', marginBottom: '0rem' }}
@@ -71,10 +83,8 @@ const SideNavBar = () => {
 								</span>
                                 <h2>Notifications</h2>
 							</Link>
-                        </Row>
-						<Row className='SideNavRow' onClick={() => handleToggleModalEvent()}>
-						{/* <Row className='SideNavRow'> */}
-							{/* <Link id="add_circle" to="/upload" onClick={onUploadClick}> */}
+                        </Row> */}
+						<Row className='SideNavRow' onClick={() => handleToggleModalEventSideBar()}>
 							<Link id="add_circle">
 								<span
 									style={{ fontSize: '3rem', marginTop: '.5rem' }}
@@ -82,7 +92,7 @@ const SideNavBar = () => {
 								>
 									add_circle
 								</span>
-                                <h2>Create</h2>
+                                <h2 id="SideBarLabel">Create</h2>
 							</Link>
 						</Row>
 						<Row className='SideNavRow'>
@@ -94,7 +104,7 @@ const SideNavBar = () => {
 									}
 									alt=""
 								/>
-                                <h2>Profile</h2>
+                                <h2 id="SideBarLabel">Profile</h2>
 							</Link>
 						</Row>
 					</Col>

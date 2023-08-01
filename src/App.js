@@ -14,6 +14,7 @@ import useMediaQuery from './hooks/useMediaQuery';
 import SideNavBar from './layouts/SidNavBar';
 import AddNewPost from './features/post/components/AddNewPost';
 import DiscardModal from './features/post/components/DiscardModal';
+import NewConvoModal from './features/messaging/components/NewConvoModal';
 
 function App() {
 	const isAboveSmallScreens = useMediaQuery('(min-width: 1000px)');
@@ -42,6 +43,7 @@ function App() {
 	const [ captionPhase, setCaptionPhase ] = useState(false);
 	const [ discardModal, setDiscardModal ] = useState(false);
 	const [ outsideClickUploadForm, setOutsideClickUploadForm ] = useState(false);
+	const [ newConvoModal, setNewConvoModal ] = useState(false);
 
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
@@ -59,6 +61,9 @@ function App() {
 	};
 	const toggleDiscardModal = () => {
 		setDiscardModal(!discardModal);
+	};
+	const toggleNewConvoModal = () => {
+		setNewConvoModal(!newConvoModal);
 	};
 
 	useEffect(
@@ -207,7 +212,9 @@ function App() {
 						discardModal,
 						outsideClickUploadForm,
 						setOutsideClickUploadForm,
-						setUploadModal
+						setUploadModal,
+						toggleNewConvoModal,
+						newConvoModal
 					}}
 				>
 					<SettingsModal />
@@ -227,6 +234,7 @@ function App() {
 							captionPhase={captionPhase}
 							deleteS3File={deleteS3File}
 						/>
+						<NewConvoModal />
 						{isAboveSmallScreens && showNav && <SideNavBar />}
 						{!isAboveSmallScreens && showNav && <BottomNavBar />}
 						{!isAboveSmallScreens && showNav && <TopNavBar />}
