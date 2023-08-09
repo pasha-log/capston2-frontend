@@ -1,0 +1,50 @@
+.ActiveChatContainer {
+	width: 100%;
+	/* border: solid 2px green; */
+	/* border: solid 2px blue; */
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	border-bottom: solid .1rem rgb(39, 39, 39);
+}
+
+.ChatLayer {
+	color: white;
+	height: 80%;
+	/* border: solid 2px turquoise; */
+	overflow: auto;
+}
+
+.ChatHeader {
+	color: white;
+	height: 10%;
+	/* border: solid 2px yellow; */
+	border-bottom: solid .1rem rgb(39, 39, 39);
+	border-top: solid .1rem rgb(39, 39, 39);
+	display: flex;
+	align-items: center;
+}
+
+.ChatH1 {
+	align-self: center;
+	margin-left: 1rem;
+}
+
+.ChatForm {
+	height: 10%;
+	align-self: flex-end;
+	/* border: solid 2px orange; */
+	width: 100%;
+}
+
+body {
+	padding-bottom: 0rem;
+}
+
+.HeaderUserImage {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-left: 2rem;
+}

@@ -16,15 +16,17 @@
 	text-align: center;
 }
 
-.YourLikes,
-.LogOutButton {
+.YourLikesButton,
+.LogOutButton,
+.CancelButtonSettings {
 	background-color: rgb(39, 39, 39);
 	border: none;
 	font-size: 2rem;
 }
 
-.YourLikes:hover,
-.LogOutButton:hover {
+.YourLikesButton:hover,
+.LogOutButton:hover,
+.CancelButtonSettings:hover {
 	background-color: rgb(39, 39, 39);
 	border: none;
 }

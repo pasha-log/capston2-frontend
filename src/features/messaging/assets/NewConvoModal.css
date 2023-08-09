@@ -1,15 +1,10 @@
 .NewChatBody {
-	/* margin: 1rem; */
-	/* border: solid 2px yellow; */
 	height: 40rem;
 }
 
-/* .ChatModal {
-	border: solid 2px green;
-} */
-
 .modal-content {
 	border-radius: 2rem;
+	/* border: solid 2px red; */
 }
 
 .NewMessageHeader {
@@ -17,6 +12,7 @@
 	align-items: center;
 	justify-content: space-between;
 	margin: 1rem;
+	color: white;
 }
 
 .HeaderTitle {
@@ -33,24 +29,50 @@
 	justify-content: flex-start;
 	border-bottom: solid .05rem rgb(50, 50, 50);
 	border-top: solid .05rem rgb(50, 50, 50);
-	/* height: 5rem; */
 	font-size: 1.5rem;
-	padding: 1rem;
 }
 
 .To {
 	font-weight: bold;
+	color: white;
+	margin-right: 1rem;
+	margin-left: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.NewChatUser {
+	display: flex;
+	align-items: center;
+	margin-left: .5rem;
+	border-radius: 1.5rem;
+	background-color: rgb(222, 240, 255);
+	color: rgb(27, 156, 255);
+	padding: .5rem;
+}
+
+.NewChatUserInfoDiv {
+	font-weight: 600;
+	font-size: 1.2rem;
+	line-height: 1rem;
+	white-space: nowrap;
+	/* overflow: hidden; */
 }
 
 .SearchConvo {
-	color: grey;
-	margin-left: 1rem;
+	display: flex;
+	align-items: center;
+	margin-top: 1.1rem;
 }
 
 .ChatSearchResults {
-	height: 65%;
+	height: 58%;
 	display: flex;
 	align-items: flex-start;
+	flex-direction: column;
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin-top: 1rem;
 }
 
 .NoAccountFound {
@@ -59,9 +81,11 @@
 	margin: 2rem;
 }
 
-/* .ChatButton {
-	display: flex;
-} */
+.ChatButton {
+	background-color: rgb(39, 39, 39);
+	margin-top: 1rem;
+	border-radius: 2rem;
+}
 
 .StartChatButton {
 	width: 95%;
@@ -77,4 +101,11 @@
 	background-color: rgb(47, 165, 255);
 	color: white;
 	border-color: rgb(47, 165, 255);
+}
+
+.StartChatButton:disabled,
+.StartChatButton[disabled] {
+	background-color: rgb(33, 111, 170);
+	color: rgb(91, 133, 165);
+	border-color: rgb(33, 111, 170);
 }

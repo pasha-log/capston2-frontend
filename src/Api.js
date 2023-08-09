@@ -160,6 +160,21 @@ class InstapostApi {
 		let response = await this.request(`users/deleteS3File`, keyData, 'delete');
 		return response;
 	}
+
+	// Add users to the Stream API.
+
+	// static async addUserToStreamAPI(userData) {
+	// 	let response = await this.request(`users/addNewStreamUser`, userData, 'post');
+	// 	return response;
+	// }
+
+	// Create current user's Stream API token.
+
+	// static async createStreamAPIToken(userData) {
+	// 	let response = await this.request(`users/createStreamToken`, userData, 'post');
+	// 	console.log(response);
+	// 	return response;
+	// }
 }
 
 export default InstapostApi;

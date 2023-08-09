@@ -1,0 +1,52 @@
+.NewConvoUserContainer {
+	display: flex;
+	align-items: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	width: 100%;
+	cursor: pointer;
+}
+
+.CreateChatUser {
+	padding: 1rem;
+}
+
+.NewConvoUserContainer:hover {
+	background-color: rgba(64, 64, 64, 0.487);
+}
+
+.NewConvoUserContainer h3 {
+	color: white;
+}
+
+.ConvoUser {
+	display: flex;
+	align-items: center;
+}
+
+.NewConvoUserImage {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 1rem;
+	margin-left: 2rem;
+}
+
+.ConvoUserImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.true {
+	background-color: rgba(74, 74, 74, 0.494);
+}
+
+.false {
+	background-color: black;
+}

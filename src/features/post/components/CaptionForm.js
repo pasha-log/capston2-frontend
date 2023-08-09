@@ -17,7 +17,8 @@ const CaptionForm = () => {
 		s3Response,
 		setCaptionPhase,
 		setFileUploadPhase,
-		toggleUploadModal,
+		setUploadModal,
+		uploadModal,
 		toggleDiscardModal
 	} = useContext(CurrentUserContext);
 	// const { state } = useLocation();
@@ -42,7 +43,7 @@ const CaptionForm = () => {
 		navigate(`/${currentUser.username}`);
 		setCaptionPhase(false);
 		setFileUploadPhase(true);
-		toggleUploadModal();
+		setUploadModal(!uploadModal);
 		nprogress.done();
 	};
 

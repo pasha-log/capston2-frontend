@@ -213,10 +213,6 @@ main .container {
 	font-size: 0.75em;
 }
 
-.Col-9 .card .HomePageTop .userDetails h3 span {
-	font-size: 0.75em;
-}
-
 .dot {
 	transform: scale(0.6);
 	cursor: pointer;

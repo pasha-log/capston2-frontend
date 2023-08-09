@@ -24,32 +24,32 @@ function UserPostSettingsModal() {
 					{innerPostHTML?.postUsername === storedValue?.username ? 
 						(
 						<>
-							<div className="DeletePost">
-								<Button style={{ color: 'red' }} onClick={() => handlePostDeletion()}>
+							<div className='DeleteDiv'>
+								<Button className="DeletePost" style={{ color: 'red' }} onClick={() => handlePostDeletion()}>
 									Delete
 								</Button>
 							</div>
-							<div className="Edit">
-								<Button>Edit</Button>
+							<div className='EditDiv'>
+								<Button className="Edit">Edit</Button>
 							</div>
 						</>
 						) 
 						: 
 						(
 						<>
-							<div className="UnfollowPostUser">
-								<Button style={{ color: 'red' }} onClick={() => unfollow(storedValue?.username, innerPostHTML?.postUsername)}>
+							<div className='UnfollowPostDiv'>
+								<Button className="UnfollowPostUser" style={{ color: 'red' }} onClick={() => unfollow(storedValue?.username, innerPostHTML?.postUsername)}>
 									Unfollow
 								</Button>
 							</div>
-							<div className="GoToPost">
-								<Button>Go to post</Button>
+							<div className='GoToPostDiv'>
+								<Button className="GoToPost">Go to post</Button>
 							</div>
 						</>
 						) 
 					}
 					<div>
-						<Button onClick={() => setUserPostSettingsModal(!userPostSettingsModal)}>Cancel</Button>
+						<Button className='CancelSettingsButton' onClick={() => setUserPostSettingsModal(!userPostSettingsModal)}>Cancel</Button>
 					</div>
 				</ModalBody>
 			</Modal>

@@ -1,43 +1,41 @@
 import '../assets/SearchBar.css';
-import { Input, Button, Form, FormGroup, Col } from 'reactstrap';
-import { useForm, Controller } from 'react-hook-form';
+import { Input, Form, FormGroup } from 'reactstrap';
+import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 
-const SearchBar = ({ getSearchTerm }) => {
-	const { control, handleSubmit, reset } = useForm({
-		defaultValues: {
-			searchTerm: ''
-		}
-	});
+const SearchBar = ({ getSearchTerm, isInExplorePage }) => {
+	const { reset } = useForm();
 
 	const onSubmit = (data) => {
 		getSearchTerm(data);
 		reset();
 	};
 
+	const [ searchTerm, setSearchTerm ] = useState('');
+	useEffect(
+		() => {
+			const subscription = () => {
+				onSubmit(searchTerm);
+			};
+			subscription();
+		},
+		[ searchTerm ]
+	);
+
 	return (
-		<div className="SearchBarContainer">
-			<Form onSubmit={handleSubmit(onSubmit)}>
+		<div style={{ marginTop: `${isInExplorePage && '5rem'}` }} className="SearchBarContainer">
+			<Form>
 				<FormGroup row>
-					<Col
-						md={{
-							offset: 3,
-							size: 6
-						}}
-						sm="12"
-					>
-						<div className="input-group">
-							<Controller
-								name="searchTerm"
-								control={control}
-								render={({ field }) => (
-									<Input className="SearchInput" placeholder="Search..." {...field} />
-								)}
-							/>
-							<Button className="Search" type="submit" size="lg">
-								Search
-							</Button>
-						</div>
-					</Col>
+					<div className="input-group">
+						<Input
+							value={searchTerm}
+							onChange={(e) => {
+								setSearchTerm(e.target.value);
+							}}
+							className="SearchInput"
+							placeholder="Search..."
+						/>
+					</div>
 				</FormGroup>
 			</Form>
 		</div>

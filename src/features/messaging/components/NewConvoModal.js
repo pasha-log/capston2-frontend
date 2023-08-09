@@ -4,8 +4,45 @@ import { useContext } from 'react';
 import CurrentUserContext from '../../../context/CurrentUserContext';
 import '../assets/NewConvoModal.css';
 
-const NewConvoModal = ({}) => {
-	const { toggleNewConvoModal, newConvoModal } = useContext(CurrentUserContext);
+import { useState, useEffect } from 'react';
+import InstapostApi from '../../../Api';
+import SearchBar from '../../../layouts/SearchBar';
+import NewConvoUserCard from './NewConvoUserCard';
+
+import { useConversations } from '../../../context/ConversationsProvider';
+import { useContacts } from '../../../context/ContactsProvider'
+
+const NewConvoModal = () => {
+	const { toggleNewConvoModal, newConvoModal, potentialNewChatUser, setPotentialNewChatUser, setUsers, users } = useContext(CurrentUserContext);
+	const { createConversation } = useConversations()
+	const { createContact } = useContacts()
+	const [ searchTerm, setSearchTerm ] = useState('');
+	const [ noUsersFound, setNoUsersFound ] = useState(false);
+
+	useEffect(
+		() => {
+			async function getAllUsers(name) {
+				if (!name) setNoUsersFound(false);
+				let users = await InstapostApi.findAllUsers(name);
+				users.users.length !== 0 ? setUsers(users.users) : setNoUsersFound(true);
+			}
+			getAllUsers(searchTerm);
+		},
+		[ searchTerm ]
+	);
+
+	const getSearchTerm = (data) => {
+		setSearchTerm(data);
+	};
+
+    const handleNewChatUser = async () => {
+        toggleNewConvoModal();
+
+		createContact(potentialNewChatUser.username, potentialNewChatUser.fullName, potentialNewChatUser.profileImageURL)
+		createConversation([potentialNewChatUser.username]);
+
+
+    }
 
 	return ReactDOM.createPortal(
 		<Modal className="ChatModal" isOpen={newConvoModal} toggle={toggleNewConvoModal} centered={true} size={'md'}>
@@ -22,14 +59,34 @@ const NewConvoModal = ({}) => {
 					</span>
 				</div>
 				<div className="ConvoSearch">
-					<div className="To">To:</div>
-					<div className="SearchConvo">Search...</div>
+					<div className="To">To:
+                        { potentialNewChatUser &&
+                        <div className='NewChatUser'>
+                            <div className='NewChatUserInfoDiv'>
+                                {potentialNewChatUser.fullName}
+                            </div>
+                            <span
+					        	className="material-symbols-outlined NewChatUserDelete"
+					        	style={{ fontSize: '2rem', cursor: 'pointer' }}
+                                onClick={() => setPotentialNewChatUser(null)}
+					        >
+					        	close
+					        </span>
+                        </div>
+                        }
+                    </div>
+					<div className="SearchConvo">
+                        <SearchBar isInExplorePage={false} getSearchTerm={getSearchTerm} />
+                    </div>
 				</div>
 				<div className="ChatSearchResults">
-					<p className="NoAccountFound">No account found.</p>
+					{noUsersFound && <p className="NoAccountFound">No account found.</p>}
+                    {!noUsersFound && users?.map((user, index) => {
+						return <NewConvoUserCard user={user} key={index} />;
+					})}
 				</div>
 				<div className="ChatButton">
-					<Button className="StartChatButton">Chat</Button>
+					<Button disabled={!potentialNewChatUser} className="StartChatButton" onClick={() => handleNewChatUser()}>Chat</Button>
 				</div>
 			</ModalBody>
 		</Modal>,

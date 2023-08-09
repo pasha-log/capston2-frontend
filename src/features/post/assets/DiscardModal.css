@@ -9,8 +9,8 @@
 	color: red;
 }
 
-.Discard button,
-.DiscardCancel button {
+.DiscardButton,
+.DiscardCancel {
 	background-color: rgb(39, 39, 39);
 	border-color: rgb(39, 39, 39);
 	font-size: 1.5rem;
@@ -18,8 +18,8 @@
 	padding-top: 1rem;
 }
 
-.Discard button:hover,
-.DiscardCancel button:hover {
+.DiscardButton:hover,
+.DiscardCancel:hover {
 	background-color: rgb(39, 39, 39);
 	border-color: rgb(39, 39, 39);
 	font-size: 1.5rem;

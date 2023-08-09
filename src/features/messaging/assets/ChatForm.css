@@ -1,0 +1,59 @@
+.ChatMessage:focus,
+.ChatMessage {
+	background-color: black;
+	color: white;
+	font-size: 1.5rem;
+	border: black;
+	margin: 1rem;
+}
+
+.ChatMessage::placeholder {
+	/* modern browser */
+	color: rgb(113, 113, 113);
+	font-size: 1.5rem;
+}
+
+.SendChat {
+	font-size: 1.5rem;
+	background-color: black;
+	color: rgb(27, 156, 255);
+	border-color: black;
+	margin: 1rem;
+}
+
+.SendChat:hover {
+	font-size: 1.5rem;
+	background-color: black;
+	color: white;
+	border-color: black;
+}
+
+.ChatFormContainer {
+	align-self: center;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	/* border: solid 2px brown; */
+}
+
+.ChatContainer {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	/* border: solid 2px lightgreen; */
+	align-self: stretch;
+	flex-direction: row;
+
+	border: solid .1rem rgb(82, 82, 82);
+
+	border-radius: 13.375rem;
+	margin: 1rem;
+}
+
+.SendChat:disabled,
+.SendChat[disabled] {
+	background-color: black;
+	color: rgb(21, 119, 195);
+	border: black;
+}

@@ -69,8 +69,10 @@ function DiscardModal({
 						</Button>
 					)}
 				</div>
-				<div className="DiscardCancel">
-					<Button onClick={toggleDiscardModal}>Cancel</Button>
+				<div>
+					<Button className="DiscardCancel" onClick={toggleDiscardModal}>
+						Cancel
+					</Button>
 				</div>
 			</ModalBody>
 		</Modal>,

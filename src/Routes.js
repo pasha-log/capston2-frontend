@@ -6,6 +6,7 @@ import Profile from './features/profile/components/Profile';
 // import FileUploadForm from './features/post/components/FileUploadForm';
 // import ImageCropForm from './features/post/components/ImageCropForm';
 // import CaptionForm from './features/post/components/CaptionForm.js';
+// import Messaging from './features/messaging/components/Messaging';
 import Messaging from './features/messaging/components/Messaging';
 import PostDetail from './features/post/components/PostDetail.js';
 import HomePage from './pages/HomePage.js';

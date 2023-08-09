@@ -1,0 +1,61 @@
+.OpenConvoContainer {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.OpenConvo {
+	flex-grow: 1;
+	overflow: auto;
+}
+
+.OpenConvoMessages {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#MessageDiv {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.FromMeMessageDiv {
+	align-self: end;
+	align-items: end;
+}
+
+.NotFromMeMessageDiv {
+	align-items: start;
+}
+
+#MessageTextContainer {
+	border-radius: 2rem;
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+.FromMeMessage {
+	background-color: rgb(84, 158, 255);
+}
+
+.NotFromMeMessage {
+	background-color: rgb(55, 55, 55);
+}
+
+.MessageSenderTag {
+	text-align: right;
+}
+
+.FromMeMessage,
+.NotFromMeMessage {
+	color: white;
+	font-size: 1.5rem;
+}

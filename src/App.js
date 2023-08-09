@@ -4,6 +4,7 @@ import InstapostApi from './Api';
 import { useEffect, useState } from 'react';
 import CurrentUserContext from './context/CurrentUserContext';
 import useLocalStorage from './hooks/useLocalStorage';
+import useLocalStorageMessaging from './hooks/useLocalStorageMessaging';
 import BottomNavBar from './layouts/BottomNavBar';
 import TopNavBar from './layouts/TopNavBar';
 import SettingsModal from './layouts/SettingsModal';
@@ -15,6 +16,9 @@ import SideNavBar from './layouts/SidNavBar';
 import AddNewPost from './features/post/components/AddNewPost';
 import DiscardModal from './features/post/components/DiscardModal';
 import NewConvoModal from './features/messaging/components/NewConvoModal';
+import { SocketProvider } from './context/SocketProvider';
+import { ConversationsProvider } from './context/ConversationsProvider';
+import { ContactsProvider } from './context/ContactsProvider';
 
 function App() {
 	const isAboveSmallScreens = useMediaQuery('(min-width: 1000px)');
@@ -45,6 +49,12 @@ function App() {
 	const [ outsideClickUploadForm, setOutsideClickUploadForm ] = useState(false);
 	const [ newConvoModal, setNewConvoModal ] = useState(false);
 
+	const [ potentialNewChatUser, setPotentialNewChatUser ] = useState(null);
+
+	const [ users, setUsers ] = useState([]);
+
+	const [username, setUsername] = useLocalStorageMessaging('username')
+
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
 		let postDataArray = event.target.id.split(' ');
@@ -63,8 +73,11 @@ function App() {
 		setDiscardModal(!discardModal);
 	};
 	const toggleNewConvoModal = () => {
+		setPotentialNewChatUser(null);
 		setNewConvoModal(!newConvoModal);
 	};
+
+	// const [ streamToken, setStreamToken ] = useState();
 
 	useEffect(
 		() => {
@@ -97,6 +110,7 @@ function App() {
 		if (response.token) {
 			setShowNav(true);
 			setValue({ token: response.token, username: username });
+			setUsername(username);
 			InstapostApi.token = response.token;
 			setCurrentUser(username);
 			return true;
@@ -214,38 +228,48 @@ function App() {
 						setOutsideClickUploadForm,
 						setUploadModal,
 						toggleNewConvoModal,
-						newConvoModal
+						newConvoModal,
+						potentialNewChatUser,
+						setPotentialNewChatUser,
+						users,
+						setUsers
 					}}
 				>
-					<SettingsModal />
-					<BrowserRouter>
-						<UserPostSettingsModal />
-						<AddNewPost
-							fileUploadPhase={fileUploadPhase}
-							imageCropPhase={imageCropPhase}
-							captionPhase={captionPhase}
-						/>
-						<DiscardModal
-							imageCropPhase={imageCropPhase}
-							setImageCropPhase={setImageCropPhase}
-							setFileUploadPhase={setFileUploadPhase}
-							s3Response={s3Response}
-							setCaptionPhase={setCaptionPhase}
-							captionPhase={captionPhase}
-							deleteS3File={deleteS3File}
-						/>
-						<NewConvoModal />
-						{isAboveSmallScreens && showNav && <SideNavBar />}
-						{!isAboveSmallScreens && showNav && <BottomNavBar />}
-						{!isAboveSmallScreens && showNav && <TopNavBar />}
-						<main>
-							<InstapostRoutes
-								setTokenAfterRegister={setTokenAfterRegister}
-								setTokenAfterLogin={setTokenAfterLogin}
-								setShowNav={setShowNav}
-							/>
-						</main>
-					</BrowserRouter>
+					<SocketProvider username={storedValue?.username}>
+						<ContactsProvider>
+							<ConversationsProvider username={storedValue?.username}>
+								<SettingsModal />
+								<BrowserRouter>
+									<UserPostSettingsModal />
+									<AddNewPost
+										fileUploadPhase={fileUploadPhase}
+										imageCropPhase={imageCropPhase}
+										captionPhase={captionPhase}
+									/>
+									<DiscardModal
+										imageCropPhase={imageCropPhase}
+										setImageCropPhase={setImageCropPhase}
+										setFileUploadPhase={setFileUploadPhase}
+										s3Response={s3Response}
+										setCaptionPhase={setCaptionPhase}
+										captionPhase={captionPhase}
+										deleteS3File={deleteS3File}
+									/>
+									<NewConvoModal />
+									{isAboveSmallScreens && showNav && <SideNavBar />}
+									{!isAboveSmallScreens && showNav && <BottomNavBar />}
+									{!isAboveSmallScreens && showNav && <TopNavBar />}
+									<main>
+										<InstapostRoutes
+											setTokenAfterRegister={setTokenAfterRegister}
+											setTokenAfterLogin={setTokenAfterLogin}
+											setShowNav={setShowNav}
+										/>
+									</main>
+								</BrowserRouter>
+							</ConversationsProvider>
+						</ContactsProvider>
+					</SocketProvider>
 				</CurrentUserContext.Provider>
 			</SkeletonTheme>
 		</div>

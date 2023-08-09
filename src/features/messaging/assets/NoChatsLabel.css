@@ -1,0 +1,28 @@
+.NoChatsContainer {
+	width: 100%;
+	height: 100vh;
+	/* border: solid 2px palevioletred; */
+	display: flex;
+	justify-content: center;
+}
+
+.NoChatsContent {
+	color: white;
+	text-align: center;
+	align-self: center;
+	/* border: solid 2px darkgreen; */
+	font-size: 2rem;
+}
+
+.NoChatsContainer h2 {
+	font-size: 4rem;
+}
+
+.NoChatsButton {
+	font-size: 1.5rem;
+	background-color: rgb(27, 156, 255);
+}
+
+.NoChatsButton:hover {
+	background-color: rgb(53, 167, 255);
+}

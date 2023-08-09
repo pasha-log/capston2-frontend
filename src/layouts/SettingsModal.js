@@ -19,7 +19,9 @@ function SettingsModal() {
 						<Button className="YourLikesButton">Your Likes</Button>
 					</div>
 					<div>
-						<Button onClick={toggleSettingsModal}>Cancel</Button>
+						<Button className="CancelButtonSettings" onClick={toggleSettingsModal}>
+							Cancel
+						</Button>
 					</div>
 				</ModalBody>
 			</Modal>

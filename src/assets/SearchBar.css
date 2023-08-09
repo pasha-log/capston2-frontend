@@ -1,14 +1,14 @@
 .SearchBarContainer {
-	width: 100%;
-	margin-top: 5rem;
+	width: 30rem;
+	place-self: center;
 }
 
 .SearchInput,
 .Search,
 .Search:hover {
 	background-color: rgb(39, 39, 39);
-	border: rgb(88, 88, 88);
 	font-size: 1.5rem;
+	color: white;
 }
 
 .SearchInput::placeholder {
@@ -16,16 +16,25 @@
 	font-size: 1.5rem;
 }
 
-.Search {
-	color: #1d92ffcb;
-}
-
-.Search:hover {
+.SearchInput:focus {
+	background-color: rgb(39, 39, 39);
 	color: white;
 }
 
-@media screen and (min-width: 770px) {
+.SearchInput,
+.SearchInput:focus {
+	border: none;
+	box-shadow: none;
+}
+
+@media screen and (max-width: 770px) {
 	.SearchBarContainer {
-		width: 70rem;
+		width: 25rem;
+	}
+}
+
+@media screen and (max-width: 470px) {
+	.SearchBarContainer {
+		width: 20rem;
 	}
 }
