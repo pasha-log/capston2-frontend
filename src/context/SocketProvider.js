@@ -12,7 +12,7 @@ export function SocketProvider({ username, children }) {
 
 	useEffect(
 		() => {
-			const newSocket = io('https://instapost.herokuapp.com/users/upload', {
+			const newSocket = io({
 				// const newSocket = io('http://localhost:3001', {
 				query: { username }
 			});
