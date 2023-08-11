@@ -120,7 +120,7 @@ function App() {
 	};
 
 	const logOutUser = () => {
-		// setValue(null);
+		setValue(null);
 		localStorage.clear();
 		toggleSettingsModal();
 	};
