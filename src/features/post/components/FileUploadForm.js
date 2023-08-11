@@ -7,7 +7,7 @@ import CurrentUserContext from '../../../context/CurrentUserContext';
 
 const FileUploadForm = () => {
 	// const {toggleUploadModal, uploadModal, toggleCropModal, nprogress, upload, currentUser, editProfileInfo, setInnerCommentHTML } = useContext(CurrentUserContext);
-	const { nprogress, upload, currentUser, editProfileInfo, setInnerCommentHTML, setFileUpload, setFileUploadPhase, setImageCropPhase } = useContext(CurrentUserContext);
+	const { nprogress, upload, currentUser, editProfileInfo, setInnerCommentHTML, setFileUpload, setFileUploadPhase, setImageCropPhase, uploadModal, setUploadModal } = useContext(CurrentUserContext);
 
 	setInnerCommentHTML();
 	
@@ -32,6 +32,7 @@ const FileUploadForm = () => {
 			}
 			await editProfileInfo(defaultValues);
 			navigate(`/${currentUser?.username}`);
+			setUploadModal(!uploadModal);
 			nprogress.done();
 		} else {
 			const reader = new FileReader();

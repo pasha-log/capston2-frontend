@@ -53,7 +53,9 @@ function App() {
 
 	const [ users, setUsers ] = useState([]);
 
-	const [username, setUsername] = useLocalStorageMessaging('username')
+	const [username, setUsername] = useLocalStorageMessaging('username');
+	const [conversations, setConversations] = useLocalStorageMessaging('conversations');
+	const [contacts, setContacts] = useLocalStorageMessaging('contacts');
 
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
@@ -121,6 +123,9 @@ function App() {
 
 	const logOutUser = () => {
 		setValue(null);
+		setUsername(null);
+		setConversations(null);
+		setContacts(null);
 		toggleSettingsModal();
 	};
 
