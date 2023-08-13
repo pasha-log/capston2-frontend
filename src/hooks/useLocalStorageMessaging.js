@@ -6,7 +6,7 @@ export default function useLocalStorageMessaging(key, initialValue) {
 	const prefixedKey = PREFIX + key;
 	const [ value, setValue ] = useState(() => {
 		const jsonValue = localStorage.getItem(prefixedKey);
-		if (jsonValue != null) return JSON.parse(jsonValue);
+		if (jsonValue != null && jsonValue !== undefined) return JSON.parse(jsonValue);
 		if (typeof initialValue === 'function') {
 			return initialValue();
 		} else {

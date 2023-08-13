@@ -54,7 +54,7 @@ function App() {
 	const [ users, setUsers ] = useState([]);
 
 	const [username, setUsername] = useLocalStorageMessaging('username');
-
+	
 	const toggleSettingsModal = () => setSettingsModal(!settingsModal);
 	const toggleUserPostSettingsModal = (event) => {
 		let postDataArray = event.target.id.split(' ');
@@ -76,8 +76,6 @@ function App() {
 		setPotentialNewChatUser(null);
 		setNewConvoModal(!newConvoModal);
 	};
-
-	// const [ streamToken, setStreamToken ] = useState();
 
 	useEffect(
 		() => {
