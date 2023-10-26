@@ -65,8 +65,8 @@ class InstapostApi {
 		form.append('single', postData);
 
 		let response = await axios({
-			url: `https://instapost.herokuapp.com/users/upload`,
-			// url: `http://localhost:3001/users/upload`,
+			// url: `https://instapost.herokuapp.com/users/upload`,
+			url: `http://localhost:3001/users/upload`,
 			method: 'post',
 			data: form,
 			headers: {

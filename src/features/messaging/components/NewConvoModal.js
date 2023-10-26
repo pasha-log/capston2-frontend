@@ -40,8 +40,6 @@ const NewConvoModal = () => {
 
 		createContact(potentialNewChatUser.username, potentialNewChatUser.fullName, potentialNewChatUser.profileImageURL)
 		createConversation([potentialNewChatUser.username]);
-
-
     }
 
 	return ReactDOM.createPortal(
